@@ -107,7 +107,7 @@ header("location:../");
 
 					<div class="nav-mini-wrapper">
 						<ul class="nav-mini sign-in">
-							<li><a href="../logout.php">logout</a></li>
+							<li><a href="../logout.php">Logout</a></li>
 							<li><a href="./">Profile</a></li>
 						</ul>
 					</div>
@@ -234,7 +234,7 @@ header("location:../");
 													<div class="form-group">
 														<label>City</label>
 														<select name="country" required class="selectpicker show-tick form-control" data-live-search="true">
-															<option disabled value="">Select</option>
+															<option  value="">Select City</option>
 						                                   <?php
 														   require '../constants/db_config.php';
 														   try {
@@ -271,7 +271,7 @@ header("location:../");
 													<div class="form-group">
 														<label>Job Category</label>
 															<select name="category" required class="selectpicker show-tick form-control" data-live-search="true">
-															<option disabled value="">Select</option>
+															<option value="">Select Category</option>
 						                                   <?php
 														   require '../constants/db_config.php';
 														   try {
