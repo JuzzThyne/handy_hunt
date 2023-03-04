@@ -287,9 +287,11 @@ if (isset($_GET['page'])) {
 										$result = $stmt->fetchAll();
 
 										foreach ($result as $row) {
-											$post_date = date_format(date_create_from_format('d/m/Y', $row['closing_date']), 'd');
-											$post_month = date_format(date_create_from_format('d/m/Y', $row['closing_date']), 'F');
-											$post_year = date_format(date_create_from_format('d/m/Y', $row['closing_date']), 'Y');
+											$post_date = date_format(date_create(), 'd');
+											$post_month = date_format(date_create(), 'F');
+											$post_year = date_format(date_create(), 'Y');
+
+
 											$type = $row['type'];
 											if ($type == "Freelance") {
 												$sta = '<span class="job-label label label-success">Freelance</span>';
@@ -431,22 +433,22 @@ if (isset($_GET['page'])) {
 										?><li class="paging-nav"><a <?php if ($b == $page) {
 																		print ' style="background-color:#33B6CB; color:white" ';
 																	} ?> href="company.php?ref=<?php echo "$company_id"; ?>&page=<?php echo "$b"; ?>"><?php echo $b . " "; ?></a></li><?php
-																																											}
-																																											print '<li class="paging-nav"';
-																																											if ($page == $records) {
-																																												print 'class="disabled"';
-																																											}
-																																											print '><a ';
-																																											if ($page == $records) {
-																																												print '';
-																																											} else {
-																																												print 'href="company.php?ref=' . $company_id . '&page=' . $nextpage . '"';
-																																											}
-																																											print '><i class="fa fa-chevron-right"></i></a></li>';
-																																										}
+																																													}
+																																													print '<li class="paging-nav"';
+																																													if ($page == $records) {
+																																														print 'class="disabled"';
+																																													}
+																																													print '><a ';
+																																													if ($page == $records) {
+																																														print '';
+																																													} else {
+																																														print 'href="company.php?ref=' . $company_id . '&page=' . $nextpage . '"';
+																																													}
+																																													print '><i class="fa fa-chevron-right"></i></a></li>';
+																																												}
 
 
-																																												?>
+																																														?>
 
 									</ul>
 
