@@ -174,7 +174,7 @@ include 'constants/check-login.php';
 			<div class="hero" style="background-image:url('images/hero-header/01.jpg');">
 				<div class="container">
 
-					<h1>your bright future starts here now</h1>
+					<h1>Good Life Begins With A Good Company</h1>
 					<p>Finding your next job or career on Handy Hunt</p>
 
 					<div class="main-search-form-wrapper">
@@ -186,7 +186,7 @@ include 'constants/check-login.php';
 								
 									<div class="col-xss-6 col-xs-6 col-sm-6">
 										<select class="form-control" name="category" required/>
-										<option value="">-Select Construction category-</option>
+										<option value="">-Select Category-</option>
 										 <?php
 										 require 'constants/db_config.php';
 										 try {

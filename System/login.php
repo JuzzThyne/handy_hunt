@@ -138,8 +138,8 @@ include 'constants/check-login.php';
 
 					<div class="nav-mini-wrapper">
 						<ul class="nav-mini sign-in">
-							<li><a  href="login.php">login</a></li>
-							<li><a data-toggle="modal" href="#registerModal">register</a></li>
+							<li><a  href="login.php">Login</a></li>
+							<li><a data-toggle="modal" href="#registerModal">Register</a></li>
 						</ul>
 					</div>
 				

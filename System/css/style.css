@@ -182,7 +182,7 @@ ul.nav-mini.sign-in li a:hover {
     -ms-transition: all 0.3s ease-in-out 0s;
     -o-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
     letter-spacing: 1px;
     padding-left: 14px;
     color: #FFF;
@@ -330,7 +330,7 @@ ul.nav-mini li a {
     -ms-transition: all 0.3s ease-in-out 0s;
     -o-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
     letter-spacing: 1px;
 }
 

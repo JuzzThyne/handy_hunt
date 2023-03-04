@@ -98,12 +98,12 @@ include 'constants/check-login.php';
 						<?php
 						if ($user_online == true) {
 						print '
-						    <li><a href="logout.php">logout</a></li>
+						    <li><a href="logout.php">Logout</a></li>
 							<li><a href="'.$myrole.'">Profile</a></li>';
 						}else{
 						print '
-							<li><a href="login.php">login</a></li>
-							<li><a data-toggle="modal" href="#registerModal">register</a></li>';						
+							<li><a href="login.php">Login</a></li>
+							<li><a data-toggle="modal" href="#registerModal">Register</a></li>';						
 						}
 						
 						?>
