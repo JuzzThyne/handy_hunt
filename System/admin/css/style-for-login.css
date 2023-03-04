@@ -119,7 +119,7 @@ body {
     padding: 15px 20px;
     text-align: center;
     border: none;
-    background: #f36601;
+    background: #ffd600;
     outline: none;
     border-radius: 30px;
     font-size: 1.2rem;
@@ -139,7 +139,7 @@ body {
 
 .login-register-text a {
     text-decoration: none;
-    color: #f36601;
+    color: #ffd600;
 }
 
 @media (max-width: 430px) {
