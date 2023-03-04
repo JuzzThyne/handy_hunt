@@ -43,7 +43,7 @@
 
                     <div class="form-group">
                         <label>Email Address</label>
-                        <input class="form-control" placeholder="Enter your email address" name="email" required type="email">
+                        <input class="form-control"  pattern=".+@gmail\.com" placeholder="Enter your email address" name="email" required type="email">
                     </div>
 
                 </div>
