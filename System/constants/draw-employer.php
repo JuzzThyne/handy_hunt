@@ -36,7 +36,7 @@
 <div class="form-group"> 
 <label>Email Address</label>
 <!-- <input class="form-control"  pattern=".+@gmail\.com" placeholder="Enter your gmail/yahoo address" name="email" required type="text">  -->
-<input class="form-control"  pattern="[A-Za-z]{8}" placeholder="Enter your email/yahoo address" name="email" required type="text"> 
+<input class="form-control"  pattern=".+@gmail\.com" placeholder="Enter your email address" name="email" required type="text"> 
 </div>
 												
 </div>
