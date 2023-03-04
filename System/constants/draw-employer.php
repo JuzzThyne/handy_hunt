@@ -66,7 +66,12 @@
 </div>
 
 <div class="modal-footer text-center">
-<button  onclick="return val();" type="submit" name="reg_mode" class="btn btn-primary">Register</button>
+<ul>
+  <li class="list"><button  onclick="return val();" type="submit" name="reg_mode" class="btn btn-primary">Register</button></li>
+  <!-- <li class="list"><button class="btn btn-min" ><a href="register.php?p=Employer" class="btn-min-min btn-min">Signup as employer</a></button></li> -->
+  <li class="list" > <a href="register.php?p=Employee" class="list1">SIGNUP AS EMPLOYER</a> </li>
+</ul>
+<!-- <button  onclick="return val();" type="submit" name="reg_mode" class="btn btn-primary">Register</button> -->
 </div>
 										
 </div>

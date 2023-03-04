@@ -288,6 +288,24 @@ if((frm.password.value).length < 8)
 	frm.password.focus();
 	return false;
 }
+if(!frm.password.value.match(/[a-z]/))
+{
+	alert("Password should contains lowercase letters.");
+	frm.password.focus(); 
+	return false;
+}
+if(!frm.password.value.match(/[A-Z]/))
+{
+	alert("Password should contains Uppercase letters.");
+	frm.password.focus(); 
+	return false;
+}
+if(!frm.password.value.match(/[0-9]/))
+{
+	alert("Password should contains Numbers.");
+	frm.password.focus(); 
+	return false;
+}
 
 if((frm.password.value).length > 20)
 {

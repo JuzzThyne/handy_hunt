@@ -104,6 +104,38 @@ video {
     zoom: 1;
 }
 
+/* my css */
+
+.btn-min-min {
+    border-radius: 3px;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding-top: 9px;
+    padding-bottom: 8px;
+    font-weight: 700;
+    border-width: 2px;
+}
+.btn-min {
+    background: #33B6CB;
+    border-color: #33B6CB;
+    color: #FFF !important;
+}
+.list {
+    padding-bottom: 10px;
+    color: #000000;
+    font-size: medium;
+}
+.list1 {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 700;
+    color: #000000;
+}
+
 
 /* HTML5 display-role reset for older browsers */
 
@@ -2610,7 +2642,7 @@ label {
 }
 
 .section-title h2 {
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
     text-align: center;
     font-size: 40px;
     font-weight: 400;

@@ -684,7 +684,8 @@ ul.nav-mini li a {
 }
 
 .second-search-result-wrapper {
-    background: #33B6CB;
+    /* background: #33B6CB; */
+    background: #ffd600;
     padding-top: 30px;
     padding-bottom: 20px;
 }
@@ -698,7 +699,8 @@ ul.nav-mini li a {
     position: absolute;
     top: 9px;
     left: 0;
-    color: #FFF;
+    /* color: #FFF; */
+    color: #000;
     text-transform: uppercase;
     font-weight: 400;
     line-height: 1;
