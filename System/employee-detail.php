@@ -158,7 +158,7 @@ if (isset($_GET['empid'])) {
 							} else {
 								print '
 							<li><a href="login.php">Login</a></li>
-							<li><a data-toggle="modal" href="#registerModal">Register</a></li>';
+							<li><a href="register.php?p=Employee">Register</a></li>';
 							}
 
 							?>
