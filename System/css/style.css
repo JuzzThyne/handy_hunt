@@ -368,7 +368,7 @@ ul.nav-mini li a {
         display: none !important;
     }
     ul.nav-mini {
-        margin-right: 36px;
+        /* margin-right: 36px; */
     }
 }
 
