@@ -112,7 +112,7 @@ if ($user_online == "true") {
 
 					<div class="nav-mini-wrapper">
 						<ul class="nav-mini sign-in">
-							<li><a href="../logout.php">logout</a></li>
+							<li><a href="../logout.php">Logout</a></li>
 							<li><a href="./">Profile</a></li>
 						</ul>
 					</div>
@@ -242,10 +242,10 @@ if ($user_online == "true") {
 											$result = $stmt->fetchAll();
 											$rec = count($result);
 											if ($rec == 1) {
-												$work_stat = "UNEMPLOYED";
+												$work_stat = "APPLICANT";
 												$stat_color = "progress-bar progress-bar-striped bg-danger";
 											} else {
-												$work_stat = "WORKING";
+												$work_stat = "HIRED";
 												$stat_color = "progress-bar progress-bar-striped bg-success";
 											}
 

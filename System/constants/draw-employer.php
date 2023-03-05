@@ -26,7 +26,7 @@
 
 <div class="form-group"> 
 <label>Company Type</label>
-<input class="form-control" placeholder="Eg: Booking/Travel, Computer Software etc" name="type" required type="text"> 
+<input class="form-control" placeholder="Eg: partnership, corporation, etc" name="type" required type="text"> 
 </div>
 												
 </div>
@@ -35,7 +35,8 @@
 
 <div class="form-group"> 
 <label>Email Address</label>
-<input class="form-control" placeholder="Enter your email address" name="email" required type="text"> 
+<!-- <input class="form-control"  pattern=".+@gmail\.com" placeholder="Enter your gmail/yahoo address" name="email" required type="text">  -->
+<input class="form-control"  pattern=".+@gmail\.com" placeholder="Enter your email address" name="email" required type="text"> 
 </div>
 												
 </div>

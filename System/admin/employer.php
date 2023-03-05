@@ -16,7 +16,7 @@
 
 
     <title>
-        Hany Hunt Dashboard
+        Handy Hunt Dashboard
     </title>
 </head>
 
@@ -31,7 +31,7 @@ if (!isset($_SESSION['username'])) {
     header("Location: index.php");
 }
 
-$query = "SELECT id FROM tbl_jobs";
+$query = "SELECT job_id FROM tbl_jobs";
 $query_run = mysqli_query($conn, $query);
 $num = mysqli_num_rows($query_run);
 
