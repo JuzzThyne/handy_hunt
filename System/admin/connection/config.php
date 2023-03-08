@@ -15,3 +15,5 @@ else{
     // echo 'Connected madafakaz';
     
 }
+
+?>

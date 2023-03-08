@@ -320,22 +320,22 @@ if (isset($_GET['page'])) {
 							?><li class="paging-nav"><a <?php if ($b == $page) {
 															print ' style="background-color:#33B6CB; color:white" ';
 														} ?> href="employers.php?page=<?php echo "$b"; ?>"><?php echo $b . " "; ?></a></li><?php
-																																			}
-																																			print '<li class="paging-nav"';
-																																			if ($page == $records) {
-																																				print 'class="disabled"';
-																																			}
-																																			print '><a ';
-																																			if ($page == $records) {
-																																				print '';
-																																			} else {
-																																				print 'href="employers.php?page=' . $nextpage . '"';
-																																			}
-																																			print '><i class="fa fa-chevron-right"></i></a></li>';
 																																		}
+																																		print '<li class="paging-nav"';
+																																		if ($page == $records) {
+																																			print 'class="disabled"';
+																																		}
+																																		print '><a ';
+																																		if ($page == $records) {
+																																			print '';
+																																		} else {
+																																			print 'href="employers.php?page=' . $nextpage . '"';
+																																		}
+																																		print '><i class="fa fa-chevron-right"></i></a></li>';
+																																	}
 
 
-																																				?>
+																																			?>
 
 						</ul>
 
@@ -391,7 +391,7 @@ if (isset($_GET['page'])) {
 
 								<p>Address : University of Caloocan City, Congressional Campus</p>
 								<p>Email : <a href="mailto:nightingale.nath2@gmail.com">handyhunt@gmail.com</a></p>
-								<p>Phone : <a href="tel:+233546607474">09101493778</a></p>
+								<p>Phone : <a href="tel:+09101493778">09101493778</a></p>
 
 
 							</div>

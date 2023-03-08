@@ -27,6 +27,24 @@
 <?php
 require 'connection/config.php';
 session_start();
+
+if (isset($_POST['updateActive'])) {
+    $updated_id = $_POST['update_id'];
+
+    $query = "UPDATE tbl_users SET isAccept='0' WHERE id='$updated_id'";
+    $query_run = mysqli_query($conn, $query);
+    echo "<script>alert('success')</script>";
+}
+if (isset($_POST['updateInactive'])) {
+    $updated_id = $_POST['update_id'];
+
+    $query = "UPDATE tbl_users SET isAccept='1' WHERE id='$updated_id'";
+    $query_run = mysqli_query($conn, $query);
+    echo "<script>alert('success')</script>";
+}
+
+
+
 if (!isset($_SESSION['username'])) {
     header("Location: index.php");
 }
@@ -156,6 +174,8 @@ $i = 1;
                                     <th>People</th>
                                     <th>Address</th>
                                     <th>website</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
 
 
                                 </tr>
@@ -191,6 +211,41 @@ $i = 1;
                                                 <a href="<?= $row['country']; ?>">
                                                     <?= $row['country']; ?>
                                                 </a>
+                                            </td>
+                                            <td>
+                                                <?php
+                                                if ($row['isAccept'] == '1') {
+                                                ?>
+                                                    <span class="badge bg-primary">Active</span>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <span class="badge bg-danger">InActive</span>
+                                                <?php
+                                                }
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <?php
+
+                                                if ($row['isAccept'] == '1') {
+                                                ?>
+                                                    <form method="post">
+                                                        <button class="btn btn-danger btn-sm" type="submit" name="updateActive">Reject</button>
+                                                        <input type="hidden" name="update_id" value="<?= $row['id']; ?>">
+                                                    </form>
+
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <form method="post">
+                                                        <button class="btn btn-primary btn-sm" type="submit" name="updateInactive">Accept</button>
+                                                        <input type="hidden" name="update_id" value="<?= $row['id']; ?>">
+                                                    </form>
+                                                    
+                                                <?php
+                                                }
+                                                ?>
                                             </td>
 
 

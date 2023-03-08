@@ -4,3 +4,4 @@ $_SESSION['logged'] = false;
 session_unset();
 session_destroy();
 header("location:./login.php");
+?>

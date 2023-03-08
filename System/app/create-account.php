@@ -86,8 +86,8 @@ try {
 	
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("INSERT INTO tbl_users (first_name,middle_name, last_name, email, last_login, login, role, member_no, status) 
-	VALUES (:fname,:mname, :lname, :email, :lastlogin, :login, :role, :memberno, '$stat')");
+    $stmt = $conn->prepare("INSERT INTO tbl_users (first_name,middle_name, last_name, email, last_login, login, role, member_no, status, isAccept) 
+	VALUES (:fname,:mname, :lname, :email, :lastlogin, :login, :role, :memberno, '$stat', '0')");
     $stmt->bindParam(':fname', $fname);
     $stmt->bindParam(':mname', $mname);
     $stmt->bindParam(':lname', $lname);
@@ -120,8 +120,8 @@ try {
 	
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("INSERT INTO tbl_users (first_name, title, email, last_login, login, role, member_no) 
-	VALUES (:fname, :title, :email, :lastlogin, :login, :role, :memberno)");
+    $stmt = $conn->prepare("INSERT INTO tbl_users (first_name, title, email, last_login, login, role, member_no, isAccept) 
+	VALUES (:fname, :title, :email, :lastlogin, :login, :role, :memberno, '0')");
     $stmt->bindParam(':fname', $cname);
     $stmt->bindParam(':title', $ctype);
     $stmt->bindParam(':email', $email);
@@ -137,5 +137,3 @@ try {
     }	
 	
 }
-
-?>
