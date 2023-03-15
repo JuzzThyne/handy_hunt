@@ -20,9 +20,6 @@ try {
 
 
 	if ($rec == "0") {
-		header("location:../login.php?r=0346");
-	}
-	if ($isAccept == "0") {
 		header("location:../login.php?r=9999");
 	} else {
 
@@ -99,3 +96,4 @@ try {
 	}
 } catch (PDOException $e) {
 }
+?>
