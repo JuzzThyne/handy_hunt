@@ -1,6 +1,7 @@
 <?php
 require '../../constants/db_config.php';
 require '../constants/check-login.php';
+error_reporting(0);
 $country  = $_POST['country'];
 $course = ucwords($_POST['course']);
 $institution = ucwords($_POST['institution']);
@@ -33,6 +34,3 @@ header("location:../qualifications.php?r=2290");
 	
 
 }
-
-
-?>
