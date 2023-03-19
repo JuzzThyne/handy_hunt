@@ -215,9 +215,9 @@ if (isset($_GET['page'])) {
 										<li>
 											<a href="referees.php"><i class="fa fa-users"></i> Referees</a>
 										</li>
-										<li>
+										<!-- <li>
 											<a href="academic.php"><i class="fa fa-graduation-cap"></i> Academic Qualifications</a>
-										</li>
+										</li> -->
 										<li>
 											<a href="experience.php"><i class="fa fa-briefcase"></i> Working Experience</a>
 										</li>

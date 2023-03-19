@@ -20,7 +20,7 @@ try {
 
 
 	if ($rec == "0") {
-		header("location:../login.php?r=9999");
+		header("location:../login.php?r=0346");
 	} else {
 
 		foreach ($result as $row) {
@@ -96,4 +96,3 @@ try {
 	}
 } catch (PDOException $e) {
 }
-?>

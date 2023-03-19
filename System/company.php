@@ -225,7 +225,14 @@ if (isset($_GET['page'])) {
 
 									<h2 class="heading mb-15"><?php echo "$compname"; ?></h2>
 
-									<p class="location"><i class="fa fa-map-marker"></i> <?php echo "$compzip"; ?> <?php echo "$compcity"; ?>. <?php echo "$compstreet"; ?>, <?php echo "$compcountry"; ?> <span class="mh-5">|</span> <i class="fa fa-phone"></i> <?php echo "$compphone"; ?></p>
+									<p class="location">
+										<a target="_blank" href="https://maps.google.com/maps?q=<?php echo "$compzip"; ?> <?php echo "$compcity"; ?>. <?php echo "$compstreet"; ?>, <?php echo "$compcountry"; ?>">
+											<i class="fa fa-map-marker"></i> <?php echo "$compzip"; ?> <?php echo "$compcity"; ?>. <?php echo "$compstreet"; ?>, <?php echo "$compcountry"; ?>
+										</a>
+
+										<span class="mh-5">|</span>
+										<i class="fa fa-phone"></i> <?php echo "$compphone"; ?>
+									</p>
 
 									<ul class="meta-list clearfix">
 										<li>
