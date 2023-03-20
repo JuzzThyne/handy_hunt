@@ -76,14 +76,14 @@ try {
 
 
 $today_date = strtotime(date('Y/m/d'));
-// $last_date = date_format(date_create_from_format('d/m/Y', $closingdate), 'Y/m/d');
-$last_date = date_format(date_create(), 'y/m/d');
-// $post_date = date_format(date_create_from_format('d/m/Y', $closingdate), 'd');
-$post_date = date_format(date_create(), 'd');
-// $post_month = date_format(date_create_from_format('d/m/Y', $closingdate), 'F');
-$post_month = date_format(date_create(), 'F');
-// $post_year = date_format(date_create_from_format('d/m/Y', $closingdate), 'Y');
-$post_year = date_format(date_create(), 'Y');
+$last_date = date_format(date_create_from_format('d/m/Y', $closingdate), 'Y/m/d');
+// $last_date = date_format(date_create(), 'y/m/d');
+$post_date = date_format(date_create_from_format('d/m/Y', $closingdate), 'd');
+// $post_date = date_format(date_create(), 'd');
+$post_month = date_format(date_create_from_format('d/m/Y', $closingdate), 'F');
+// $post_month = date_format(date_create(), 'F');
+$post_year = date_format(date_create_from_format('d/m/Y', $closingdate), 'Y');
+// $post_year = date_format(date_create(), 'Y');
 $conv_date = strtotime($last_date);
 
 if ($today_date > $conv_date) {
@@ -356,7 +356,7 @@ if ($today_date > $conv_date) {
 
 								</div>
 
-								<!-- <div class="apply-job-wrapper">
+								<div class="apply-job-wrapper">
 									<?php
 									if ($user_online == true) {
 										if ($jobexpired == true) {
@@ -377,7 +377,7 @@ if ($today_date > $conv_date) {
 
 									<p id="data"></p>
 
-								</div> -->
+								</div>
 								<a class="btn btn-primary btn-hidden btn-lg collapsed" target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=<?php echo "$compemail"; ?>">
 									<i class="flaticon-line-icon-set-calendar"></i> Apply to this job
 								</a>
@@ -408,17 +408,16 @@ if ($today_date > $conv_date) {
 
 
 														foreach ($result as $row) {
-															// $post_date = date_format(date_create_from_format('d/m/Y', $row['closing_date']), 'd');
-															$post_date = date_format(date_create(), 'd');
+															$post_date = date_format(date_create_from_format('d/m/Y', $row['closing_date']), 'd');
+															// $post_date = date_format(date_create(), 'd');
 
 
-															// $post_month = date_format(date_create_from_format('d/m/Y', $row['closing_date']), 'F');
-															$post_month =
-																date_format(date_create(), 'F');
+															$post_month = date_format(date_create_from_format('d/m/Y', $row['closing_date']), 'F');
+															// $post_month = date_format(date_create(), 'F');
 
 
-															// $post_year = date_format(date_create_from_format('d/m/Y', $row['closing_date']), 'Y');
-															$post_year = date_format(date_create(), 'Y');
+															$post_year = date_format(date_create_from_format('d/m/Y', $row['closing_date']), 'Y');
+															// $post_year = date_format(date_create(), 'Y');
 
 
 															$jobtype = $row['type'];
