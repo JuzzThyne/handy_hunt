@@ -381,7 +381,7 @@ if ($today_date > $closingdate) {
 								</div>
 								<a class="btn btn-primary btn-hidden btn-lg collapsed" target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=<?php echo "$compemail"; ?>">
 									<i class="flaticon-line-icon-set-calendar"></i> Apply to this job
-								</a> -->
+								</a> 
 
 								<a></a>
 
