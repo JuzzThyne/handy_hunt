@@ -86,7 +86,7 @@ $post_year = date_format(date_create_from_format('d/m/Y', $closingdate), 'Y');
 // $post_year = date_format(date_create(), 'Y');
 $conv_date = strtotime($last_date);
 
-if ($today_date > $conv_date) {
+if ($today_date > $closingdate) {
 	$jobexpired = true;
 } else {
 	$jobexpired = false;
@@ -307,10 +307,11 @@ if ($today_date > $conv_date) {
 											<h4 class="heading">Location:</h4>
 											<?php echo "$jobcity"; ?> , <?php echo "$jobcountry"; ?>
 										</li>
-										<!-- <li>
+										<li>
 											<h4 class="heading">Deadline:</h4>
-											<?php echo "$post_month"; ?> <?php echo "$post_date"; ?>, <?php echo "$post_year"; ?>
-										</li> -->
+											<?php echo "$closingdate"; ?>
+											<!-- <?php echo "$post_month"; ?> <?php echo "$post_date"; ?>, <?php echo "$post_year"; ?> -->
+										</li>
 										<li>
 											<h4 class="heading">Experience</h4>
 											<?php echo "$experience"; ?>
@@ -380,7 +381,7 @@ if ($today_date > $conv_date) {
 								</div>
 								<a class="btn btn-primary btn-hidden btn-lg collapsed" target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=<?php echo "$compemail"; ?>">
 									<i class="flaticon-line-icon-set-calendar"></i> Apply to this job
-								</a>
+								</a> -->
 
 								<a></a>
 
@@ -421,8 +422,9 @@ if ($today_date > $conv_date) {
 
 
 															$jobtype = $row['type'];
+															$closing = $row['closing_date'];
 
-															$jobtype = $row['type'];
+															// $jobtype = $row['type'];
 															if ($jobtype == "Freelance") {
 																$sta = '<div class="job-label label label-success">
 									Freelance
@@ -466,7 +468,8 @@ if ($today_date > $conv_date) {
 																	</div>
 																	<div class="GridLex-col-3_sm-4_xs-4_xss-12">
 																		<?php echo "$sta"; ?>
-																		<span class="font12 block spacing1 font400 text-center"> Due - <?php echo "$post_month"; ?> <?php echo "$post_date"; ?>, <?php echo "$post_year"; ?></span>
+																		<!-- <span class="font12 block spacing1 font400 text-center"> Due - <?php echo "$post_month"; ?> <?php echo "$post_date"; ?>, <?php echo "$post_year"; ?></span> -->
+																		<span class="font12 block spacing1 font400 text-center"> Due - <?php echo "$closing"; ?></span>
 																	</div>
 																</div>
 															</a>
