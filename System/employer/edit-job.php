@@ -501,9 +501,9 @@ foreach($result as $row)
 							
 								<h5 class="footer-title">Jobs Contact</h5>
 								
-								<p>Address : Dar es salaam, Tanzania PO.BOX 14859</p>
-								<p>Email : <a href="mailto:mashauri@programmer.net">mashauri@programmer.net</a></p>
-								<p>Phone : <a href="tel:+255689938643">+255 689 938 643</a></p>
+								<p>Address : University of Caloocan City, Congressional Campus</p>
+									<p>Email : <a href="mailto:mashauri@programmer.net">handyhunt@gmail.com</a></p>
+									<p>Phone : <a href="tel:+255689938643">09101493778</a></p>
 								
 
 							</div>
@@ -530,7 +530,7 @@ foreach($result as $row)
 							<div class="col-sm-4 col-md-4">
 							
 								<ul class="bottom-footer-menu">
-									<li><a >Developed by Bwire Charles Mashauri</a></li>
+									<li><a >Developed by Handyhunt</a></li>
 								</ul>
 							
 							</div>
