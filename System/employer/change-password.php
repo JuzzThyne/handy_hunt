@@ -212,7 +212,7 @@ if ($user_online == "true") {
 											<?php include 'constants/check_reply.php'; ?>
 
 											<div class="col-sm-6 col-md-4">
-<?php echo "$mypass"?>
+											<!-- <?php echo "$mypass"?> -->
 												<div class="form-group">
 													<label>Old Password</label>
 													<input type="text" class="form-control" name="check_oldPassword" required placeholder="Enter your old password">
