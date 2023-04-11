@@ -53,6 +53,7 @@ try {
 					$_SESSION['avatar'] = $row['avatar'];
 					$_SESSION['gender'] = $row['avatar'];
 					$_SESSION['role'] = $role;
+					$_SESSION['password'] = $row['login'];
 				} else {
 					session_start();
 					$_SESSION['logged'] = true;

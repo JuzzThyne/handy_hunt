@@ -240,6 +240,17 @@ if ($user_online == "true") {
 
 										<div class="row gap-20">
 											<?php include 'constants/check_reply.php'; ?>
+											<input type="hidden" class="form-control" name="checkoldpassword" value="<?php echo "$mypass" ?>" readonly>
+											<div class="col-sm-6 col-md-4">
+
+
+												<div class="form-group">
+													<label>Old Password</label>
+													<input type="password" class="form-control" name="oldpassword" required placeholder="Enter your old password">
+												</div>
+											</div>
+
+											<div class="clear"></div>
 
 											<div class="col-sm-6 col-md-4">
 
@@ -262,7 +273,7 @@ if ($user_online == "true") {
 											</div>
 
 											<div class="col-sm-12 mt-10">
-												<button type="submit" onclick="return check_passwords();" class="btn btn-primary">Update</button>
+												<button type="submit" onclick="return val();" class="btn btn-primary">Update</button>
 												<button type="reset" class="btn btn-primary btn-inverse">Cancel</a>
 											</div>
 
@@ -354,14 +365,40 @@ if ($user_online == "true") {
 	</div>
 
 	<script type="text/javascript">
-		function check_passwords() {
+		function val() {
+			if (frm.oldpassword.value == "") {
+				alert("Enter The Old Password.");
+				frm.password.focus();
+				return false;
+			}
 			if (frm.password.value == "") {
-				alert("Enter the Password.");
+				alert("Enter The New Password.");
 				frm.password.focus();
 				return false;
 			}
 			if ((frm.password.value).length < 8) {
 				alert("Password should be minimum 8 characters.");
+				frm.password.focus();
+				return false;
+			}
+			if (!frm.password.value.match(/[a-z]/)) {
+				alert("Password should contains lowercase letters.");
+				frm.password.focus();
+				return false;
+			}
+			if (!frm.password.value.match(/[A-Z]/)) {
+				alert("Password should contains Uppercase letters.");
+				frm.password.focus();
+				return false;
+			}
+			if (!frm.password.value.match(/[0-9]/)) {
+				alert("Password should contains Numbers.");
+				frm.password.focus();
+				return false;
+			}
+
+			if ((frm.password.value).length > 20) {
+				alert("Password should be maximum 20 characters.");
 				frm.password.focus();
 				return false;
 			}
@@ -372,6 +409,10 @@ if ($user_online == "true") {
 			}
 			if (frm.confirmpassword.value != frm.password.value) {
 				alert("Password confirmation does not match.");
+				return false;
+			}
+			if (frm.oldpassword.value != frm.checkoldpassword.value) {
+				alert("Old Password confirmation does not match.");
 				return false;
 			}
 
