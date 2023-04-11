@@ -212,10 +212,10 @@ if ($user_online == "true") {
 											<?php include 'constants/check_reply.php'; ?>
 
 											<div class="col-sm-6 col-md-4">
-<?php echo "$mypass"?>
+												<!-- <?php echo "$mypass" ?> -->
 												<div class="form-group">
 													<label>Old Password</label>
-													<input type="text" class="form-control" name="check_oldPassword" required placeholder="Enter your old password">
+													<input type="password" class="form-control" name="oldpassword" required placeholder="Enter your old password">
 												</div>
 
 											</div>
@@ -242,7 +242,7 @@ if ($user_online == "true") {
 											</div>
 
 											<div class="col-sm-12 mt-10">
-												<button type="submit" onclick="return check_passwords();" class="btn btn-primary">Update</button>
+												<button type="submit" onclick="return val();" class="btn btn-primary">Update</button>
 												<button type="reset" class="btn btn-primary btn-inverse">Cancel</a>
 											</div>
 
@@ -338,18 +338,14 @@ if ($user_online == "true") {
 	</div>
 
 	<script type="text/javascript">
-		function check_passwords() {
-			<?php
-			$new_password = md5($_POST['password']);
-			?>
-
-			alert($new_password);
-			// frm.oldpassword.value
-
-
-			// start
+		function val() {
 			if (frm.password.value == "") {
 				alert("Enter the Password.");
+				frm.password.focus();
+				return false;
+			}
+			if ((frm.password.value).length < 8) {
+				alert("Password should be minimum 8 characters.");
 				frm.password.focus();
 				return false;
 			}
@@ -368,8 +364,9 @@ if ($user_online == "true") {
 				frm.password.focus();
 				return false;
 			}
-			if ((frm.password.value).length < 8) {
-				alert("Password should be minimum 8 characters.");
+
+			if ((frm.password.value).length > 20) {
+				alert("Password should be maximum 20 characters.");
 				frm.password.focus();
 				return false;
 			}
