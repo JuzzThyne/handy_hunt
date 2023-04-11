@@ -339,8 +339,13 @@ if ($user_online == "true") {
 
 	<script type="text/javascript">
 		function val() {
+			if (frm.oldpassword.value == "") {
+				alert("Enter The Old Password.");
+				frm.password.focus();
+				return false;
+			}
 			if (frm.password.value == "") {
-				alert("Enter the Password.");
+				alert("Enter The New Password.");
 				frm.password.focus();
 				return false;
 			}
