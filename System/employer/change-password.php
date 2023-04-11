@@ -210,7 +210,7 @@ if ($user_online == "true") {
 
 										<div class="row gap-20">
 											<?php include 'constants/check_reply.php'; ?>
-											<input type="text" class="form-control" name="checkoldpassword" value="<?php echo "$mypass" ?>" readonly>
+											<input type="hidden" class="form-control" name="checkoldpassword" value="<?php echo "$mypass" ?>" readonly>
 											<div class="col-sm-6 col-md-4">
 
 
