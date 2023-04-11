@@ -3,7 +3,7 @@ date_default_timezone_set('Asia/Manila');
 $last_login = date('d-m-Y h:m:s A');
 require '../constants/db_config.php';
 $myemail = $_POST['email'];
-$mypass = md5($_POST['password']);
+$mypass = $_POST['password'];
 
 try {
 	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -74,6 +74,7 @@ try {
 					$_SESSION['website'] = $row['website'];
 					$_SESSION['people'] = $row['people'];
 					$_SESSION['role'] = $role;
+					$_SESSION['password'] = $row['login'];
 				}
 			} else {
 

@@ -81,7 +81,7 @@ try {
     $lname = ucwords($_POST['lname']);
     $mname = ucwords($_POST['mname']);
     $email = $_POST['email'];
-    $login = md5($_POST['password']);
+    $login = $_POST['password'];
     $stat = 'unemployed';
 	
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -116,7 +116,7 @@ try {
     $cname = ucwords($_POST['company']);
     $ctype = ucwords($_POST['type']);
     $email = $_POST['email'];
-    $login = md5($_POST['password']);
+    $login = $_POST['password'];
 	
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

@@ -20,6 +20,7 @@ $myex = $_SESSION['myexp'];
 $mytitle = $_SESSION['comptype'];
 $myweb = $_SESSION['website'];
 $mypeople = $_SESSION['people'];
+$mypass = $_SESSION['password'];
 $user_online = true;	
 }else{
 $user_online = false;

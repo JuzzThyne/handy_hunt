@@ -1,7 +1,7 @@
 <?php
 session_start();
 $usermail = $_SESSION['resetmail'];
-$new_password = md5($_POST['password']);
+$new_password = $_POST['password'];
 
 require '../constants/db_config.php';
 

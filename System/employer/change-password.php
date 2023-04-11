@@ -210,9 +210,10 @@ if ($user_online == "true") {
 
 										<div class="row gap-20">
 											<?php include 'constants/check_reply.php'; ?>
-
+											<input type="text" class="form-control" name="checkoldpassword" value="<?php echo "$mypass" ?>" readonly>
 											<div class="col-sm-6 col-md-4">
-												<!-- <?php echo "$mypass" ?> -->
+
+
 												<div class="form-group">
 													<label>Old Password</label>
 													<input type="password" class="form-control" name="oldpassword" required placeholder="Enter your old password">
@@ -382,6 +383,10 @@ if ($user_online == "true") {
 			}
 			if (frm.confirmpassword.value != frm.password.value) {
 				alert("Password confirmation does not match.");
+				return false;
+			}
+			if (frm.oldpassword.value != frm.checkoldpassword.value) {
+				alert("Old Password confirmation does not match.");
 				return false;
 			}
 

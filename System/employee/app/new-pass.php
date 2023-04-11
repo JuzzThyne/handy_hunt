@@ -2,7 +2,7 @@
 require '../../constants/db_config.php';
 require '../constants/check-login.php';
 
-$new_password = md5($_POST['password']);
+$new_password = $_POST['password'];
 
     try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
