@@ -519,8 +519,37 @@ if ($user_online == "true") {
 											<div class="clear"></div>
 
 											<div class="col-sm-12 mt-10">
-												<button type="submit" class="btn btn-primary">Update</button>
+												<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Update</button>
 												<button type="reset" class="btn btn-primary btn-inverse">Cancel</button>
+											</div>
+											<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog">
+
+
+													<h1 class="modal-title fs-5" id="exampleModalLabel">Confirm Password</h1>
+
+
+													<div class="modal-body">
+														<input class="form-control" type="hidden" id="oldpass" value="<?php echo "$mypass" ?>">
+														<input class="form-control" type="password" id="cpass" placeholder="Enter your password">
+
+														<script>
+															function check() {
+
+																var a = document.getElementById('oldpass').value;
+																var b = document.getElementById('cpass').value;
+																if (a === b) {
+																	document.forms[0].submit();
+																} else {
+																	alert('Incorrect password');
+																}
+															}
+														</script>
+													</div>
+
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+													<button type="button" class="btn btn-primary" onclick="check()">Save changes</button>
+												</div>
 											</div>
 
 										</div>

@@ -214,46 +214,6 @@ if ($user_online == "true") {
 										<div class="row gap-20">
 											<?php include 'constants/check_reply.php'; ?>
 											<div class="clear"></div>
-											<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-												Launch demo modal
-											</button>
-											<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-												<div class="modal-dialog">
-
-
-													<h1 class="modal-title fs-5" id="exampleModalLabel">Confirm Password</h1>
-
-
-													<div class="modal-body">
-														<input class="form-control" type="hidden" id="oldpass" value="<?php echo "$mypass" ?>">
-														<input class="form-control" type="password" id="cpass" placeholder="Enter your password">
-
-														<script>
-															function check() {
-
-																var a = document.getElementById('oldpass').value;
-																var b = document.getElementById('cpass').value;
-																if (a === b) {
-																	alert('Correct password');
-																	// window.location.href = "app/update-profile.php";
-																	document.forms[0].submit();
-
-																} else {
-																	alert('Incorrect password');
-
-																}
-															}
-														</script>
-
-													</div>
-
-													<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-													<button type="button" class="btn btn-primary" onclick="check()">Save changes</button>
-
-												</div>
-
-											</div>
-
 
 											<div class="col-sm-12 col-md-8">
 
@@ -438,15 +398,44 @@ if ($user_online == "true") {
 											</div>
 
 											<div class="clear"></div>
-
 											<div class="col-sm-12 mt-10">
-												<button type="submit" class="btn btn-primary">Save</button>
+												<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Save</button>
 												<button type="reset" class="btn btn-warning">Cancel</button>
 											</div>
+											<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog">
 
+
+													<h1 class="modal-title fs-5" id="exampleModalLabel">Confirm Password</h1>
+
+
+													<div class="modal-body">
+														<input class="form-control" type="hidden" id="oldpass" value="<?php echo "$mypass" ?>">
+														<input class="form-control" type="password" id="cpass" placeholder="Enter your password">
+
+														<script>
+															function check() {
+
+																var a = document.getElementById('oldpass').value;
+																var b = document.getElementById('cpass').value;
+																if (a === b) {
+																	document.forms[0].submit();
+																} else {
+																	alert('Incorrect password');
+																}
+															}
+														</script>
+													</div>
+
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+													<button type="button" class="btn btn-primary" onclick="check()">Save changes</button>
+												</div>
+											</div>
 										</div>
+									</form>
 
-									</form><br>
+									<br>
+
 
 									<form action="app/new-dp.php" method="POST" enctype="multipart/form-data">
 										<div class="row gap-20">
