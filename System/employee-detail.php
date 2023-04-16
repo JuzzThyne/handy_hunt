@@ -39,6 +39,7 @@ if (isset($_GET['empid'])) {
 				$mytitle = $row['title'];
 				$mymail = $row['email'];
 				$status = $row['status'];
+				$isLooking = $row['isLooking'];
 			}
 		}
 	} catch (PDOException $e) {
@@ -293,6 +294,25 @@ if (isset($_GET['empid'])) {
 													<?php echo $work_stat ?>
 												</div>
 											</div>
+											<?php
+											if ($isLooking == '1') {
+											?>
+												<span class="badge bg-progress-bar progress-bar-striped bg-success">
+													Looking for a Job
+												</span>
+
+											<?php
+											} else {
+											?>
+												<span class="badge bg-progress-bar progress-bar-striped bg-danger">
+													Not Looking for a Job
+												</span>
+
+											<?php
+											}
+
+
+											?>
 										</li>
 									</ul>
 
