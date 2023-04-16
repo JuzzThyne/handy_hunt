@@ -231,7 +231,9 @@ if (isset($_GET['page'])) {
 										</a>
 
 										<span class="mh-5">|</span>
-										<i class="fa fa-phone"></i> <?php echo "$compphone"; ?>
+										<a href="tel:<?php echo "$compphone"; ?>">
+											<i class="fa fa-phone"></i> <?php echo "$compphone"; ?>
+										</a>
 									</p>
 
 									<ul class="meta-list clearfix">
