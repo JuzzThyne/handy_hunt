@@ -256,6 +256,26 @@ if ($user_online == "true") {
 												<?php echo $work_stat ?>
 											</span>
 
+											<?php
+											if ($isLooking == '1') {
+											?>
+												<span class="badge bg-progress-bar progress-bar-striped bg-success">
+													Looking for a Job
+												</span>
+
+											<?php
+											} else {
+											?>
+												<span class="badge bg-progress-bar progress-bar-striped bg-danger">
+													Not Looking for a Job
+												</span>
+
+											<?php
+											}
+
+
+											?>
+
 										</div>
 									</div>
 
@@ -498,6 +518,34 @@ if ($user_online == "true") {
 												<div class="form-group">
 													<label>Phone Number</label>
 													<input type="text" name="phone" required class="form-control" value="<?php echo "$myphone"; ?>">
+												</div>
+
+											</div>
+											<div class="col-sm-6 col-md-4">
+
+												<div class="form-group">
+													<label>Status</label>
+													<select name="isLooking" class="form-control">
+														<?php
+														if ($isLooking == '1') {
+														?>
+															<option value="0">Not Looking for Job</option>
+															<option value="1" selected>Looking for Job</option>
+
+														<?php
+														} else {
+														?>
+															<option value="0" selected>Not Looking for Job</option>
+															<option value="1">Looking for Job</option>
+
+														<?php
+														}
+
+
+														?>
+
+
+													</select>
 												</div>
 
 											</div>

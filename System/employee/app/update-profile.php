@@ -16,6 +16,7 @@ $zip = ucwords($_POST['zip']);
 $about = $_POST['about'];
 $phone = $_POST['phone'];
 $country = $_POST['country'];
+$isLooking = $_POST['isLooking'];
 
     try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -29,7 +30,7 @@ $country = $_POST['country'];
 	$rec = count($result);
 	if ($rec == "0") {
 	
-	$stmt = $conn->prepare("UPDATE tbl_users SET first_name = :fname, last_name = :lname, gender = :gender, bdate = :bdate , bmonth = :bmonth , byear = :byear, email = :email, education = :education, title = :title, city = :city, street = :street, zip = :zip, country = :country, phone = :phone, about = :about WHERE member_no='$myid'");
+	$stmt = $conn->prepare("UPDATE tbl_users SET first_name = :fname, last_name = :lname, gender = :gender, bdate = :bdate , bmonth = :bmonth , byear = :byear, email = :email, education = :education, title = :title, city = :city, street = :street, zip = :zip, country = :country, phone = :phone, about = :about,isLooking = :isLooking WHERE member_no='$myid'");
     $stmt->bindParam(':fname', $fname);
     $stmt->bindParam(':lname', $lname);
 	$stmt->bindParam(':gender', $gender);
@@ -45,6 +46,7 @@ $country = $_POST['country'];
 	$stmt->bindParam(':country', $country);
 	$stmt->bindParam(':phone', $phone);
 	$stmt->bindParam(':about', $about);
+	$stmt->bindParam(':isLooking', $isLooking);
 
     $stmt->execute();
 	
@@ -63,6 +65,7 @@ $country = $_POST['country'];
     $_SESSION['mycountry'] = $country;
     $_SESSION['mydesc'] = $about;
 	$_SESSION['gender'] = $gender;
+		$_SESSION['isLooking'] = $isLooking;
     header("location:../?r=9837");
 		
 	}else{
@@ -74,5 +77,3 @@ $country = $_POST['country'];
     {
 
     }
-	
-?>

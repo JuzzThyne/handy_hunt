@@ -54,6 +54,7 @@ try {
 					$_SESSION['gender'] = $row['avatar'];
 					$_SESSION['role'] = $role;
 					$_SESSION['password'] = $row['login'];
+					$_SESSION['isLooking'] = $row['isLooking'];
 				} else {
 					session_start();
 					$_SESSION['logged'] = true;
@@ -98,3 +99,4 @@ try {
 	}
 } catch (PDOException $e) {
 }
+?>

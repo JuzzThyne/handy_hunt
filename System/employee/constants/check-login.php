@@ -21,6 +21,7 @@ $myavatar = $_SESSION['avatar'];
 $mylogin = $_SESSION['lastlogin'];
 $myrole = $_SESSION['role'];
 $mypass = $_SESSION['password'];
+    $isLooking = $_SESSION['isLooking'];
 	
 $user_online = true;	
 $myavatar = $_SESSION['avatar'];
