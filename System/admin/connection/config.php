@@ -3,7 +3,7 @@
 $server = "localhost";
 $user = "root";
 $pass = "";
-$database = "job_portal";
+$database = "handy_hunt";
 
 $conn = mysqli_connect($server, $user, $pass, $database);
 
