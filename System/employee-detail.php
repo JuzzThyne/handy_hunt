@@ -132,7 +132,9 @@ if (isset($_GET['empid'])) {
 								<a href="job-list.php">Job List</a>
 
 							</li>
-
+							<li>
+								<a href="looking.php">Looking for Job</a>
+							</li>
 							<li>
 								<a href="employers.php">Employers</a>
 							</li>

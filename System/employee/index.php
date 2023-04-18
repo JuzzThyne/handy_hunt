@@ -93,6 +93,9 @@ if ($user_online == "true") {
 								<a href="../job-list.php">Job List</a>
 
 							</li>
+							<li>
+								<a href="looking.php">Looking for Job</a>
+							</li>
 
 							<li>
 								<a href="../employers.php">Employers</a>
@@ -256,25 +259,25 @@ if ($user_online == "true") {
 												<?php echo $work_stat ?>
 											</span>
 
-											<?php
-											if ($isLooking == '1') {
-											?>
+											<!-- <?php
+													if ($isLooking == '1') {
+													?>
 												<span class="badge bg-progress-bar progress-bar-striped bg-success">
 													Looking for a Job
 												</span>
 
 											<?php
-											} else {
+													} else {
 											?>
 												<span class="badge bg-progress-bar progress-bar-striped bg-danger">
 													Not Looking for a Job
 												</span>
 
 											<?php
-											}
+													}
 
 
-											?>
+											?> -->
 
 										</div>
 									</div>
@@ -521,7 +524,7 @@ if ($user_online == "true") {
 												</div>
 
 											</div>
-											<div class="col-sm-6 col-md-4">
+											<!-- <div class="col-sm-6 col-md-4">
 
 												<div class="form-group">
 													<label>Status</label>
@@ -548,7 +551,7 @@ if ($user_online == "true") {
 													</select>
 												</div>
 
-											</div>
+											</div> -->
 
 
 

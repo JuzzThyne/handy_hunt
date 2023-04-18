@@ -116,7 +116,9 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 								<a href="job-list.php">Job List</a>
 
 							</li>
-
+							<li>
+								<a href="looking.php">Looking for Job</a>
+							</li>
 							<li>
 								<a href="employers.php">Employers</a>
 							</li>
@@ -490,25 +492,25 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 																																	} ?> href="job-list.php?page=<?php echo "$b"; ?><?php if ($fromsearch == true) {
 																																														print '&category=' . $cate . '&country=' . $country . '&search=✓';
 																																													} ?>"><?php echo $b . " "; ?></a></li><?php
-																																																																																		}
-																																																																																		print '<li class="paging-nav"';
-																																																																																		if ($page == $records) {
-																																																																																			print 'class="disabled"';
-																																																																																		}
-																																																																																		print '><a ';
-																																																																																		if ($page == $records) {
-																																																																																			print '';
-																																																																																		} else {
-																																																																																			print 'href="job-list.php?page=' . $nextpage . ''; ?> <?php if ($fromsearch == true) {
-																																																																																											print '&category=' . $cate . '&country=' . $country . '&search=✓';
-																																																																																										}
-																																																																																										'';
-																																																																																									}
-																																																																																									print '"><i class="fa fa-chevron-right"></i></a></li>';
-																																																																																								}
+																																																						}
+																																																						print '<li class="paging-nav"';
+																																																						if ($page == $records) {
+																																																							print 'class="disabled"';
+																																																						}
+																																																						print '><a ';
+																																																						if ($page == $records) {
+																																																							print '';
+																																																						} else {
+																																																							print 'href="job-list.php?page=' . $nextpage . ''; ?> <?php if ($fromsearch == true) {
+																																																																						print '&category=' . $cate . '&country=' . $country . '&search=✓';
+																																																																					}
+																																																																					'';
+																																																																				}
+																																																																				print '"><i class="fa fa-chevron-right"></i></a></li>';
+																																																																			}
 
 
-																																																																																										?>
+																																																																					?>
 
 									</ul>
 

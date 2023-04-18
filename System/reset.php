@@ -1,16 +1,17 @@
 <!doctype html>
 <html lang="en">
-<?php 
-require 'constants/settings.php'; 
+<?php
+require 'constants/settings.php';
 require 'constants/check-login.php';
 
 if (isset($_GET['token'])) {
-$token = $_GET['token'];	
-}else{
+	$token = $_GET['token'];
+} else {
 	header("location:./");
 }
 
 ?>
+
 <head>
 
 	<meta charset="utf-8">
@@ -18,26 +19,26 @@ $token = $_GET['token'];
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>Handy Hunt - Reset Password</title>
-	
+
 	<meta name="description" content="Online Job Management / Job Portal" />
 	<meta name="keywords" content="job, work, resume, applicants, application, employee, employer, hire, hiring, human resource management, hr, online job management, company, worker, career, recruiting, recruitment" />
 	<meta name="author" content="BwireSoft">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta property="og:image" content="http://<?php echo "$actual_link"; ?>/images/banner.jpg" />
-    <meta property="og:image:secure_url" content="https://<?php echo "$actual_link"; ?>/images/banner.jpg" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="500" />
-    <meta property="og:image:height" content="300" />
-    <meta property="og:image:alt" content="Bwire Jobs" />
-    <meta property="og:description" content="Online Job Management / Job Portal" />
+	<meta property="og:image:secure_url" content="https://<?php echo "$actual_link"; ?>/images/banner.jpg" />
+	<meta property="og:image:type" content="image/jpeg" />
+	<meta property="og:image:width" content="500" />
+	<meta property="og:image:height" content="300" />
+	<meta property="og:image:alt" content="Bwire Jobs" />
+	<meta property="og:description" content="Online Job Management / Job Portal" />
 
 	<link rel="shortcut icon" href="images/ico/favicon.png">
 
-	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" media="screen">	
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" media="screen">
 	<link href="css/animate.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/component.css" rel="stylesheet">
-	
+
 	<link rel="stylesheet" href="icons/linearicons/style.css">
 	<link rel="stylesheet" href="icons/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="icons/simple-line-icons/css/simple-line-icons.css">
@@ -65,68 +66,70 @@ $token = $_GET['token'];
 			<nav class="navbar navbar-default navbar-fixed-top navbar-sticky-function">
 
 				<div class="container">
-					
+
 					<div class="logo-wrapper">
 						<div class="logo">
 							<a href="./"><img src="images/handyman.png" alt="Logo" /></a>
 						</div>
 					</div>
-					
+
 					<div id="navbar" class="navbar-nav-wrapper navbar-arrow">
-					
+
 						<ul class="nav navbar-nav" id="responsive-menu">
-						
+
 							<li>
-							
+
 								<a href="./">Home</a>
-								
+
 							</li>
-							
+
 							<li>
 								<a href="job-list.php">Job List</a>
 
 							</li>
-							
+							<li>
+								<a href="looking.php">Looking for Job</a>
+							</li>
 							<li>
 								<a href="employers.php">Employers</a>
 							</li>
-							
+
 							<li>
 								<a href="employees.php">Employees</a>
 							</li>
-							
+
 							<li>
 								<a href="contact.php">Contact Us</a>
 							</li>
 
 						</ul>
-				
+
 					</div>
 
 					<div class="nav-mini-wrapper">
 						<ul class="nav-mini sign-in">
-							<li><a  href="login.php">Login</a></li>
-							<li><a  href="register.php?p=Employee">Register</a></li>
+							<li><a href="login.php">Login</a></li>
+							<li><a href="register.php?p=Employee">Register</a></li>
 						</ul>
 					</div>
-				
+
 				</div>
-				
+
 				<div id="slicknav-mobile"></div>
-				
+
 			</nav>
-	
+
 			<div id="registerModal" class="modal fade login-box-wrapper" tabindex="-1" style="display: none;" data-backdrop="static" data-keyboard="false" data-replace="true">
-			
+
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h4 class="modal-title text-center">Create your account for free</h4>
 				</div>
-				
+
 				<div class="modal-body">
-				
+
 					<div class="row gap-20">
-					
+
 						<div class="col-sm-6 col-md-6">
 							<a href="register.php?p=Employer" class="btn btn-facebook btn-block mb-5-xs">Register as Employer</a>
 						</div>
@@ -135,18 +138,18 @@ $token = $_GET['token'];
 						</div>
 
 					</div>
-				
+
 				</div>
-				
+
 				<div class="modal-footer text-center">
 					<button type="button" data-dismiss="modal" class="btn btn-primary btn-inverse">Close</button>
 				</div>
-				
+
 			</div>
 
 
 
-			
+
 		</header>
 
 
@@ -154,159 +157,152 @@ $token = $_GET['token'];
 
 
 			<div class="breadcrumb-wrapper">
-			
+
 				<div class="container">
-				
+
 					<ol class="breadcrumb-list">
 						<li><a href="./">Home</a></li>
 						<li><span>Reset Password</span></li>
 					</ol>
-					
+
 				</div>
-				
+
 			</div>
 
 
-			<div class="login-container-wrapper">	
-	
+			<div class="login-container-wrapper">
+
 				<div class="container">
-				
+
 					<div class="row">
-					
+
 						<div class="col-md-10 col-md-offset-1">
-						
+
 							<div class="row">
 
 								<div class="col-sm-6 col-sm-offset-3">
-                                <?php
-								require 'constants/check_reply.php';	
-								?>
-                                <form name="frm" action="app/change-pass.php" method="POST" autocomplete="off">
-                                <div class="login-box-wrapper">
-							
-                                <div class="modal-header">
-                                <h4 class="modal-title text-center">Reset your password</h4>
-                                </div>
+									<?php
+									require 'constants/check_reply.php';
+									?>
+									<form name="frm" action="app/change-pass.php" method="POST" autocomplete="off">
+										<div class="login-box-wrapper">
 
-                                <div class="modal-body">
-																
-                                <div class="row gap-20">
-								<?php
-								require 'constants/db_config.php';
-								
-								try {
-                                $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+											<div class="modal-header">
+												<h4 class="modal-title text-center">Reset your password</h4>
+											</div>
 
-	
-                                $stmt = $conn->prepare("SELECT * FROM tbl_tokens WHERE token = :token limit 1");
-								$stmt->bindParam(':token', $token);
-                                $stmt->execute();
-                                $result = $stmt->fetchAll();
-                                $res = count($result);
-								
-								if ($res == "0") {
-									                                  print '
+											<div class="modal-body">
+
+												<div class="row gap-20">
+													<?php
+													require 'constants/db_config.php';
+
+													try {
+														$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+														$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+														$stmt = $conn->prepare("SELECT * FROM tbl_tokens WHERE token = :token limit 1");
+														$stmt->bindParam(':token', $token);
+														$stmt->execute();
+														$result = $stmt->fetchAll();
+														$res = count($result);
+
+														if ($res == "0") {
+															print '
 	                            <div class="alert alert-warning">
 								<strong>Could not use this token because</strong><br>
                                  <li>This token is invalid</li>
 								 <li>This token is already used</li>
 	                          </div>
                                   ';
-								 $invalid_token = true;
-								 
-								}else{
+															$invalid_token = true;
+														} else {
 
-                                foreach($result as $row)
-                                {
-									?>
-							    <div class="col-sm-12 col-md-12">
+															foreach ($result as $row) {
+													?>
+																<div class="col-sm-12 col-md-12">
 
-                                <div class="form-group"> 
-                                <label>New password</label>
-                                <input class="form-control" placeholder="Min 8 and Max 20 characters" name="password" required type="password"> 
-                                </div>
-												
-                                 </div>
-												
-                                <div class="col-sm-12 col-md-12">
-												
-                                <div class="form-group"> 
-                                <label>Confirm New Password</label>
-                                <input class="form-control" placeholder="Min 8 and Max 20 characters" name="confirmpassword" required type="password"> 
-                                </div>
-												
-                                </div>
-								<?php
-								$_SESSION['resetmail'] = $row['email'];
-								?>
-								<?php
-								
- 
-	                            }
-								}
+																	<div class="form-group">
+																		<label>New password</label>
+																		<input class="form-control" placeholder="Min 8 and Max 20 characters" name="password" required type="password">
+																	</div>
 
-					  
-	                            }catch(PDOException $e)
-                                {
-           
-                                }
-	
-	
-                                ?>
-												
-</div>
+																</div>
 
-</div>
-<?php
-if (isset($invalid_token)) {
-	
-}else{
-print '
+																<div class="col-sm-12 col-md-12">
+
+																	<div class="form-group">
+																		<label>Confirm New Password</label>
+																		<input class="form-control" placeholder="Min 8 and Max 20 characters" name="confirmpassword" required type="password">
+																	</div>
+
+																</div>
+																<?php
+																$_SESSION['resetmail'] = $row['email'];
+																?>
+													<?php
+
+
+															}
+														}
+													} catch (PDOException $e) {
+													}
+
+
+													?>
+
+												</div>
+
+											</div>
+											<?php
+											if (isset($invalid_token)) {
+											} else {
+												print '
 <div class="modal-footer text-center">
 <button type="submit" onclick="return val();"  class="btn btn-primary">Reset my password</button>
-</div>';	
-}
+</div>';
+											}
 
-?>
+											?>
 
-										
-</div>
-</form>
-									
+
+										</div>
+									</form>
+
 								</div>
-							
+
 							</div>
-							
+
 						</div>
-						
+
 					</div>
-					
+
 				</div>
-			
+
 			</div>
 			<footer class="footer-wrapper">
-			
+
 				<div class="main-footer">
-				
+
 					<div class="container">
-					
+
 						<div class="row">
-						
+
 							<div class="col-sm-12 col-md-9">
-							
+
 								<div class="row">
-								
+
 									<div class="col-sm-6 col-md-4">
-									
+
 										<div class="footer-about-us">
 											<h5 class="footer-title">About Handy Hunt</h5>
 											<p>Handy Hunt is a job portal, online job management system developed by handyhunt group for capstone in 2022.</p>
-										
+
 										</div>
 
 									</div>
-									
+
 									<div class="col-sm-6 col-md-5 mt-30-xs">
 										<h5 class="footer-title">Quick Links</h5>
 										<ul class="footer-menu clearfix">
@@ -318,110 +314,105 @@ print '
 											<li><a href="#">Go to top</a></li>
 
 										</ul>
-									
+
 									</div>
 
 								</div>
 
 							</div>
-							
+
 							<div class="col-sm-12 col-md-3 mt-30-sm">
-							
+
 								<h5 class="footer-title">Handy Hunt Contact</h5>
-								
+
 								<p>Address : University of Caloocan City, Congressional Campus</p>
 								<p>Email : <a href="mailto:nightingale.nath2@gmail.com">handyhunt@gmail.com</a></p>
 								<p>Phone : <a href="tel:+233546607474">09101493778</a></p>
-								
+
 
 							</div>
 
-							
+
 						</div>
-						
+
 					</div>
-					
+
 				</div>
-				
+
 				<div class="bottom-footer">
-					
+
 				</div>
-			
+
 			</footer>
-			
+
 		</div>
 
 
-	</div> 
+	</div>
 
 
-<div id="back-to-top">
-   <a href="#"><i class="ion-ios-arrow-up"></i></a>
-</div>
+	<div id="back-to-top">
+		<a href="#"><i class="ion-ios-arrow-up"></i></a>
+	</div>
 
-<script type="text/javascript">
-function val(){
-if(frm.password.value == "")
-{
-	alert("Enter the Password.");
-	frm.password.focus(); 
-	return false;
-}
-if((frm.password.value).length < 8)
-{
-	alert("Password should be minimum 8 characters.");
-	frm.password.focus();
-	return false;
-}
+	<script type="text/javascript">
+		function val() {
+			if (frm.password.value == "") {
+				alert("Enter the Password.");
+				frm.password.focus();
+				return false;
+			}
+			if ((frm.password.value).length < 8) {
+				alert("Password should be minimum 8 characters.");
+				frm.password.focus();
+				return false;
+			}
 
-if((frm.password.value).length > 20)
-{
-	alert("Password should be maximum 20 characters.");
-	frm.password.focus();
-	return false;
-}
+			if ((frm.password.value).length > 20) {
+				alert("Password should be maximum 20 characters.");
+				frm.password.focus();
+				return false;
+			}
 
-if(frm.confirmpassword.value == "")
-{
-	alert("Enter the Confirmation Password.");
-	return false;
-}
-if(frm.confirmpassword.value != frm.password.value)
-{
-	alert("Password confirmation does not match.");
-	return false;
-}
+			if (frm.confirmpassword.value == "") {
+				alert("Enter the Confirmation Password.");
+				return false;
+			}
+			if (frm.confirmpassword.value != frm.password.value) {
+				alert("Password confirmation does not match.");
+				return false;
+			}
 
-return true;
-}
-</script>
+			return true;
+		}
+	</script>
 
-<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/bootstrap-modalmanager.js"></script>
-<script type="text/javascript" src="js/bootstrap-modal.js"></script>
-<script type="text/javascript" src="js/smoothscroll.js"></script>
-<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="js/jquery.waypoints.min.js"></script>
-<script type="text/javascript" src="js/wow.min.js"></script>
-<script type="text/javascript" src="js/jquery.slicknav.min.js"></script>
-<script type="text/javascript" src="js/jquery.placeholder.min.js"></script>
-<script type="text/javascript" src="js/bootstrap-tokenfield.js"></script>
-<script type="text/javascript" src="js/typeahead.bundle.min.js"></script>
-<script type="text/javascript" src="js/bootstrap3-wysihtml5.min.js"></script>
-<script type="text/javascript" src="js/bootstrap-select.min.js"></script>
-<script type="text/javascript" src="js/jquery-filestyle.min.js"></script>
-<script type="text/javascript" src="js/bootstrap-select.js"></script>
-<script type="text/javascript" src="js/ion.rangeSlider.min.js"></script>
-<script type="text/javascript" src="js/handlebars.min.js"></script>
-<script type="text/javascript" src="js/jquery.countimator.js"></script>
-<script type="text/javascript" src="js/jquery.countimator.wheel.js"></script>
-<script type="text/javascript" src="js/slick.min.js"></script>
-<script type="text/javascript" src="js/easy-ticker.js"></script>
-<script type="text/javascript" src="js/jquery.introLoader.min.js"></script>
-<script type="text/javascript" src="js/jquery.responsivegrid.js"></script>
-<script type="text/javascript" src="js/customs.js"></script>
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-modalmanager.js"></script>
+	<script type="text/javascript" src="js/bootstrap-modal.js"></script>
+	<script type="text/javascript" src="js/smoothscroll.js"></script>
+	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="js/jquery.waypoints.min.js"></script>
+	<script type="text/javascript" src="js/wow.min.js"></script>
+	<script type="text/javascript" src="js/jquery.slicknav.min.js"></script>
+	<script type="text/javascript" src="js/jquery.placeholder.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-tokenfield.js"></script>
+	<script type="text/javascript" src="js/typeahead.bundle.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap3-wysihtml5.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-select.min.js"></script>
+	<script type="text/javascript" src="js/jquery-filestyle.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-select.js"></script>
+	<script type="text/javascript" src="js/ion.rangeSlider.min.js"></script>
+	<script type="text/javascript" src="js/handlebars.min.js"></script>
+	<script type="text/javascript" src="js/jquery.countimator.js"></script>
+	<script type="text/javascript" src="js/jquery.countimator.wheel.js"></script>
+	<script type="text/javascript" src="js/slick.min.js"></script>
+	<script type="text/javascript" src="js/easy-ticker.js"></script>
+	<script type="text/javascript" src="js/jquery.introLoader.min.js"></script>
+	<script type="text/javascript" src="js/jquery.responsivegrid.js"></script>
+	<script type="text/javascript" src="js/customs.js"></script>
 
 
 </body>

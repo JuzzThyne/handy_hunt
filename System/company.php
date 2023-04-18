@@ -143,6 +143,9 @@ if (isset($_GET['page'])) {
 							</li>
 
 							<li>
+								<a href="looking.php">Looking for Job</a>
+							</li>
+							<li>
 								<a href="employers.php">Employers</a>
 							</li>
 

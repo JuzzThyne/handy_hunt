@@ -25,7 +25,7 @@ if (isset($_GET['page'])) {
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Handy Hunt - Employees</title>
+	<title>Handy Hunt - Looking for Job</title>
 	<meta name="description" content="Online Job Management / Job Portal" />
 	<meta name="keywords" content="job, work, resume, applicants, application, employee, employer, hire, hiring, human resource management, hr, online job management, company, worker, career, recruiting, recruitment" />
 	<meta name="author" content="BwireSoft">
@@ -180,7 +180,7 @@ if (isset($_GET['page'])) {
 
 					<ol class="breadcrumb-list booking-step">
 						<li><a href="./">Home</a></li>
-						<li><span>Employees</span></li>
+						<li><span>Looking For Job</span></li>
 					</ol>
 
 				</div>
@@ -194,7 +194,7 @@ if (isset($_GET['page'])) {
 					<div class="sorting-wrappper">
 
 						<div class="sorting-header">
-							<h3 class="sorting-title">Employees</h3>
+							<h3 class="sorting-title">Looking For Job</h3>
 						</div>
 
 
@@ -211,7 +211,7 @@ if (isset($_GET['page'])) {
 								try {
 									$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 									$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-									$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employee' ORDER BY first_name LIMIT $page1,16");
+									$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employee' AND status='unemployed' ORDER BY first_name LIMIT $page1,16");
 									$stmt->execute();
 									$result = $stmt->fetchAll();
 									foreach ($result as $row) {
