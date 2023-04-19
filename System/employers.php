@@ -24,7 +24,7 @@ if (isset($_GET['page'])) {
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Handy Hunt - Employers</title>
+	<title>Handy Hunt - Companies</title>
 	<meta name="description" content="Online Job Management / Job Portal" />
 	<meta name="keywords" content="job, work, resume, applicants, application, employee, employer, hire, hiring, human resource management, hr, online job management, company, worker, career, recruiting, recruitment" />
 	<meta name="author" content="BwireSoft">
@@ -102,16 +102,27 @@ if (isset($_GET['page'])) {
 								<a href="job-list.php">Job List</a>
 
 							</li>
-							<li>
+							<!-- <li>
 								<a href="looking.php">Looking for Job</a>
-							</li>
+							</li> -->
 							<li>
-								<a href="employers.php">Company</a>
+								<a href="employers.php">Companies</a>
+
 							</li>
 
-							<li>
-								<a href="employees.php">Job Seeker</a>
-							</li>
+							<?php
+									if ($user_online == true) {
+												if ($myrole == "employer") {
+													print '<li> 
+													<a href="employees.php"> 
+													Job Seeker
+													</a>
+													</li>';
+												}	
+							} else {
+							
+							}
+							?>
 
 							<li>
 								<a href="contact.php">Contact Us</a>
@@ -204,7 +215,7 @@ if (isset($_GET['page'])) {
 							<div class="GridLex-col-3_sm-12_xs-12">
 
 								<div class="sorting-header">
-									<h3 class="sorting-title">Employers</h3>
+									<h3 class="sorting-title">Company</h3>
 								</div>
 
 							</div>

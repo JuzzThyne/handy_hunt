@@ -142,15 +142,25 @@ if (isset($_GET['page'])) {
 
 							</li>
 
-							<li>
+							<!-- <li>
 								<a href="looking.php">Looking for Job</a>
-							</li>
+							</li> -->
+							<?php
+									if ($user_online == true) {
+											if ($myrole == "employee") {
+												print '<li> 
+												<a href="employers.php"> 
+												Companies
+												</a>
+												</li>';
+												}
+												
+							} else {
+							
+							}
+							?>
 							<li>
-								<a href="employers.php">Company</a>
-							</li>
-
-							<li>
-								<a href="employees.php">Job Seeker</a>
+								<a href="employers.php">Companies</a>
 							</li>
 
 							<li>

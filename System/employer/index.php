@@ -87,16 +87,34 @@ if ($user_online == "true") {
 
 							</li>
 
-							<li>
+							<!-- <li>
 								<a href="looking.php">Looking for Job</a>
-							</li>
+							</li> -->
 							<li>
+								<a href="employers.php">Companies</a>
+
+							</li>
+
+							<?php
+									if ($user_online == true) {
+												if ($myrole == "employer") {
+													print '<li> 
+													<a href="../employees.php"> 
+													Job Seeker
+													</a>
+													</li>';
+												}	
+							} else {
+							
+							}
+							?>
+							<!-- <li>
 								<a href="../employers.php">Employers</a>
 							</li>
 
 							<li>
 								<a href="../employees.php">Employees</a>
-							</li>
+							</li> -->
 
 							<li>
 								<a href="../contact.php">Contact Us</a>
