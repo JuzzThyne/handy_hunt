@@ -81,8 +81,7 @@ include 'constants/check-login.php';
 								<a href="looking.php">Looking for Job</a>
 							</li> -->
 							<li>
-								<a href="employers.php">Companies</a>
-
+								<a href="employers.php">Company</a>
 							</li>
 
 							<?php
@@ -167,14 +166,14 @@ include 'constants/check-login.php';
 
 			<div class="breadcrumb-wrapper">
 
-				<div class="container">
+				<!-- <div class="container">
 
 					<ol class="breadcrumb-list">
 						<li><a href="./">Home</a></li>
 						<li><span>Contact Us</span></li>
 					</ol>
 
-				</div>
+				</div> -->
 
 			</div>
 

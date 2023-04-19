@@ -120,8 +120,7 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 								<a href="looking.php">Looking for Job</a>
 							</li> -->
 							<li>
-								<a href="employers.php">Companies</a>
-
+								<a href="employers.php">Company</a>
 							</li>
 
 							<?php

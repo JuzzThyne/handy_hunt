@@ -160,7 +160,7 @@ if (isset($_GET['page'])) {
 							}
 							?>
 							<li>
-								<a href="employers.php">Companies</a>
+								<a href="employers.php">Company</a>
 							</li>
 
 							<li>
@@ -202,14 +202,14 @@ if (isset($_GET['page'])) {
 
 			<div class="breadcrumb-wrapper">
 
-				<div class="container">
+				<!-- <div class="container">
 
 					<ol class="breadcrumb-list booking-step">
 						<li><a href="employers.php">Company</a></li>
 						<li><span><?php echo "$compname"; ?></span></li>
 					</ol>
 
-				</div>
+				</div> -->
 
 			</div>
 
