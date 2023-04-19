@@ -25,7 +25,7 @@ if (isset($_GET['page'])) {
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Handy Hunt - Employees</title>
+	<title>Handy Hunt - Job Seeker</title>
 	<meta name="description" content="Online Job Management / Job Portal" />
 	<meta name="keywords" content="job, work, resume, applicants, application, employee, employer, hire, hiring, human resource management, hr, online job management, company, worker, career, recruiting, recruitment" />
 	<meta name="author" content="BwireSoft">
@@ -98,16 +98,27 @@ if (isset($_GET['page'])) {
 								<a href="job-list.php">Job List</a>
 
 							</li>
-							<li>
+							<!-- <li>
 								<a href="looking.php">Looking for Job</a>
-							</li>
+							</li> -->
 							<li>
-								<a href="employers.php">Employers</a>
+								<a href="employers.php">Companies</a>
+
 							</li>
 
-							<li>
-								<a href="employees.php">Employees</a>
-							</li>
+							<?php
+									if ($user_online == true) {
+												if ($myrole == "employer") {
+													print '<li> 
+													<a href="employees.php"> 
+													Job Seeker
+													</a>
+													</li>';
+												}	
+							} else {
+							
+							}
+							?>
 
 							<li>
 								<a href="contact.php">Contact Us</a>
@@ -194,13 +205,14 @@ if (isset($_GET['page'])) {
 					<div class="sorting-wrappper">
 
 						<div class="sorting-header">
-							<h3 class="sorting-title">Employees</h3>
+							<h3 class="sorting-title">Job Seeker</h3>
 						</div>
 
 
 					</div>
 
 					<div class="employee-grid-wrapper">
+						
 
 						<div class="GridLex-gap-15-wrappper">
 
@@ -383,8 +395,8 @@ if (isset($_GET['page'])) {
 										<ul class="footer-menu clearfix">
 											<li><a href="./">Home</a></li>
 											<li><a href="job-list.php">Job List</a></li>
-											<li><a href="employers.php">Employers</a></li>
-											<li><a href="employees.php">Employees</a></li>
+											<li><a href="employers.php">Company</a></li>
+											<li><a href="employees.php">Job Seeker</a></li>
 											<li><a href="contact.php">Contact Us</a></li>
 											<li><a href="#">Go to top</a></li>
 

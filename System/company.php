@@ -142,15 +142,25 @@ if (isset($_GET['page'])) {
 
 							</li>
 
-							<li>
+							<!-- <li>
 								<a href="looking.php">Looking for Job</a>
-							</li>
+							</li> -->
+							<?php
+									if ($user_online == true) {
+											if ($myrole == "employee") {
+												print '<li> 
+												<a href="employers.php"> 
+												Companies
+												</a>
+												</li>';
+												}
+												
+							} else {
+							
+							}
+							?>
 							<li>
-								<a href="employers.php">Employers</a>
-							</li>
-
-							<li>
-								<a href="employees.php">Employees</a>
+								<a href="employers.php">Companies</a>
 							</li>
 
 							<li>
@@ -195,7 +205,7 @@ if (isset($_GET['page'])) {
 				<div class="container">
 
 					<ol class="breadcrumb-list booking-step">
-						<li><a href="employers.php">Employers</a></li>
+						<li><a href="employers.php">Company</a></li>
 						<li><span><?php echo "$compname"; ?></span></li>
 					</ol>
 

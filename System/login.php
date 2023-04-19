@@ -112,16 +112,29 @@ include 'constants/check-login.php';
 								<a href="job-list.php">Job List</a>
 
 							</li>
-							<li>
+							<!-- <li>
 								<a href="looking.php">Looking for Job</a>
-							</li>
+							</li> -->
+							<?php
+									if ($user_online == true) {
+											if ($myrole == "employee") {
+												print '<li> 
+												<a href="employers.php"> 
+												Companies
+												</a>
+												</li>';
+												}				
+							} else {
+							
+							}
+							?>
 							<li>
-								<a href="employers.php">Employers</a>
+								<a href="employers.php">Companies</a>
 							</li>
 
-							<li>
+							<!-- <li>
 								<a href="employees.php">Employees</a>
-							</li>
+							</li> -->
 
 							<li>
 								<a href="contact.php">Contact Us</a>

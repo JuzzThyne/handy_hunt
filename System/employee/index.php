@@ -93,17 +93,31 @@ if ($user_online == "true") {
 								<a href="../job-list.php">Job List</a>
 
 							</li>
-							<li>
+							<!-- <li>
 								<a href="looking.php">Looking for Job</a>
-							</li>
-
+							</li> -->
 							<li>
+								<a href="../employers.php">Companies</a>
+							</li>
+							<?php
+									if ($user_online == true) {
+												if ($myrole == "employer") {
+													print '<li> 
+													<a href="../employees.php"> 
+													Job Seeker
+													</a>
+													</li>';
+												}	
+							} else {							
+							}
+							?>
+							<!-- <li>
 								<a href="../employers.php">Employers</a>
 							</li>
 
 							<li>
 								<a href="../employees.php">Employees</a>
-							</li>
+							</li> -->
 
 							<li>
 								<a href="../contact.php">Contact Us</a>
@@ -671,8 +685,8 @@ if ($user_online == "true") {
 										<ul class="footer-menu clearfix">
 											<li><a href="./">Home</a></li>
 											<li><a href="job-list.php">Job List</a></li>
-											<li><a href="employers.php">Employers</a></li>
-											<li><a href="employees.php">Employees</a></li>
+											<li><a href="employers.php">Company</a></li>
+											<li><a href="employees.php">Job Seeker</a></li>
 											<li><a href="contact.php">Contact Us</a></li>
 											<li><a href="#">Go to top</a></li>
 

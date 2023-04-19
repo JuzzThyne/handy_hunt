@@ -197,16 +197,27 @@ if ($today_date > $closingdate) {
 								<a href="job-list.php">Job List</a>
 
 							</li>
-							<li>
+							<!-- <li>
 								<a href="looking.php">Looking for Job</a>
-							</li>
+							</li> -->
 							<li>
-								<a href="employers.php">Employers</a>
+								<a href="employers.php">Companies</a>
+
 							</li>
 
-							<li>
-								<a href="employees.php">Employees</a>
-							</li>
+							<?php
+									if ($user_online == true) {
+												if ($myrole == "employer") {
+													print '<li> 
+													<a href="employees.php"> 
+													Job Seeker
+													</a>
+													</li>';
+												}	
+							} else {
+							
+							}
+							?>
 
 							<li>
 								<a href="contact.php">Contact Us</a>
@@ -367,19 +378,15 @@ if ($today_date > $closingdate) {
 										} else {
 											if ($myrole == "employee") {
 												print '<button'; ?> onclick="update(this.value)" <?php print ' value="' . $jobid . '" class="btn btn-primary btn-hidden btn-lg collapsed"><i class="flaticon-line-icon-set-pencil"></i> Apply this job</button>';
-																								} else {
-																									print '<button class="btn btn-primary disabled btn-hidden btn-lg collapsed"><i class="flaticon-line-icon-set-padlock"></i> Login as employee to apply</button>';
-																								}
-																							}
-																						} else {
-
-																							print '<button class="btn btn-primary disabled btn-hidden btn-lg collapsed"><i class="flaticon-line-icon-set-padlock"></i> Login to apply this job</button>';
-																						}
-
-																									?>
-
+												} else {
+												print '<button class="btn btn-primary disabled btn-hidden btn-lg collapsed"><i class="flaticon-line-icon-set-padlock"></i> Login as employee to apply</button>';
+												}
+												}
+												} else {
+												print '<button class="btn btn-primary disabled btn-hidden btn-lg collapsed"><i class="flaticon-line-icon-set-padlock"></i> Login to apply this job</button>';
+												}
+									?>
 									<p id="data"></p>
-
 								</div>
 								<!-- <a class="btn btn-primary btn-hidden btn-lg collapsed" target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=<?php echo "$compemail"; ?>">
 									<i class="flaticon-line-icon-set-calendar"></i> Apply to this job
@@ -535,8 +542,8 @@ if ($today_date > $closingdate) {
 										<ul class="footer-menu clearfix">
 											<li><a href="./">Home</a></li>
 											<li><a href="job-list.php">Job List</a></li>
-											<li><a href="employers.php">Employers</a></li>
-											<li><a href="employees.php">Employees</a></li>
+											<li><a href="employers.php">Company</a></li>
+											<li><a href="employees.php">Job Seeker</a></li>
 											<li><a href="contact.php">Contact Us</a></li>
 											<li><a href="#">Go to top</a></li>
 
