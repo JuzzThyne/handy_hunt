@@ -146,7 +146,7 @@ include 'constants/check-login.php';
 					<div class="nav-mini-wrapper">
 						<ul class="nav-mini sign-in">
 							<li><a href="login.php">Login</a></li>
-							<li><a data-toggle="modal" href="register.php?p=Employee">Register</a></li>
+							<!-- <li><a data-toggle="modal" href="register.php?p=Employee">Register</a></li> -->
 						</ul>
 					</div>
 
@@ -284,6 +284,8 @@ include 'constants/check-login.php';
 
 											<div class="modal-footer text-center">
 												<button type="submit" class="btn btn-primary">Login</button>
+												<br>
+												<p>Dont have an Account?<span>Register <a href="register.php?p=Employee">Here</a></span></p>
 											</div>
 
 										</div>

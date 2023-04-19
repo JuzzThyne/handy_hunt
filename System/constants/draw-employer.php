@@ -76,7 +76,8 @@
 <ul>
   <li class="list"><button  onclick="return val();" type="submit" name="reg_mode" class="btn btn-primary">Register</button></li>
   <!-- <li class="list"><button class="btn btn-min" ><a href="register.php?p=Employer" class="btn-min-min btn-min">Signup as employer</a></button></li> -->
-  <li class="list" > <a href="register.php?p=Employee" class="list1">SIGNUP AS EMPLOYEE</a> </li>
+  <p>Register as Applicant? <span>Register <a href="register.php?p=Employee">Here</a></span></p>
+  <!-- <li class="list" > <a href="register.php?p=Employee" class="list1">SIGNUP AS EMPLOYEE</a> </li> -->
 </ul>
 <!-- <button  onclick="return val();" type="submit" name="reg_mode" class="btn btn-primary">Register</button> -->
 </div>
