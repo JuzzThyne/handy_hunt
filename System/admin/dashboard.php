@@ -77,16 +77,16 @@ $i = 1;
                     <i class="fas fa-tachometer-alt me-2"></i>Dashboard
                 </a>
                 <a href="tesda passers.php" class="list-group-item list-group-item-action bg-transparent second-text">
-                    <i class="fas fa-chart-line me-2"></i>Tesda Passers
+                    <i class="fas fa-graduation-cap me-2"></i>Tesda Passers
                 </a>
                 <a href="job posts.php" class="list-group-item list-group-item-action bg-transparent second-text">
-                    <i class="fas fa-chart-line me-2"></i>Job Posts
+                    <i class="fas fa-file me-2"></i>Job Posts
                 </a>
                 <a href="employee.php" class="list-group-item list-group-item-action bg-transparent second-text">
-                    <i class="fas fa-paperclip me-2"></i>Employee
+                    <i class="fas fa-users me-2"></i>Employee
                 </a>
                 <a href="employer.php" class="list-group-item list-group-item-action bg-transparent second-text">
-                    <i class="fas fa-paperclip me-2"></i>Employer
+                    <i class="fas fa-user me-2"></i>Employer
                 </a>
                 <a href="email.php" class="list-group-item list-group-item-action bg-transparent second-text">
                     <i class="fas fa-paperclip me-2"></i>Email
@@ -151,7 +151,7 @@ $i = 1;
                                 <h3 class="fs-2"><?php echo $tesda_passersCount; ?></h3>
                                 <p class="fs-5">Total Tesda Passers</p>
                             </div>
-                            <i class="fas fa-equals fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                            <i class="fas fa-graduation-cap fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
                     </div>
 
@@ -161,7 +161,7 @@ $i = 1;
                                 <h3 class="fs-2"><?php echo $num; ?></h3>
                                 <p class="fs-5">Total Job Posts</p>
                             </div>
-                            <i class="fas fa-equals fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                            <i class="fas fa-file fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
                     </div>
 
@@ -171,7 +171,7 @@ $i = 1;
                                 <h3 class="fs-2"><?php echo $tbl_usersCount; ?></h3>
                                 <p class="fs-5">Total Users</p>
                             </div>
-                            <i class="fas fa-equals fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                            <i class="fas fa-users fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
                     </div>
                 </div>
