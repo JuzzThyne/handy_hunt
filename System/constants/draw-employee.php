@@ -53,6 +53,9 @@
                     <div class="form-group">
                         <label>Password</label>
                         <input class="form-control" placeholder="Min 8 and Max 20 characters" name="password" required type="password">
+                        <button class="btn btn-outline-secondary" type="button" id="btn-toggle-password">
+						<i class="fa fa-eye"></i>
+						</button>
                     </div>
 
                 </div>
@@ -62,6 +65,9 @@
                     <div class="form-group">
                         <label>Password Confirmation</label>
                         <input class="form-control" placeholder="Re-type password again" name="confirmpassword" required type="password">
+                        <button class="form-control-append btn btn-outline-secondary" type="button" id="btn-toggle-password-one">
+						<i class="fa fa-eye"></i>
+						</button>
                     </div>
 
                 </div>
@@ -82,6 +88,35 @@
 </ul>
 </div>									
 </div>
+
+<script>
+var btnTogglePassword = document.getElementById("btn-toggle-password");
+var inputPassword = document.getElementsByName("password")[0];
+
+btnTogglePassword.addEventListener("click", function() {
+if (inputPassword.type === "password") {
+inputPassword.type = "text";
+btnTogglePassword.innerHTML = "<i class='fa fa-eye-slash'></i>";
+} else {
+inputPassword.type = "password";
+btnTogglePassword.innerHTML = "<i class='fa fa-eye'></i>";
+}
+});
+</script>
+<script>
+var btnTogglePassword1 = document.getElementById("btn-toggle-password-one");
+var inputPassword1 = document.getElementsByName("confirmpassword")[0];
+
+btnTogglePassword1.addEventListener("click", function() {
+if (inputPassword1.type === "password") {
+inputPassword1.type = "text";
+btnTogglePassword1.innerHTML = "<i class='fa fa-eye-slash'></i>";
+} else {
+inputPassword1.type = "password";
+btnTogglePassword1.innerHTML = "<i class='fa fa-eye'></i>";
+}
+});
+</script>
 
 
 

@@ -104,7 +104,7 @@ if ($user_online == "true") {
 												if ($myrole == "employer") {
 													print '<li> 
 													<a href="../employees.php"> 
-													Job Seeker
+													Applicant
 													</a>
 													</li>';
 												}	
@@ -686,7 +686,7 @@ if ($user_online == "true") {
 											<li><a href="./">Home</a></li>
 											<li><a href="job-list.php">Job List</a></li>
 											<li><a href="employers.php">Company</a></li>
-											<li><a href="employees.php">Job Seeker</a></li>
+											<li><a href="employees.php">Applicant</a></li>
 											<li><a href="contact.php">Contact Us</a></li>
 											<li><a href="#">Go to top</a></li>
 
