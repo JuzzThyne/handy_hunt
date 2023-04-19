@@ -120,8 +120,7 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 								<a href="looking.php">Looking for Job</a>
 							</li> -->
 							<li>
-								<a href="employers.php">Companies</a>
-
+								<a href="employers.php">Company</a>
 							</li>
 
 							<?php
@@ -295,14 +294,14 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 
 			<div class="breadcrumb-wrapper">
 
-				<div class="container">
+				<!-- <div class="container">
 
 					<ol class="breadcrumb-list booking-step">
 						<li><a href="./">Home</a></li>
 						<li><span><?php echo "$title"; ?></span></li>
 					</ol>
 
-				</div>
+				</div> -->
 
 			</div>
 

@@ -97,7 +97,7 @@ if ($user_online == "true") {
 								<a href="looking.php">Looking for Job</a>
 							</li> -->
 							<li>
-								<a href="../employers.php">Companies</a>
+								<a href="../employers.php">Company</a>
 							</li>
 							<?php
 									if ($user_online == true) {

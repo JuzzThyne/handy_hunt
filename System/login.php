@@ -115,6 +115,9 @@ include 'constants/check-login.php';
 							<!-- <li>
 								<a href="looking.php">Looking for Job</a>
 							</li> -->
+							<li>
+								<a href="employers.php">Company</a>
+							</li>
 							<?php
 									if ($user_online == true) {
 											if ($myrole == "employee") {
@@ -128,9 +131,7 @@ include 'constants/check-login.php';
 							
 							}
 							?>
-							<li>
-								<a href="employers.php">Companies</a>
-							</li>
+							
 
 							<!-- <li>
 								<a href="employees.php">Employees</a>
@@ -194,14 +195,14 @@ include 'constants/check-login.php';
 
 			<div class="breadcrumb-wrapper">
 
-				<div class="container">
+				<!-- <div class="container">
 
 					<ol class="breadcrumb-list">
 						<li><a href="./">Home</a></li>
 						<li><span>Access your account</span></li>
 					</ol>
 
-				</div>
+				</div> -->
 
 			</div>
 

@@ -24,7 +24,7 @@ if (isset($_GET['page'])) {
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Handy Hunt - Companies</title>
+	<title>Handy Hunt - Company</title>
 	<meta name="description" content="Online Job Management / Job Portal" />
 	<meta name="keywords" content="job, work, resume, applicants, application, employee, employer, hire, hiring, human resource management, hr, online job management, company, worker, career, recruiting, recruitment" />
 	<meta name="author" content="BwireSoft">
@@ -106,8 +106,7 @@ if (isset($_GET['page'])) {
 								<a href="looking.php">Looking for Job</a>
 							</li> -->
 							<li>
-								<a href="employers.php">Companies</a>
-
+								<a href="employers.php">Company</a>
 							</li>
 
 							<?php
@@ -194,10 +193,10 @@ if (isset($_GET['page'])) {
 
 				<div class="container">
 
-					<ol class="breadcrumb-list booking-step">
+					<!-- <ol class="breadcrumb-list booking-step">
 						<li><a href="./">Home</a></li>
 						<li><span>Employers</span></li>
-					</ol>
+					</ol> -->
 
 				</div>
 
