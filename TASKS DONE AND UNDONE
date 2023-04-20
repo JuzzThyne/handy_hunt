@@ -1,0 +1,16 @@
+CHANGES - 04/19/23
+
+Employee - applicant (papalitan) - DONE
+Employer - company (papalitan) - DONE
+Applicant - sorting (kapag company naka login nakalabas tong button nato, tapos pwede mag search ng applicant)
+Company - sorting(vice versa ng sa taas)
+Applicant active - view company and sort
+Company active - view applicant and sort
+Fixed login in server 
+Fixed no data in server
+Email verification for accept account
+Evaluation exam 
+Email for the score
+View password 
+Login no register button
+Register button to be place in login
