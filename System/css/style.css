@@ -461,6 +461,19 @@ ul.nav-mini li a {
 /**
  * Hero
  */
+ .textbox-with-button {
+    display: flex;
+    align-items: center;
+  }
+
+  .textbox-with-button input[type="password"] {
+    flex: 1;
+    padding: 10px;
+  }
+
+  .textbox-with-button button {
+    padding: 10px;
+  }
 
 .hero {
     position: relative;
@@ -510,7 +523,7 @@ ul.nav-mini li a {
 .hero .form-group .btn {
     background: none;
     color: #FFF;
-    position: absolute;
+    position: flex;
     top: 1px;
     right: 5px;
     font-size: 20px;
