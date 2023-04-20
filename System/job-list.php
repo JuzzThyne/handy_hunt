@@ -47,9 +47,12 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Handy Hunt - <?php echo "$title"; ?></title>
+	<title>Handy Hunt -
+		<?php echo "$title"; ?>
+	</title>
 	<meta name="description" content="Online Job Management / Job Portal" />
-	<meta name="keywords" content="job, work, resume, applicants, application, employee, employer, hire, hiring, human resource management, hr, online job management, company, worker, career, recruiting, recruitment" />
+	<meta name="keywords"
+		content="job, work, resume, applicants, application, employee, employer, hire, hiring, human resource management, hr, online job management, company, worker, career, recruiting, recruitment" />
 	<meta name="author" content="BwireSoft">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta property="og:image" content="http://<?php echo "$actual_link"; ?>/images/banner.jpg" />
@@ -124,16 +127,16 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 							</li>
 
 							<?php
-									if ($user_online == true) {
-												if ($myrole == "employer") {
-													print '<li> 
+							if ($user_online == true) {
+								if ($myrole == "employer") {
+									print '<li> 
 													<a href="employees.php"> 
 													Applicant
 													</a>
 													</li>';
-												}	
+								}
 							} else {
-							
+
 							}
 							?>
 
@@ -169,7 +172,8 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 
 			</nav>
 
-			<div id="registerModal" class="modal fade login-box-wrapper" tabindex="-1" style="display: none;" data-backdrop="static" data-keyboard="false" data-replace="true">
+			<div id="registerModal" class="modal fade login-box-wrapper" tabindex="-1" style="display: none;"
+				data-backdrop="static" data-keyboard="false" data-replace="true">
 
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -181,10 +185,12 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 					<div class="row gap-20">
 
 						<div class="col-sm-6 col-md-6">
-							<a href="register.php?p=Employer" class="btn btn-facebook btn-block mb-5-xs">Register as Employer</a>
+							<a href="register.php?p=Employer" class="btn btn-facebook btn-block mb-5-xs">Register as
+								Employer</a>
 						</div>
 						<div class="col-sm-6 col-md-6">
-							<a href="register.php?p=Employee" class="btn btn-facebook btn-block mb-5-xs">Register as Employee</a>
+							<a href="register.php?p=Employee" class="btn btn-facebook btn-block mb-5-xs">Register as
+								Employee</a>
 						</div>
 
 					</div>
@@ -229,11 +235,12 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 
 											foreach ($result as $row) {
 												$cat = $row['category'];
-										?>
+												?>
 												<option <?php if ($slc_category == "$cat") {
-															print ' selected ';
-														} ?> value="<?php echo $row['category']; ?>"><?php echo $row['category']; ?></option>
-										<?php
+													print ' selected ';
+												} ?> value="<?php echo $row['category']; ?>"><?php echo $row['category']; ?>
+												</option>
+												<?php
 											}
 											$stmt->execute();
 										} catch (PDOException $e) {
@@ -262,12 +269,13 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 
 											foreach ($result as $row) {
 												$cnt = $row['city_name'];
-										?>
+												?>
 
 												<option <?php if ($slc_country == "$cnt") {
-															print ' selected ';
-														} ?> value="<?php echo $row['city_name']; ?>"><?php echo $row['city_name']; ?></option>
-										<?php
+													print ' selected ';
+												} ?> value="<?php echo $row['city_name']; ?>"><?php echo $row['city_name']; ?>
+												</option>
+												<?php
 											}
 											$stmt->execute();
 										} catch (PDOException $e) {
@@ -313,7 +321,9 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 					<div class="sorting-wrappper">
 
 						<div class="sorting-header">
-							<h3 class="sorting-title"><?php echo "$title"; ?></h3>
+							<h3 class="sorting-title">
+								<?php echo "$title"; ?>
+							</h3>
 						</div>
 
 
@@ -366,7 +376,7 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 												$sta = '<span class="job-label label label-warning">Full-time</span>';
 											}
 
-									?>
+											?>
 											<div class="job-item-list">
 
 												<div class="image">
@@ -386,13 +396,18 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 
 															<div class="col-sm-7 col-md-8">
 
-																<h4 class="heading"><?php echo $row['title']; ?></h4>
+																<h4 class="heading">
+																	<?php echo $row['title']; ?>
+																</h4>
 																<div class="meta-div clearfix mb-25">
-																	<span>at <a href="company.php?ref=<?php echo "$compid"; ?>"><?php echo "$thecompname"; ?></a></span>
+																	<span>at <a
+																			href="company.php?ref=<?php echo "$compid"; ?>"><?php echo "$thecompname"; ?></a></span>
 																	<?php echo "$sta"; ?>
 																</div>
 
-																<p class="texing character_limit"><?php echo $row['description']; ?></p>
+																<p class="texing character_limit">
+																	<?php echo $row['description']; ?>
+																</p>
 															</div>
 
 															<div class="col-sm-5 col-md-4">
@@ -426,13 +441,16 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 
 															<div class="col-sm-7 col-md-8">
 																<div class="sub-category">
-																	<a><?php echo $row['category']; ?></a>
+																	<a>
+																		<?php echo $row['category']; ?>
+																	</a>
 
 																</div>
 															</div>
 
 															<div class="col-sm-5 col-md-4">
-																<a href="explore-job.php?jobid=<?php echo $row['job_id']; ?>" class="btn btn-primary">View This Job</a>
+																<a href="explore-job.php?jobid=<?php echo $row['job_id']; ?>"
+																	class="btn btn-primary">View This Job</a>
 															</div>
 
 														</div>
@@ -443,7 +461,7 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 												</div>
 
 											</div>
-									<?php
+											<?php
 
 										}
 									} catch (PDOException $e) {
@@ -489,38 +507,42 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 											if ($page == "1") {
 												print '';
 											} else {
-												print 'href="job-list.php?page=' . $prevpage . ''; ?> <?php if ($fromsearch == true) {
-																											print '&category=' . $cate . '&country=' . $country . '&search=✓';
-																										}
-																										'';
-																									}
-																									print '"><i class="fa fa-chevron-left"></i></a></li>';
-																									for ($b = 1; $b <= $records; $b++) {
+												print 'href="job-list.php?page=' . $prevpage . ''; ?>
+												<?php if ($fromsearch == true) {
+													print '&category=' . $cate . '&country=' . $country . '&search=✓';
+												}
+												'';
+											}
+											print '"><i class="fa fa-chevron-left"></i></a></li>';
+											for ($b = 1; $b <= $records; $b++) {
 
-																										?><li class="paging-nav"><a <?php if ($b == $page) {
-																																		print ' style="background-color:#33B6CB; color:white" ';
-																																	} ?> href="job-list.php?page=<?php echo "$b"; ?><?php if ($fromsearch == true) {
-																																														print '&category=' . $cate . '&country=' . $country . '&search=✓';
-																																													} ?>"><?php echo $b . " "; ?></a></li><?php
-																																																						}
-																																																						print '<li class="paging-nav"';
-																																																						if ($page == $records) {
-																																																							print 'class="disabled"';
-																																																						}
-																																																						print '><a ';
-																																																						if ($page == $records) {
-																																																							print '';
-																																																						} else {
-																																																							print 'href="job-list.php?page=' . $nextpage . ''; ?> <?php if ($fromsearch == true) {
-																																																																						print '&category=' . $cate . '&country=' . $country . '&search=✓';
-																																																																					}
-																																																																					'';
-																																																																				}
-																																																																				print '"><i class="fa fa-chevron-right"></i></a></li>';
-																																																																			}
+												?>
+												<li class="paging-nav"><a <?php if ($b == $page) {
+													print ' style="background-color:#33B6CB; color:white" ';
+												} ?> href="job-list.php?page=<?php echo "$b"; ?><?php if ($fromsearch == true) {
+														 print '&category=' . $cate . '&country=' . $country . '&search=✓';
+													 } ?>"><?php echo $b . " "; ?></a></li>
+												<?php
+											}
+											print '<li class="paging-nav"';
+											if ($page == $records) {
+												print 'class="disabled"';
+											}
+											print '><a ';
+											if ($page == $records) {
+												print '';
+											} else {
+												print 'href="job-list.php?page=' . $nextpage . ''; ?>
+												<?php if ($fromsearch == true) {
+													print '&category=' . $cate . '&country=' . $country . '&search=✓';
+												}
+												'';
+											}
+											print '"><i class="fa fa-chevron-right"></i></a></li>';
+										}
 
 
-																																																																					?>
+										?>
 
 									</ul>
 
@@ -553,7 +575,8 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 
 										<div class="footer-about-us">
 											<h5 class="footer-title">About Handy Hunt</h5>
-											<p>Handy Hunt is a job portal, online job management system developed by handyhunt group for capstone in 2022.</p>
+											<p>Handy Hunt is a job portal, online job management system developed by
+												handyhunt group for capstone in 2022.</p>
 
 										</div>
 

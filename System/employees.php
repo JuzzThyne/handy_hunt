@@ -3,6 +3,13 @@
 <?php
 require 'constants/settings.php';
 require 'constants/check-login.php';
+error_reporting(0);
+$fromsearch = false;
+
+if (isset($_GET['search']) && $_GET['search'] == "search") {
+
+} else {
+}
 
 if (isset($_GET['page'])) {
 	$page = $_GET['page'];
@@ -27,7 +34,8 @@ if (isset($_GET['page'])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Handy Hunt - Applicant</title>
 	<meta name="description" content="Online Job Management / Job Portal" />
-	<meta name="keywords" content="job, work, resume, applicants, application, employee, employer, hire, hiring, human resource management, hr, online job management, company, worker, career, recruiting, recruitment" />
+	<meta name="keywords"
+		content="job, work, resume, applicants, application, employee, employer, hire, hiring, human resource management, hr, online job management, company, worker, career, recruiting, recruitment" />
 	<meta name="author" content="BwireSoft">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta property="og:image" content="http://<?php echo "$actual_link"; ?>/images/banner.jpg" />
@@ -106,16 +114,16 @@ if (isset($_GET['page'])) {
 							</li>
 
 							<?php
-									if ($user_online == true) {
-												if ($myrole == "employer") {
-													print '<li> 
+							if ($user_online == true) {
+								if ($myrole == "employer") {
+									print '<li> 
 													<a href="employees.php"> 
 													Applicant
 													</a>
 													</li>';
-												}	
+								}
 							} else {
-							
+
 							}
 							?>
 
@@ -150,7 +158,8 @@ if (isset($_GET['page'])) {
 				<div id="slicknav-mobile"></div>
 
 			</nav>
-			<div id="registerModal" class="modal fade login-box-wrapper" tabindex="-1" style="display: none;" data-backdrop="static" data-keyboard="false" data-replace="true">
+			<div id="registerModal" class="modal fade login-box-wrapper" tabindex="-1" style="display: none;"
+				data-backdrop="static" data-keyboard="false" data-replace="true">
 
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -162,10 +171,12 @@ if (isset($_GET['page'])) {
 					<div class="row gap-20">
 
 						<div class="col-sm-6 col-md-6">
-							<a href="register.php?p=Employer" class="btn btn-facebook btn-block mb-5-xs">Register as Employer</a>
+							<a href="register.php?p=Employer" class="btn btn-facebook btn-block mb-5-xs">Register as
+								Employer</a>
 						</div>
 						<div class="col-sm-6 col-md-6">
-							<a href="register.php?p=Employee" class="btn btn-facebook btn-block mb-5-xs">Register as Employee</a>
+							<a href="register.php?p=Employee" class="btn btn-facebook btn-block mb-5-xs">Register as
+								Employee</a>
 						</div>
 
 					</div>
@@ -187,11 +198,174 @@ if (isset($_GET['page'])) {
 			<div class="breadcrumb-wrapper">
 
 				<div class="container">
+					<br>
 
-					<ol class="breadcrumb-list booking-step">
+					<!-- <ol class="breadcrumb-list booking-step">
 						<li><a href="./">Home</a></li>
 						<li><span>Employees</span></li>
-					</ol>
+					</ol> -->
+
+					<form action="employees.php" method="GET" autocomplete="off">
+
+						<div class="second-search-result-inner">
+							<span class="labeling">Find Applicant</span>
+							<div class="row">
+								<!-- <div class="col-xss-12 col-xs-6 col-sm-6 col-md-5">
+									<div class="form-group form-lg">
+										<select class="form-control" name="category" required />
+										<option value="">-Select Category-</option>
+										<?php
+										require 'constants/db_config.php';
+										try {
+											$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+											$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+											$stmt = $conn->prepare("SELECT * FROM tbl_categories ORDER BY category");
+											$stmt->execute();
+											$result = $stmt->fetchAll();
+
+											foreach ($result as $row) {
+												$cat = $row['category'];
+												?>
+												<option <?php if ($slc_category == "$cat") {
+													print ' selected ';
+												} ?> value="<?php echo $row['category']; ?>"><?php echo $row['category']; ?>
+												</option>
+												<?php
+											}
+											$stmt->execute();
+										} catch (PDOException $e) {
+										}
+
+										?>
+
+										</select>
+									</div>
+								</div> -->
+
+
+
+
+
+								<?php
+								$servername = "localhost";
+								$username = "root";
+								$password = "";
+								$dbname = "job_portal";
+
+								// Create connection
+								$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+								// Check connection
+								if (!$conn) {
+									die("Connection failed: " . mysqli_connect_error());
+								}
+								?>
+								<form method="GET" action="">
+									<div class="col-xss-12 col-xs-6 col-sm-6 col-md-10">
+										<input type="text" name="query" class="form-control	">
+
+									</div>
+									<div class="col-xss-12 col-xs-6 col-sm-4 col-md-2">
+										<button name="search" value="✓" type="submit"
+											class="btn btn-block">Search</button>
+									</div>
+									<!-- <div class="col-xss-12 col-xs-6 col-sm-6 col-md-5">
+											<input type="text" name="query" class="form-control	">
+										
+									</div>
+									<div class="col-xss-12 col-xs-6 col-sm-4 col-md-2">
+										<button name="search" value="✓" type="submit"
+											class="btn btn-block">Search</button>
+									</div> -->
+
+									<!-- <input type="submit" value="search" name="search"> -->
+
+								</form>
+								<?php
+								// Check if the search form has been submitted
+								if (isset($_GET['query'])) {
+									// Get the search query from the form
+									$search = mysqli_real_escape_string($conn, $_GET['query']);
+
+									// Prepare a SQL query to search for matching results
+									$sql = "SELECT * FROM tbl_users WHERE title LIKE '%$search%'";
+
+									// Execute the SQL query
+									$result = mysqli_query($conn, $sql);
+
+									// Check if any results were found
+									if (mysqli_num_rows($result) > 0) {
+										// Display the results
+										while ($row = mysqli_fetch_assoc($result)) {
+											// Display each row of data
+											$title = $row['title'];
+
+											// echo $row['city_name'];
+										}
+									} else {
+										// No results found
+										echo "No results found.";
+									}
+								}
+								?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+								<!-- <div class="col-xss-12 col-xs-6 col-sm-6 col-md-5">
+										<div class="form-group form-lg">
+											<select class="form-control" name="country" required />
+											<option value="">-Select City-</option>
+											<!-- <?php
+											require 'constants/db_config.php';
+											try {
+												$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+												$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+												$stmt = $conn->prepare("SELECT * FROM tbl_users ORDER BY title");
+												$stmt->execute();
+												$result = $stmt->fetchAll();
+
+												foreach ($result as $row) {
+													$ttl = $row['title'];
+													?>
+
+													<option <?php if ($slc_title == "$ttl") {
+														print ' selected ';
+													} ?> value="<?php echo $row['title']; ?>"><?php echo $row['title']; ?></option>
+											<?php
+												}
+												$stmt->execute();
+											} catch (PDOException $e) {
+											}
+
+											?> 
+								</select>
+							</div>
+						</div> -->
+
+								<!-- <div class="col-xss-12 col-xs-6 col-sm-4 col-md-2">
+									<button name="search" value="✓" type="submit" class="btn btn-block">Search</button>
+								</div> -->
+
+							</div>
+						</div>
+
+					</form>
 
 				</div>
 
@@ -207,75 +381,51 @@ if (isset($_GET['page'])) {
 							<h3 class="sorting-title">Applicant</h3>
 						</div>
 
-
 					</div>
 
-					<div class="employee-grid-wrapper">
-						
+					<div class="company-grid-wrapper top-company-2-wrapper">
 
-						<div class="GridLex-gap-15-wrappper">
+						<div class="GridLex-gap-30">
 
 							<div class="GridLex-grid-noGutter-equalHeight">
 								<?php
 								require 'constants/db_config.php';
-
 								try {
 									$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 									$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-									$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employee' ORDER BY first_name LIMIT $page1,16");
+
+									$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employee' AND title = '$title' ORDER BY first_name LIMIT $page1,16");
 									$stmt->execute();
 									$result = $stmt->fetchAll();
+
 									foreach ($result as $row) {
-										$empavatar = $row['avatar'];
-								?>
+										$complogo = $row['avatar'];
+										?>
 										<div class="GridLex-col-3_sm-4_xs-6_xss-12">
 
-											<div class="employee-grid-item">
+											<div class="top-company-2">
+												<a href="company.php?ref=<?php echo $row['member_no']; ?>">
 
-												<div class="action">
-
-													<div class="row gap-10">
-
-														<div class="col-xs-6 col-sm-6">
-															<div class="text-left">
-																<button class="btn"><i class="icon-heart"></i></button>
-															</div>
-														</div>
-
-														<div class="col-xs-6 col-sm-6">
-															<div class="text-right">
-																<a class="btn text-right" href="employee-detail.html"><i class="icon-action-redo"></i></a>
-															</div>
-														</div>
-
-													</div>
-
-												</div>
-
-												<a href="employee-detail.php?empid=<?php echo $row['member_no']; ?>" class="clearfix">
-
-													<div class="image clearfix">
+													<div class="image">
 														<?php
-														if ($empavatar == null) {
-															print '<center><img class="img-circle autofit2" src="images/default.jpg" alt="image"  /></center>';
+														if ($complogo == null) {
+															print '<center><img class="autofit2" alt="image"  src="images/blank.png"/></center>';
 														} else {
-															echo '<center><img class="img-circle autofit2" alt="image" src="data:image/jpeg;base64,' . base64_encode($empavatar) . '"/></center>';
+															echo '<center><img class="autofit2" alt="image"  src="data:image/jpeg;base64,' . base64_encode($complogo) . '"/></center>';
 														}
 														?>
-
-
 
 													</div>
 
 													<div class="content">
-
-														<h4><?php echo $row['first_name'] ?> <?php echo $row['last_name'] ?></h4>
-														<p class="location"><i class="fa fa-map-marker"></i> <?php echo $row['country'] ?></p>
-
-														<h6 class="text-primary">Education : <?php echo $row['education'] ?></h6>
-
-														<h6 class="text-primary"><?php echo $row['title'] ?></h6>
-
+														<h5 class="heading text-primary font700">
+															<?php echo $row['first_name']; ?>
+														</h5>
+														<p class="texting font600">
+															<?php echo $row['title']; ?>
+															<!-- <p class=""><?php echo $title; ?> -->
+														<p>
+															<!-- <p class="mata-p clearfix"><span class="text-primary font700">25</span> <span class="font13">Active job post(s)</span> <span class="pull-right icon"><i class="fa fa-long-arrow-right"></i></span></p> -->
 													</div>
 
 												</a>
@@ -283,13 +433,15 @@ if (isset($_GET['page'])) {
 											</div>
 
 										</div>
-								<?php
+										<?php
 
 									}
 								} catch (PDOException $e) {
-								}
+								} ?>
 
-								?>
+
+
+
 
 
 							</div>
@@ -307,8 +459,6 @@ if (isset($_GET['page'])) {
 							try {
 								$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 								$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
 								$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employee' ORDER BY first_name");
 								$stmt->execute();
 								$result = $stmt->fetchAll();
@@ -339,25 +489,27 @@ if (isset($_GET['page'])) {
 								print '><i class="fa fa-chevron-left"></i></a></li>';
 								for ($b = 1; $b <= $records; $b++) {
 
-							?><li class="paging-nav"><a <?php if ($b == $page) {
-															print ' style="background-color:#33B6CB; color:white" ';
-														} ?> href="employees.php?page=<?php echo "$b"; ?>"><?php echo $b . " "; ?></a></li><?php
-																																		}
-																																		print '<li class="paging-nav"';
-																																		if ($page == $records) {
-																																			print 'class="disabled"';
-																																		}
-																																		print '><a ';
-																																		if ($page == $records) {
-																																			print '';
-																																		} else {
-																																			print 'href="employees.php?page=' . $nextpage . '"';
-																																		}
-																																		print '><i class="fa fa-chevron-right"></i></a></li>';
-																																	}
+									?>
+									<li class="paging-nav"><a <?php if ($b == $page) {
+										print ' style="background-color:#33B6CB; color:white" ';
+									} ?> href="employees.php?page=<?php echo "$b"; ?>"><?php echo $b . " "; ?></a></li>
+									<?php
+								}
+								print '<li class="paging-nav"';
+								if ($page == $records) {
+									print 'class="disabled"';
+								}
+								print '><a ';
+								if ($page == $records) {
+									print '';
+								} else {
+									print 'href="employees.php?page=' . $nextpage . '"';
+								}
+								print '><i class="fa fa-chevron-right"></i></a></li>';
+							}
 
 
-																																			?>
+							?>
 
 						</ul>
 
@@ -383,7 +535,8 @@ if (isset($_GET['page'])) {
 
 										<div class="footer-about-us">
 											<h5 class="footer-title">About Handy Hunt</h5>
-											<p>Handy Hunt is a job portal, online job management system developed by handyhunt group for capstone in 2022.</p>
+											<p>Handy Hunt is a job portal, online job management system developed by
+												handyhunt group for capstone in 2022.</p>
 
 										</div>
 
