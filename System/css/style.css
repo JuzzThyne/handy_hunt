@@ -157,6 +157,7 @@ ul.nav-mini.sign-in li a:hover {
 }
 
 .nav.navbar-nav {
+    padding-left: 75px;
     text-align: center;
     float: none;
 }
