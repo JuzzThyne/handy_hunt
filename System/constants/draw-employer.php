@@ -46,9 +46,9 @@
 <div class="form-group"> 
 <label>Password</label>
 <input class="form-control" placeholder="Min 8 and Max 20 characters" name="password" required type="password"> 
-<!-- <button class="btn btn-outline-secondary" type="button" id="btn-toggle-password">
+<!--<button class="btn btn-outline-secondary" type="button" id="btn-toggle-password">
 						<i class="fa fa-eye"></i>
-						</button> -->
+						</button>-->
 </div>
 												
 </div>
@@ -58,9 +58,9 @@
 <div class="form-group"> 
 <label>Password Confirmation</label>
 <input class="form-control" placeholder="Re-type password again" name="confirmpassword" required type="password">
-<!-- <button class="form-control-append btn btn-outline-secondary" type="button" id="btn-toggle-password-one">
+<!--<button class="form-control-append btn btn-outline-secondary" type="button" id="btn-toggle-password-one">
 						<i class="fa fa-eye"></i>
-						</button>  -->
+						</button> -->
 </div>
 												
 </div>

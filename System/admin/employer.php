@@ -101,10 +101,10 @@ $i = 1;
                     <i class="fas fa-chart-line me-2"></i>Job Posts
                 </a>
                 <a href="employee.php" class="list-group-item list-group-item-action bg-transparent second-text">
-                    <i class="fas fa-paperclip me-2"></i>Employee
+                    <i class="fas fa-paperclip me-2"></i>Applicant
                 </a>
                 <a href="employer.php" class="list-group-item list-group-item-action bg-transparent second-text active">
-                    <i class="fas fa-paperclip me-2"></i>Employer
+                    <i class="fas fa-paperclip me-2"></i>Company
                 </a>
                 <a href="email.php" class="list-group-item list-group-item-action bg-transparent second-text">
                     <i class="fas fa-paperclip me-2"></i>Email
@@ -209,8 +209,8 @@ $i = 1;
                                                 <?= $row['country']; ?>, <?= $row['city']; ?> <?= $row['street']; ?>
                                             </td>
                                             <td>
-                                                <a href="<?= $row['country']; ?>">
-                                                    <?= $row['country']; ?>
+                                                <a href="<?= $row['website']; ?>">
+                                                    <?= $row['website']; ?>
                                                 </a>
                                             </td>
                                             <td>

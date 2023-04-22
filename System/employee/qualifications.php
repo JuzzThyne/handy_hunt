@@ -33,7 +33,7 @@ if (isset($_GET['page'])) {
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Jobs - Educational Attainment</title>
+	<title>Handy Hunt - Educational Attainment</title>
 	<meta name="description" content="Online Job Management / Job Portal" />
 	<meta name="keywords" content="job, work, resume, applicants, application, employee, employer, hire, hiring, human resource management, hr, online job management, company, worker, career, recruiting, recruitment" />
 	<meta name="author" content="BwireSoft">
@@ -55,16 +55,16 @@ if (isset($_GET['page'])) {
 	<link href="../css/component.css" rel="stylesheet">
 
 
-	<link rel="stylesheet" href="../icons/linearicons/style.css">
-	<link rel="stylesheet" href="../icons/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../icons/simple-line-icons/css/simple-line-icons.css">
-	<link rel="stylesheet" href="../icons/ionicons/css/ionicons.css">
-	<link rel="stylesheet" href="../icons/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
-	<link rel="stylesheet" href="../icons/rivolicons/style.css">
-	<link rel="stylesheet" href="../icons/flaticon-line-icon-set/flaticon-line-icon-set.css">
-	<link rel="stylesheet" href="../icons/flaticon-streamline-outline/flaticon-streamline-outline.css">
-	<link rel="stylesheet" href="../icons/flaticon-thick-icons/flaticon-thick.css">
-	<link rel="stylesheet" href="../icons/flaticon-ventures/flaticon-ventures.css">
+	<link rel="stylesheet" href="../css/linearicons/style.css">
+	<link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../css/simple-line-icons/css/simple-line-icons.css">
+	<link rel="stylesheet" href="../css/ionicons/css/ionicons.css">
+	<link rel="stylesheet" href="../css/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+	<link rel="stylesheet" href="../css/rivolicons/style.css">
+	<link rel="stylesheet" href="../css/flaticon-line-icon-set/flaticon-line-icon-set.css">
+	<link rel="stylesheet" href="../css/flaticon-streamline-outline/flaticon-streamline-outline.css">
+	<link rel="stylesheet" href="../css/flaticon-thick-icons/flaticon-thick.css">
+	<link rel="stylesheet" href="../css/flaticon-ventures/flaticon-ventures.css">
 
 
 	<link href="../css/style.css" rel="stylesheet">
@@ -102,7 +102,7 @@ if (isset($_GET['page'])) {
 
 							<li>
 
-								<a href="../">Home</a>
+								<a href="./">Home</a>
 
 							</li>
 
@@ -110,14 +110,28 @@ if (isset($_GET['page'])) {
 								<a href="../job-list.php">Job List</a>
 
 							</li>
+							<!-- <li>
+								<a href="looking.php">Looking for Job</a>
+							</li> -->
 
 							<li>
-								<a href="../employers.php">Employers</a>
+								<a href="../employers.php">Company</a>
 							</li>
 
-							<li>
-								<a href="../employees.php">Employees</a>
-							</li>
+							<?php
+									if ($user_online == true) {
+												if ($myrole == "employer") {
+													print '<li> 
+													<a href="../employees.php"> 
+													Applicant
+													</a>
+													</li>';
+												}	
+							} else {
+							
+							}
+							?>
+
 
 							<li>
 								<a href="../contact.php">Contact Us</a>
@@ -213,7 +227,7 @@ if (isset($_GET['page'])) {
 											<a href="training.php"><i class="fa fa-gears"></i> Training & Workshop</a>
 										</li>
 										<li>
-											<a href="referees.php"><i class="fa fa-users"></i> Referees</a>
+											<a href="referees.php"><i class="fa fa-users"></i> Reference</a>
 										</li>
 										<!-- <li>
 											<a href="academic.php"><i class="fa fa-graduation-cap"></i> Academic Qualifications</a>

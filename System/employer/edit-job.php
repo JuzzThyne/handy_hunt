@@ -118,24 +118,38 @@ foreach($result as $row)
 						<ul class="nav navbar-nav" id="responsive-menu">
 						
 							<li>
-							
-								<a href="../">Home</a>
-								
+
+								<a href="./">Home</a>
+
 							</li>
-							
+
 							<li>
 								<a href="../job-list.php">Job List</a>
 
 							</li>
-							
+							<!-- <li>
+								<a href="looking.php">Looking for Job</a>
+							</li> -->
+
 							<li>
-								<a href="../employers.php">Employers</a>
+								<a href="../employers.php">Company</a>
 							</li>
+
+							<?php
+									if ($user_online == true) {
+												if ($myrole == "employer") {
+													print '<li> 
+													<a href="../employees.php"> 
+													Applicant
+													</a>
+													</li>';
+												}	
+							} else {
 							
-							<li>
-								<a href="../employees.php">Employees</a>
-							</li>
-							
+							}
+							?>
+
+
 							<li>
 								<a href="../contact.php">Contact Us</a>
 							</li>

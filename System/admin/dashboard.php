@@ -83,10 +83,10 @@ $i = 1;
                     <i class="fas fa-file me-2"></i>Job Posts
                 </a>
                 <a href="employee.php" class="list-group-item list-group-item-action bg-transparent second-text">
-                    <i class="fas fa-users me-2"></i>Employee
+                    <i class="fas fa-users me-2"></i>Applicant
                 </a>
                 <a href="employer.php" class="list-group-item list-group-item-action bg-transparent second-text">
-                    <i class="fas fa-user me-2"></i>Employer
+                    <i class="fas fa-user me-2"></i>Company
                 </a>
                 <a href="email.php" class="list-group-item list-group-item-action bg-transparent second-text">
                     <i class="fas fa-paperclip me-2"></i>Email
@@ -181,11 +181,11 @@ $i = 1;
                 <div class="d-flex justify-content-around mb-3 bg-white p-4 mx-1 shadow-lg rounded">
                     <div>
                         <h3><?php echo $employeeCount; ?></h3>
-                        <p class="fs-5">Total Employee</p>
+                        <p class="fs-5">Total Applicant</p>
                     </div>
                     <div>
                         <h3><?php echo $employerCount; ?></h3>
-                        <p class="fs-5">Total Employer</p>
+                        <p class="fs-5">Total Company</p>
                     </div>
                 </div>
                 <!-- end -->

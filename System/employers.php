@@ -38,7 +38,7 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 	// $query2 = "SELECT * FROM tbl_jobs ORDER BY enc_id DESC";
 	$slc_country = "NULL";
 	$slc_category = "NULL";
-	$title = "Search Company";
+	$title = "Company";
 }
 ?>
 
@@ -71,16 +71,16 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/component.css" rel="stylesheet">
 
-	<link rel="stylesheet" href="icons/linearicons/style.css">
-	<link rel="stylesheet" href="icons/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="icons/simple-line-icons/css/simple-line-icons.css">
-	<link rel="stylesheet" href="icons/ionicons/css/ionicons.css">
-	<link rel="stylesheet" href="icons/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
-	<link rel="stylesheet" href="icons/rivolicons/style.css">
-	<link rel="stylesheet" href="icons/flaticon-line-icon-set/flaticon-line-icon-set.css">
-	<link rel="stylesheet" href="icons/flaticon-streamline-outline/flaticon-streamline-outline.css">
-	<link rel="stylesheet" href="icons/flaticon-thick-icons/flaticon-thick.css">
-	<link rel="stylesheet" href="icons/flaticon-ventures/flaticon-ventures.css">
+	<link rel="stylesheet" href="css/linearicons/style.css">
+	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css">
+	<link rel="stylesheet" href="css/ionicons/css/ionicons.css">
+	<link rel="stylesheet" href="css/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+	<link rel="stylesheet" href="css/rivolicons/style.css">
+	<link rel="stylesheet" href="css/flaticon-line-icon-set/flaticon-line-icon-set.css">
+	<link rel="stylesheet" href="css/flaticon-streamline-outline/flaticon-streamline-outline.css">
+	<link rel="stylesheet" href="css/flaticon-thick-icons/flaticon-thick.css">
+	<link rel="stylesheet" href="/flaticon-ventures/flaticon-ventures.css">
 
 	<link href="css/style.css" rel="stylesheet">
 
@@ -224,7 +224,7 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 					<form action="employers.php" method="GET" autocomplete="off">
 
 						<div class="second-search-result-inner">
-							<span class="labeling">Search a job</span>
+							<span class="labeling">Find Company</span>
 							<div class="row">
 
 								<!-- <div class="col-xss-12 col-xs-6 col-sm-6 col-md-5">
@@ -268,7 +268,7 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 								<?php
 								$servername = "localhost";
 								$username = "root";
-								$password = "";
+								$password = "HandyHunt2023";
 								$dbname = "job_portal";
 
 								// Create connection
@@ -502,7 +502,7 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 					<div class="GridLex-col-3_sm-12_xs-12">
 
 						<div class="sorting-header">
-							<h3 class="sorting-title">Random Companies</h3>
+							<h3 class="sorting-title">Other Companies</h3>
 						</div>
 
 					</div>
@@ -524,7 +524,7 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 							$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-							$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employer' ORDER BY RAND() LIMIT $page1,16");
+							$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employer' AND isAccept = '1' ORDER BY RAND() LIMIT $page1,16");
 							$stmt->execute();
 							$result = $stmt->fetchAll();
 

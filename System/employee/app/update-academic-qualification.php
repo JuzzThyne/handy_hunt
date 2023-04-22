@@ -27,7 +27,7 @@ $stmt->execute();
  header("location:../academic.php?r=3214");					  
 }catch(PDOException $e)
 {
-
+ echo "An error occurred: " . $e->getMessage();
 }
 
 

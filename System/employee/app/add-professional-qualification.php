@@ -28,7 +28,8 @@ header("location:../qualifications.php?r=2290");
 					  
 	}catch(PDOException $e)
     {
-  
+    echo "An error occurred: " . $e->getMessage();
+
     }
 	
 	

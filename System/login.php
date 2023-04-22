@@ -32,16 +32,16 @@ include 'constants/check-login.php';
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/component.css" rel="stylesheet">
 
-	<link rel="stylesheet" href="icons/linearicons/style.css">
-	<link rel="stylesheet" href="icons/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="icons/simple-line-icons/css/simple-line-icons.css">
-	<link rel="stylesheet" href="icons/ionicons/css/ionicons.css">
-	<link rel="stylesheet" href="icons/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
-	<link rel="stylesheet" href="icons/rivolicons/style.css">
-	<link rel="stylesheet" href="icons/flaticon-line-icon-set/flaticon-line-icon-set.css">
-	<link rel="stylesheet" href="icons/flaticon-streamline-outline/flaticon-streamline-outline.css">
-	<link rel="stylesheet" href="icons/flaticon-thick-icons/flaticon-thick.css">
-	<link rel="stylesheet" href="icons/flaticon-ventures/flaticon-ventures.css">
+	<link rel="stylesheet" href="css/linearicons/style.css">
+	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css">
+	<link rel="stylesheet" href="css/ionicons/css/ionicons.css">
+	<link rel="stylesheet" href="css/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+	<link rel="stylesheet" href="css/rivolicons/style.css">
+	<link rel="stylesheet" href="css/flaticon-line-icon-set/flaticon-line-icon-set.css">
+	<link rel="stylesheet" href="css/flaticon-streamline-outline/flaticon-streamline-outline.css">
+	<link rel="stylesheet" href="css/flaticon-thick-icons/flaticon-thick.css">
+	<link rel="stylesheet" href="css/flaticon-ventures/flaticon-ventures.css">
 
 	<link href="css/style.css" rel="stylesheet">
 	<script type="text/javascript">
@@ -247,9 +247,9 @@ include 'constants/check-login.php';
 														<div class="form-group">
 															<label>Password</label>
 															<input class="form-control" placeholder="Enter your password" name="password" required type="password">
-															<!-- <button class="btn btn-outline-secondary" type="button" id="btn-toggle-password">
+															<!--<button class="btn btn-outline-secondary" type="button" id="btn-toggle-password">
 															<i class="fa fa-eye"></i>
-															</button> -->
+															</button>-->
 														</div>
 													</div>
 													<script>

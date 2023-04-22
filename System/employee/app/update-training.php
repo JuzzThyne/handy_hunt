@@ -24,7 +24,7 @@ header("location:../training.php?r=5790");
 					  
 }catch(PDOException $e)
 {
-echo "Connection failed: " . $e->getMessage();
+echo "An error occurred: " . $e->getMessage();	);
 }
 
 }else{
@@ -47,7 +47,7 @@ header("location:../training.php?r=5790");
 					  
 }catch(PDOException $e)
 {
-
+echo "An error occurred: " . $e->getMessage();	
 }	
 }
 
