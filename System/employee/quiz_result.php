@@ -25,7 +25,7 @@ $jobid = $_POST['user_id'];
 
 
 // Connect to the database
-$conn = mysqli_connect('localhost', 'root', 'HandyHunt2023', 'job_portal');
+$conn = mysqli_connect('localhost', 'root', '', 'job_portal');
 
 // Check connection
 if (!$conn) {
