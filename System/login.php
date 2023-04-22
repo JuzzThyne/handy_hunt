@@ -247,9 +247,9 @@ include 'constants/check-login.php';
 														<div class="form-group">
 															<label>Password</label>
 															<input class="form-control" placeholder="Enter your password" name="password" required type="password">
-															<button class="btn btn-outline-secondary" type="button" id="btn-toggle-password">
+															<!-- <button class="btn btn-outline-secondary" type="button" id="btn-toggle-password">
 															<i class="fa fa-eye"></i>
-															</button>
+															</button> -->
 														</div>
 													</div>
 													<script>
