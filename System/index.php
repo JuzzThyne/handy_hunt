@@ -65,7 +65,7 @@ include 'constants/check-login.php';
 <body class="home">
 
 
-	<!-- <div id="introLoader" class="introLoading"></div> -->
+	<div id="introLoader" class="introLoading"></div>
 
 	<div class="container-wrapper">
 
@@ -189,7 +189,7 @@ include 'constants/check-login.php';
 				<div class="container">
 
 					<h1>Good Life Begins With A Good Company</h1>
-					<p>Finding your next job or career on Handy Hunt</p>
+					<p>Finding your next job or career on us</p>
 
 					<div class="main-search-form-wrapper">
 
