@@ -2,16 +2,14 @@
 
 require '../constants/settings.php';
 require 'constants/check-login.php';
+$apply_date = date('m/d/Y');
 
 error_reporting(0);
 
 
 if ($user_online == "true") {
-	if ($myrole == "employee") {
-        // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        //     // Code to handle form submission
-        //     // ...
-        // }
+	if ($myrole == "employee") {  
+        
 	} else {
 		header("location:../");
 	}
@@ -78,8 +76,18 @@ if (mysqli_query($conn, $sql)) {
     echo 'Error: ' . $sql . '<br>' . mysqli_error($conn);
 }
 
+$sqli = "INSERT INTO tbl_job_applications (member_no, job_id, application_date) VALUES ('$user_id', '$job_no', '$apply_date')";
+if (mysqli_query($conn, $sqli)) {
+    echo '<p>Your tbl has been saved.</p>';
+    // header("location:../job-list.php");
+    // echo $jobid;
+} else {
+    echo 'Error: ' . $sql . '<br>' . mysqli_error($conn);
+}
+
 // Close the database connection
 mysqli_close($conn);
+
 ?>
 
 <button > <a href="../"</a> Back to Home </button>
