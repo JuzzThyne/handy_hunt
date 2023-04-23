@@ -21,7 +21,7 @@ $stmt->execute();
  header("location:../language.php?r=9367");					  
 }catch(PDOException $e)
 {
-
+echo "An error occurred: " . $e->getMessage();	
 }
 	
 

@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
 <?php
-require '../constants/settings.php';
-require 'constants/check-login.php';
+include '../constants/settings.php';
+include 'constants/check-login.php';
 
 
 if ($user_online == "true") {
@@ -41,16 +41,16 @@ if ($user_online == "true") {
 	<link href="../css/main.css" rel="stylesheet">
 	<link href="../css/component.css" rel="stylesheet">
 
-	<link rel="stylesheet" href="../icons/linearicons/style.css">
-	<link rel="stylesheet" href="../icons/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../icons/simple-line-icons/css/simple-line-icons.css">
-	<link rel="stylesheet" href="../icons/ionicons/css/ionicons.css">
-	<link rel="stylesheet" href="../icons/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
-	<link rel="stylesheet" href="../icons/rivolicons/style.css">
-	<link rel="stylesheet" href="../icons/flaticon-line-icon-set/flaticon-line-icon-set.css">
-	<link rel="stylesheet" href="../icons/flaticon-streamline-outline/flaticon-streamline-outline.css">
-	<link rel="stylesheet" href="../icons/flaticon-thick-icons/flaticon-thick.css">
-	<link rel="stylesheet" href="../icons/flaticon-ventures/flaticon-ventures.css">
+	<link rel="stylesheet" href="../css/linearicons/style.css">
+	<link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../css/simple-line-icons/css/simple-line-icons.css">
+	<link rel="stylesheet" href="../css/ionicons/css/ionicons.css">
+	<link rel="stylesheet" href="../css/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+	<link rel="stylesheet" href="../css/rivolicons/style.css">
+	<link rel="stylesheet" href="../css/flaticon-line-icon-set/flaticon-line-icon-set.css">
+	<link rel="stylesheet" href="../css/flaticon-streamline-outline/flaticon-streamline-outline.css">
+	<link rel="stylesheet" href="../css/flaticon-thick-icons/flaticon-thick.css">
+	<link rel="stylesheet" href="../css/flaticon-ventures/flaticon-ventures.css">
 
 	<link href="../css/style.css" rel="stylesheet">
 
@@ -68,6 +68,8 @@ if ($user_online == "true") {
 	<div class="container-wrapper">
 
 		<header id="header">
+
+		<!--<div id="introLoader" class="introLoading"></div>-->
 
 			<nav class="navbar navbar-default navbar-fixed-top navbar-sticky-function">
 
@@ -96,9 +98,11 @@ if ($user_online == "true") {
 							<!-- <li>
 								<a href="looking.php">Looking for Job</a>
 							</li> -->
+
 							<li>
 								<a href="../employers.php">Company</a>
 							</li>
+
 							<?php
 									if ($user_online == true) {
 												if ($myrole == "employer") {
@@ -108,16 +112,11 @@ if ($user_online == "true") {
 													</a>
 													</li>';
 												}	
-							} else {							
+							} else {
+							
 							}
 							?>
-							<!-- <li>
-								<a href="../employers.php">Employers</a>
-							</li>
 
-							<li>
-								<a href="../employees.php">Employees</a>
-							</li> -->
 
 							<li>
 								<a href="../contact.php">Contact Us</a>
@@ -214,7 +213,7 @@ if ($user_online == "true") {
 										</li>
 
 										<li>
-											<a href="referees.php"><i class="fa fa-users"></i> Referees</a>
+											<a href="referees.php"><i class="fa fa-users"></i> Reference</a>
 										</li>
 										<!-- <li>
 											<a href="academic.php"><i class="fa fa-graduation-cap"></i> Academic Qualifications</a>

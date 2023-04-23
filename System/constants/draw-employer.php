@@ -46,9 +46,9 @@
 <div class="form-group"> 
 <label>Password</label>
 <input class="form-control" placeholder="Min 8 and Max 20 characters" name="password" required type="password"> 
-<button class="btn btn-outline-secondary" type="button" id="btn-toggle-password">
+<!--<button class="btn btn-outline-secondary" type="button" id="btn-toggle-password">
 						<i class="fa fa-eye"></i>
-						</button>
+						</button>-->
 </div>
 												
 </div>
@@ -58,9 +58,9 @@
 <div class="form-group"> 
 <label>Password Confirmation</label>
 <input class="form-control" placeholder="Re-type password again" name="confirmpassword" required type="password">
-<button class="form-control-append btn btn-outline-secondary" type="button" id="btn-toggle-password-one">
+<!--<button class="form-control-append btn btn-outline-secondary" type="button" id="btn-toggle-password-one">
 						<i class="fa fa-eye"></i>
-						</button> 
+						</button> -->
 </div>
 												
 </div>
@@ -76,7 +76,8 @@
 <ul>
   <li class="list"><button  onclick="return val();" type="submit" name="reg_mode" class="btn btn-primary">Register</button></li>
   <!-- <li class="list"><button class="btn btn-min" ><a href="register.php?p=Employer" class="btn-min-min btn-min">Signup as employer</a></button></li> -->
-  <li class="list" > <a href="register.php?p=Employee" class="list1">SIGNUP AS EMPLOYEE</a> </li>
+  <p>Register as Applicant? <span>Register <a href="register.php?p=Employee">Here</a></span></p>
+  <!-- <li class="list" > <a href="register.php?p=Employee" class="list1">SIGNUP AS EMPLOYEE</a> </li> -->
 </ul>
 <!-- <button  onclick="return val();" type="submit" name="reg_mode" class="btn btn-primary">Register</button> -->
 </div>

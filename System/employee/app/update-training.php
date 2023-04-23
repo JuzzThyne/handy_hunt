@@ -4,7 +4,14 @@ include '../constants/check-login.php';
 $training = ucwords($_POST['training']);
 $institution = ucwords($_POST['institution']);
 $timeframe = ucwords($_POST['timeframe']);
-$certificate = addslashes(file_get_contents($_FILES['certificate']['tmp_name']));
+
+// Check if certificate file was uploaded
+if(!empty($_FILES['certificate']['tmp_name'])) {
+    $certificate = addslashes(file_get_contents($_FILES['certificate']['tmp_name']));
+} else {
+    $certificate = "";
+}
+
 $training_id = $_POST['trainingid'];
 
 if ($certificate == "") {
@@ -24,7 +31,7 @@ header("location:../training.php?r=5790");
 					  
 }catch(PDOException $e)
 {
-echo "Connection failed: " . $e->getMessage();
+echo "An error occurred: " . $e->getMessage();
 }
 
 }else{
@@ -47,7 +54,7 @@ header("location:../training.php?r=5790");
 					  
 }catch(PDOException $e)
 {
-
+echo "An error occurred: " . $e->getMessage();	
 }	
 }
 

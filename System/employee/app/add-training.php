@@ -45,7 +45,7 @@ $stmt->execute();
 header("location:../training.php?r=1964");					  
 }catch(PDOException $e)
 {
-
+echo "An error occurred: " . $e->getMessage();	
 }
 	
 }

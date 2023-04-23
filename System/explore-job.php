@@ -100,9 +100,12 @@ if ($today_date > $closingdate) {
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Handy Hunt - <?php echo "$jobtitle"; ?></title>
+	<title>Handy Hunt -
+		<?php echo "$jobtitle"; ?>
+	</title>
 	<meta name="description" content="Online Job Management / Job Portal" />
-	<meta name="keywords" content="job, work, resume, applicants, application, employee, employer, hire, hiring, human resource management, hr, online job management, company, worker, career, recruiting, recruitment" />
+	<meta name="keywords"
+		content="job, work, resume, applicants, application, employee, employer, hire, hiring, human resource management, hr, online job management, company, worker, career, recruiting, recruitment" />
 	<meta name="author" content="BwireSoft">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta property="og:image" content="http://<?php echo "$actual_link"; ?>/images/banner.jpg" />
@@ -133,6 +136,7 @@ if ($today_date > $closingdate) {
 
 	<link href="css/style.css" rel="stylesheet">
 
+	<!-- 
 	<script type="text/javascript">
 		function update(str) {
 
@@ -148,7 +152,7 @@ if ($today_date > $closingdate) {
 					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 				}
 
-				xmlhttp.onreadystatechange = function() {
+				xmlhttp.onreadystatechange = function () {
 					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 						document.getElementById("data").innerHTML = xmlhttp.responseText;
 					}
@@ -161,8 +165,43 @@ if ($today_date > $closingdate) {
 			}
 
 		}
-	</script>
+	</script> 
+-->
 
+	<script type="text/javascript">
+		function update(val) {
+// var custom = val;
+			var txt;
+			var r = confirm("Are you sure you want to apply this job , you can not UNDO");
+			if (r == true) {
+				document.getElementById("data").innerHTML = "Please wait...";
+				var xmlhttp;
+
+				if (window.XMLHttpRequest) {
+					xmlhttp = new XMLHttpRequest();
+				} else {
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+
+				xmlhttp.onreadystatechange = function () {
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						document.getElementById("data").innerHTML = xmlhttp.responseText;
+					}
+				}
+
+				
+				// window.location.href = "employee/quiz_index.php?jobid="  + val;
+				window.location.href = "employee/quiz_index.php?id=" + encodeURIComponent(val);
+				
+				window.send();
+				// xmlhttp.open("GET", "employee/quiz_index.php");
+				// xmlhttp.send();
+			} else {
+
+			}
+
+		}
+	</script>
 
 </head>
 
@@ -205,16 +244,16 @@ if ($today_date > $closingdate) {
 							</li>
 
 							<?php
-									if ($user_online == true) {
-												if ($myrole == "employer") {
-													print '<li> 
+							if ($user_online == true) {
+								if ($myrole == "employer") {
+									print '<li> 
 													<a href="employees.php"> 
 													Applicant
 													</a>
 													</li>';
-												}	
+								}
 							} else {
-							
+
 							}
 							?>
 
@@ -252,7 +291,8 @@ if ($today_date > $closingdate) {
 
 
 		</header>
-		<div id="registerModal" class="modal fade login-box-wrapper" tabindex="-1" style="display: none;" data-backdrop="static" data-keyboard="false" data-replace="true">
+		<div id="registerModal" class="modal fade login-box-wrapper" tabindex="-1" style="display: none;"
+			data-backdrop="static" data-keyboard="false" data-replace="true">
 
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -264,10 +304,12 @@ if ($today_date > $closingdate) {
 				<div class="row gap-20">
 
 					<div class="col-sm-6 col-md-6">
-						<a href="register.php?p=Employer" class="btn btn-facebook btn-block mb-5-xs">Register as Employer</a>
+						<a href="register.php?p=Employer" class="btn btn-facebook btn-block mb-5-xs">Register as
+							Employer</a>
 					</div>
 					<div class="col-sm-6 col-md-6">
-						<a href="register.php?p=Employee" class="btn btn-facebook btn-block mb-5-xs">Register as Employee</a>
+						<a href="register.php?p=Employee" class="btn btn-facebook btn-block mb-5-xs">Register as
+							Employee</a>
 					</div>
 
 				</div>
@@ -288,7 +330,9 @@ if ($today_date > $closingdate) {
 					<ol class="breadcrumb-list booking-step">
 						<li><a href="job-list.php">All jobs</a></li>
 						<li><a href="company.php?ref=<?php echo "$compid"; ?>"><?php echo "$compname"; ?></a></li>
-						<li><span><?php echo "$jobtitle"; ?></span></li>
+						<li><span>
+								<?php echo "$jobtitle"; ?>
+							</span></li>
 					</ol>
 
 				</div>
@@ -307,7 +351,9 @@ if ($today_date > $closingdate) {
 
 								<div class="job-detail-header text-center">
 
-									<h2 class="heading mb-15"><?php echo "$jobtitle"; ?></h2>
+									<h2 class="heading mb-15">
+										<?php echo "$jobtitle"; ?>
+									</h2>
 
 									<div class="meta-div clearfix mb-25">
 										<span>at <a href="company.php?ref=<?php echo "$compid"; ?>"><?php echo "$compname"; ?></a> as </span>
@@ -317,7 +363,8 @@ if ($today_date > $closingdate) {
 									<ul class="meta-list clearfix">
 										<li>
 											<h4 class="heading">Location:</h4>
-											<?php echo "$jobcity"; ?> , <?php echo "$jobcountry"; ?>
+											<?php echo "$jobcity"; ?> ,
+											<?php echo "$jobcountry"; ?>
 										</li>
 										<li>
 											<h4 class="heading">Deadline:</h4>
@@ -349,7 +396,9 @@ if ($today_date > $closingdate) {
 										?>
 									</div>
 
-									<p><?php echo "$compbout"; ?></p>
+									<p>
+										<?php echo "$compbout"; ?>
+									</p>
 
 								</div>
 
@@ -357,15 +406,21 @@ if ($today_date > $closingdate) {
 
 									<h3>Job Description</h3>
 
-									<p><?php echo "$jobdescription"; ?></p>
+									<p>
+										<?php echo "$jobdescription"; ?>
+									</p>
 
 
 									<h3>Job Responsibilities</h3>
 
-									<p><?php echo "$jobrespo"; ?></p>
+									<p>
+										<?php echo "$jobrespo"; ?>
+									</p>
 
 									<h3>Requirements:</h3>
-									<p><?php echo "$jobreq"; ?></p>
+									<p>
+										<?php echo "$jobreq"; ?>
+									</p>
 
 								</div>
 
@@ -375,15 +430,26 @@ if ($today_date > $closingdate) {
 										if ($jobexpired == true) {
 											print '<button class="btn btn-primary disabled btn-hidden btn-lg collapsed"><i class="flaticon-line-icon-set-calendar"></i> This job is expired</button>';
 										} else {
+											// old condition here
+									
 											if ($myrole == "employee") {
-												print '<button'; ?> onclick="update(this.value)" <?php print ' value="' . $jobid . '" class="btn btn-primary btn-hidden btn-lg collapsed"><i class="flaticon-line-icon-set-pencil"></i> Apply this job</button>';
-												} else {
-												print '<button class="btn btn-primary disabled btn-hidden btn-lg collapsed"><i class="flaticon-line-icon-set-padlock"></i> Login as employee to apply</button>';
-												}
-												}
-												} else {
-												print '<button class="btn btn-primary disabled btn-hidden btn-lg collapsed"><i class="flaticon-line-icon-set-padlock"></i> Login to apply this job</button>';
-												}
+												?>
+												<button class="btn btn-primary btn-hidden btn-lg collapsed" value="<?php echo "$jobid"; ?>"
+													onclick="update(this.value)">
+													<i class="flaticon-line-icon-set-pencil"></i> Apply this job
+												</button>
+												<?php
+											} else {
+												?>
+												<button class="btn btn-primary disabled btn-hidden btn-lg collapsed">
+													<i class="flaticon-line-icon-set-padlock"></i> Login as employee to
+													apply</button>
+												<?php
+											}
+										}
+									} else {
+										print '<button class="btn btn-primary disabled btn-hidden btn-lg collapsed"><i class="flaticon-line-icon-set-padlock"></i> Login to apply this job</button>';
+									}
 									?>
 									<p id="data"></p>
 								</div>
@@ -397,7 +463,9 @@ if ($today_date > $closingdate) {
 
 									<ul class="nav" role="tablist">
 										<li role="presentation" class="active">
-											<h4><a href="#relatedJob1" role="tab" data-toggle="tab">More jobs from <?php echo "$compname"; ?></a></h4>
+											<h4><a href="#relatedJob1" role="tab" data-toggle="tab">More jobs from
+													<?php echo "$compname"; ?>
+												</a></h4>
 										</li>
 									</ul>
 
@@ -450,8 +518,9 @@ if ($today_date > $closingdate) {
 									</div>';
 															}
 
-													?>
-															<a href="explore-job.php?jobid=<?php echo $row['job_id']; ?>" class="recent-job-item clearfix">
+															?>
+															<a href="explore-job.php?jobid=<?php echo $row['job_id']; ?>"
+																class="recent-job-item clearfix">
 																<div class="GridLex-grid-middle">
 																	<div class="GridLex-col-6_sm-12_xs-12">
 																		<div class="job-position">
@@ -465,24 +534,32 @@ if ($today_date > $closingdate) {
 																				?>
 																			</div>
 																			<div class="content">
-																				<h4><?php echo $row['title']; ?></h4>
-																				<p><?php echo "$compname"; ?></p>
+																				<h4>
+																					<?php echo $row['title']; ?>
+																				</h4>
+																				<p>
+																					<?php echo "$compname"; ?>
+																				</p>
 																			</div>
 																		</div>
 																	</div>
 																	<div class="GridLex-col-3_sm-8-xs-8_xss-12 mt-10-xss">
 																		<div class="job-location">
-																			<i class="fa fa-map-marker text-primary"></i> <?php echo $row['country']; ?>
+																			<i class="fa fa-map-marker text-primary"></i>
+																			<?php echo $row['country']; ?>
 																		</div>
 																	</div>
 																	<div class="GridLex-col-3_sm-4_xs-4_xss-12">
 																		<?php echo "$sta"; ?>
 																		<!-- <span class="font12 block spacing1 font400 text-center"> Due - <?php echo "$post_month"; ?> <?php echo "$post_date"; ?>, <?php echo "$post_year"; ?></span> -->
-																		<span class="font12 block spacing1 font400 text-center"> Due - <?php echo "$closing"; ?></span>
+																		<span class="font12 block spacing1 font400 text-center">
+																			Due -
+																			<?php echo "$closing"; ?>
+																		</span>
 																	</div>
 																</div>
 															</a>
-													<?php
+															<?php
 
 
 														}
@@ -530,7 +607,8 @@ if ($today_date > $closingdate) {
 
 										<div class="footer-about-us">
 											<h5 class="footer-title">About Handy Hunt</h5>
-											<p>Handy Hunt is a job portal, online job management system developed by handyhunt group for capstone in 2022.</p>
+											<p>Handy Hunt is a job portal, online job management system developed by
+												handyhunt group for capstone in 2022.</p>
 
 										</div>
 

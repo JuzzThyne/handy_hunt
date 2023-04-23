@@ -119,7 +119,7 @@ if (isset($_GET['token'])) {
 					<div class="nav-mini-wrapper">
 						<ul class="nav-mini sign-in">
 							<li><a href="login.php">Login</a></li>
-							<li><a href="register.php?p=Employee">Register</a></li>
+							<!-- <li><a href="register.php?p=Employee">Register</a></li> -->
 						</ul>
 					</div>
 
