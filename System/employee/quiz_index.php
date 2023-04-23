@@ -79,7 +79,9 @@ if ($user_online == "true") {
     if (mysqli_num_rows($query) > 0) {
         foreach ($query as $row) {
              $cist = $row['category'];
-            echo $row['category'];
+            // echo $row['category'];
+            $job_no = $custom_id;
+
 
 
              $sql = "SELECT * FROM quiz_questions WHERE category = '$cist' ORDER BY RAND() LIMIT 10 ";
@@ -98,6 +100,7 @@ if ($user_online == "true") {
                 <?php echo "$myfname"; ?>
                 <?php echo "$mylname"; ?>
             </h4>
+            <input type="hidden" name="job_no" value="<?php echo $job_no; ?>">
             <input type="hidden" name="user_id" value="<?php echo $account_no; ?>">
             <?php
             while ($row = mysqli_fetch_assoc($result)) {

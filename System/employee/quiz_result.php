@@ -20,8 +20,9 @@ if ($user_online == "true") {
 }
 
 //declaration of variable
+$job_no = $_POST['job_no'];
 $user_id = $_POST['user_id'];
-$jobid = $_POST['user_id'];
+
 
 
 // Connect to the database
@@ -68,10 +69,11 @@ echo '</ol>';*/
 // Insert the score into the database
 // $user_id = 123; 
 // Replace with the ID of the logged-in user
-$sql = "INSERT INTO quiz_scores (user_id, score) VALUES ('$user_id', '$score')";
+$sql = "INSERT INTO quiz_scores (user_id, score, job_id, status) VALUES ('$user_id', '$score', '$job_no', '1')";
 if (mysqli_query($conn, $sql)) {
     echo '<p>Your score has been saved.</p>';
-    echo $jobid;
+    // header("location:../job-list.php");
+    // echo $jobid;
 } else {
     echo 'Error: ' . $sql . '<br>' . mysqli_error($conn);
 }
