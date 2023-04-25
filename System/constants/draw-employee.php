@@ -16,16 +16,16 @@
 
                     <div class="form-group">
                         <label>First Name</label>
-                        <input class="form-control" placeholder="Enter your first name" name="fname" required type="text">
+                        <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter your first name" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')" required>
+                        <!-- <span id="fname-error" class="error" name="fname-error"></span> -->
                     </div>
-
                 </div>
 
                 <div class="col-sm-12 col-md-12">
 
                     <div class="form-group">
                         <label>Middle Name</label>
-                        <input class="form-control" placeholder="Enter your middle name" name="mname" required type="text">
+                        <input type="text" class="form-control" id="mname" name="mname" placeholder="Enter your middle name" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
                     </div>
 
                 </div>
@@ -34,7 +34,7 @@
 
                     <div class="form-group">
                         <label>Last Name</label>
-                        <input class="form-control" placeholder="Enter your last name" name="lname" required type="text">
+                        <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter your last name" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')" required>
                     </div>
 
                 </div>
@@ -43,7 +43,7 @@
 
                     <div class="form-group">
                         <label>Email Address</label>
-                        <input class="form-control"  pattern=".+@gmail\.com" placeholder="Enter your email address" name="email" required type="email">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" pattern="^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com)$" required>
                     </div>
 
                 </div>
@@ -89,7 +89,6 @@
 </ul>
 </div>									
 </div>
-
 <script>
 var btnTogglePassword = document.getElementById("btn-toggle-password");
 var inputPassword = document.getElementsByName("password")[0];
@@ -118,6 +117,8 @@ btnTogglePassword1.innerHTML = "<i class='fa fa-eye'></i>";
 }
 });
 </script>
+
+
 
 
 

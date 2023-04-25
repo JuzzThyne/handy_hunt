@@ -26,7 +26,7 @@
 
 <div class="form-group"> 
 <label>Company Type</label>
-<input class="form-control" placeholder="Eg: partnership, corporation, etc" name="type" required type="text"> 
+<input class="form-control" placeholder="Eg: partnership, corporation, etc" name="type" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')" required type="text"> 
 </div>
 												
 </div>
@@ -36,7 +36,7 @@
 <div class="form-group"> 
 <label>Email Address</label>
 <!-- <input class="form-control"  pattern=".+@gmail\.com" placeholder="Enter your gmail/yahoo address" name="email" required type="text">  -->
-<input class="form-control"  pattern=".+@gmail\.com" placeholder="Enter your email address" name="email" required type="text"> 
+<input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" pattern="^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com)$" required>
 </div>
 												
 </div>

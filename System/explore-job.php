@@ -170,7 +170,6 @@ if ($today_date > $closingdate) {
 
 	<script type="text/javascript">
 		function update(val) {
-// var custom = val;
 			var txt;
 			var r = confirm("Are you sure you want to apply this job , you can not UNDO");
 			if (r == true) {
@@ -187,9 +186,7 @@ if ($today_date > $closingdate) {
 					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 						document.getElementById("data").innerHTML = xmlhttp.responseText;
 					}
-				}
-
-				
+				}		
 				// window.location.href = "employee/quiz_index.php?jobid="  + val;
 				window.location.href = "employee/quiz_index.php?id=" + encodeURIComponent(val);
 				
