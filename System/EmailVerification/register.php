@@ -63,7 +63,7 @@ if (isset($_POST["register"])) {
                 $mail->Port = 587;
 
                 //Recipients
-                $mail->setFrom('ucc.ams1971@gmail.com', 'AMS');
+                $mail->setFrom('ucc.ams1971@gmail.com', 'Handy Hunt Support');
 
                 //Add a recipient
                 $mail->addAddress($email, $firstname);
