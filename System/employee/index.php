@@ -69,6 +69,8 @@ if ($user_online == "true") {
 
 		<header id="header">
 
+		<!--<div id="introLoader" class="introLoading"></div>-->
+
 			<nav class="navbar navbar-default navbar-fixed-top navbar-sticky-function">
 
 				<div class="container">

@@ -9,6 +9,8 @@ $myid = $_SESSION['myid'];
 $myrole = $_SESSION['role'];
 $opt = $_GET['opt'];
 
+
+
 if ($myrole == "employee"){
 include '../constants/db_config.php';
 
