@@ -2,7 +2,7 @@
     <div class="login-box-wrapper">
 
         <div class="modal-header">
-            <h4 class="modal-title text-center">Create your account for free</h4>
+            <h4 class="modal-title text-center">Create your account</h4>
         </div>
 
         <div class="modal-body">
@@ -84,7 +84,7 @@
 <ul>
   <li class="list"><button  onclick="return val();" type="submit" name="reg_mode" class="btn btn-primary">Register</button></li>
   <!-- <li class="list"><button class="btn btn-min" ><a href="register.php?p=Employer" class="btn-min-min btn-min">Signup as employer</a></button></li> -->
-  <p>Register as Employer? <span>Register <a href="register.php?p=Employer">Here</a></span></p>
+  <p>Register as Company? <span>Register <a href="register.php?p=Employer">Here</a></span></p>
   <!-- <li class="list" > <a href="register.php?p=Employer" class="list1">SIGNUP AS EMPLOYER</a> </li> -->
 </ul>
 </div>									

@@ -225,7 +225,7 @@ include 'constants/check-login.php';
 										<div class="login-box-wrapper">
 
 											<div class="modal-header">
-												<h4 class="modal-title text-center">Access your account</h4>
+												<h4 class="modal-title text-center">LOGIN</h4>
 											</div>
 
 											<div class="modal-body">

@@ -8,6 +8,11 @@ require 'constants/check-login.php';
 
 if ($user_online == "true") {
     if ($myrole == "employee") {
+        // Retrieve 10 random questions from the table
+    $id = isset($_GET['id']) ? $_GET['id'] : '';
+
+    // Generate a custom ID based on the value of the "id" parameter
+    $custom_id = $id;
 
         require '../constants/db_config.php';
         try {
@@ -20,6 +25,30 @@ if ($user_online == "true") {
 
             foreach ($result as $row) {
                 $account_no = $row['member_no'];
+                try{
+                    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                    $stmt = $conn->prepare("SELECT * FROM quiz_scores WHERE user_id = '$account_no' AND job_id = '$custom_id'");
+                    $stmt->execute();
+                    $result = $stmt->fetchAll();
+
+                    foreach ($result as $row){
+                        $status_result = $row['status'];
+                        if($status_result == '1')
+                        {
+                            // echo 'nakapag exam na';
+                            
+                            header("location:../job-list.php?r=202021");
+
+                        }
+                    }
+                    
+
+                }
+                catch(PDOException $e){
+
+                }
                 // echo $account_no;
             ?>
             <?php
@@ -54,7 +83,7 @@ if ($user_online == "true") {
 <body>
     <?php
     // Connect to the database
-    $conn = mysqli_connect('localhost', 'root', '', 'job_portal');
+    $conn = mysqli_connect('localhost', 'root', 'HandyHunt2023', 'job_portal');
 
     // Check connection
     if (!$conn) {
@@ -64,14 +93,10 @@ if ($user_online == "true") {
     ?>
 
     <?php
-    // Retrieve 10 random questions from the table
-    $id = isset($_GET['id']) ? $_GET['id'] : '';
-
-    // Generate a custom ID based on the value of the "id" parameter
-    $custom_id = $id;
+    
 
     // Print the custom ID
-    echo $custom_id;
+    // echo $custom_id;
 
     $jobid = "SELECT * FROM tbl_jobs WHERE job_id = $custom_id ";
     $query = mysqli_query($conn, $jobid);
@@ -79,7 +104,9 @@ if ($user_online == "true") {
     if (mysqli_num_rows($query) > 0) {
         foreach ($query as $row) {
              $cist = $row['category'];
-            echo $row['category'];
+            // echo $row['category'];
+            $job_no = $custom_id;
+
 
 
              $sql = "SELECT * FROM quiz_questions WHERE category = '$cist' ORDER BY RAND() LIMIT 10 ";
@@ -95,9 +122,13 @@ if ($user_online == "true") {
         <form class="Qform rounded" method="post" action="quiz_result.php" id="quiz-form">
             <h3 class="title"><img class="logo" src="handyman-logo.png"></h3>
             <h4>
+                <?php echo "$account_no"; ?>
+                <br>
                 <?php echo "$myfname"; ?>
                 <?php echo "$mylname"; ?>
+
             </h4>
+            <input type="hidden" name="job_no" value="<?php echo $job_no; ?>">
             <input type="hidden" name="user_id" value="<?php echo $account_no; ?>">
             <?php
             while ($row = mysqli_fetch_assoc($result)) {

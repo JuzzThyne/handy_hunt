@@ -2,16 +2,14 @@
 
 require '../constants/settings.php';
 require 'constants/check-login.php';
+$apply_date = date('m/d/Y');
 
 error_reporting(0);
 
 
 if ($user_online == "true") {
-	if ($myrole == "employee") {
-        // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        //     // Code to handle form submission
-        //     // ...
-        // }
+	if ($myrole == "employee") {  
+        
 	} else {
 		header("location:../");
 	}
@@ -20,12 +18,13 @@ if ($user_online == "true") {
 }
 
 //declaration of variable
+$job_no = $_POST['job_no'];
 $user_id = $_POST['user_id'];
-$jobid = $_POST['user_id'];
+
 
 
 // Connect to the database
-$conn = mysqli_connect('localhost', 'root', '', 'job_portal');
+$conn = mysqli_connect('localhost', 'root', 'HandyHunt2023', 'job_portal');
 
 // Check connection
 if (!$conn) {
@@ -68,16 +67,27 @@ echo '</ol>';*/
 // Insert the score into the database
 // $user_id = 123; 
 // Replace with the ID of the logged-in user
-$sql = "INSERT INTO quiz_scores (user_id, score) VALUES ('$user_id', '$score')";
+$sql = "INSERT INTO quiz_scores (user_id, score, job_id, status) VALUES ('$user_id', '$score', '$job_no', '1')";
 if (mysqli_query($conn, $sql)) {
     echo '<p>Your score has been saved.</p>';
-    echo $jobid;
+    // header("location:../job-list.php");
+    // echo $jobid;
+} else {
+    echo 'Error: ' . $sql . '<br>' . mysqli_error($conn);
+}
+
+$sqli = "INSERT INTO tbl_job_applications (member_no, job_id, application_date) VALUES ('$user_id', '$job_no', '$apply_date')";
+if (mysqli_query($conn, $sqli)) {
+    echo '<p>Your tbl has been saved.</p>';
+    // header("location:../job-list.php");
+    // echo $jobid;
 } else {
     echo 'Error: ' . $sql . '<br>' . mysqli_error($conn);
 }
 
 // Close the database connection
 mysqli_close($conn);
+
 ?>
 
 <button > <a href="../"</a> Back to Home </button>

@@ -209,6 +209,65 @@ $job_title = $row['title'];
 			<div class="section sm">
 			
 				<div class="container">
+ 			<div class="sorting-wrappper">
+			
+						<div class="sorting-header">
+							<h3 class="sorting-title">Applicants Score for the job </</h3>
+						</div>
+
+						<table class="table table-borderless align-middle table-hover">
+                            <thead>
+                                <tr>
+
+                                    <th>User ID</th>
+                                    <th>Scores</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <?php
+								include '../constants/db_config.php';
+
+								$stmt = $conn->prepare("SELECT * FROM quiz_scores WHERE job_id = :jobid ORDER BY score DESC");
+								// $stmt = $conn->prepare("SELECT * FROM quiz_scores WHERE job_id = :jobid ORDER BY id LIMIT $page1,16");
+								$stmt->bindParam(':jobid', $job_id);
+								$stmt->execute();
+								$result = $stmt->fetchAll();
+								foreach($result as $row)
+									{
+
+										// echo "<tr>";
+										// echo "<td>".$row['user_id']."</td>";
+										$name = $row['user_id'];
+										// echo "<td>".$row['score']."</td>";
+										$score = $row['score'];
+										// echo "</tr>";	
+										$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE member_no = '$name'");
+										$stmt->execute();
+										$result = $stmt->fetchAll();
+										foreach($result as $row)
+											{
+												echo "<tr>";
+												echo "<td>".$row['first_name'] . " " . $row['middle_name'] . "</td>";
+												echo "<td>".$score."</td>" ;										
+												echo "</tr>";											
+											}
+																				
+									}
+
+								// include '../constants/db_config.php';
+
+								
+                                ?>
+
+                            </tbody>
+
+                        </table>
+
+						<?php
+								
+						?>						
+					</div>
 				
 					<div class="sorting-wrappper">
 			
@@ -237,7 +296,7 @@ $job_title = $row['title'];
                             $post_year = date_format(date_create_from_format('m/d/Y', $row['application_date']), 'Y');
                             $emp_id = $row['member_no'];
 							
-							$stmtb = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employee' AND member_no = '$emp_id' AND status = 'unemployed'");
+							$stmtb = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employee' AND member_no = '$emp_id'");
                             $stmtb->execute();
                             $resultb = $stmtb->fetchAll();
 							

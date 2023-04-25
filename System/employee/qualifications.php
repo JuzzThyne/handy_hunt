@@ -102,7 +102,7 @@ if (isset($_GET['page'])) {
 
 							<li>
 
-								<a href="./">Home</a>
+								<a href="../">Home</a>
 
 							</li>
 

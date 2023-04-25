@@ -275,7 +275,7 @@ if ($today_date > $closingdate) {
 							} else {
 								print '
 							<li><a href="login.php">Login</a></li>
-							<li><a  href="register.php?p=Employee">Register</a></li>';
+							';
 							}
 
 							?>
@@ -448,7 +448,7 @@ if ($today_date > $closingdate) {
 											}
 										}
 									} else {
-										print '<button class="btn btn-primary disabled btn-hidden btn-lg collapsed"><i class="flaticon-line-icon-set-padlock"></i> Login to apply this job</button>';
+										print '<button class="btn btn-primary btn-hidden btn-lg collapsed"><a href="login.php" style="color: white;">  Login to apply this job   </a></button>';
 									}
 									?>
 									<p id="data"></p>

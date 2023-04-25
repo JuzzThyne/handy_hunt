@@ -263,7 +263,7 @@ if (isset($_GET['page'])) {
 								}
 								?>
 								<form method="GET" action="">
-									<div class="col-xss-12 col-xs-6 col-sm-6 col-md-10">
+									<div class="col-xss-12 col-xs-6 col-sm-6 col-md-10 style="margin-top: 4px "">
 										<input type="text" name="query" class="form-control	">
 
 									</div>

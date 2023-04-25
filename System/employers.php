@@ -226,49 +226,11 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 						<div class="second-search-result-inner">
 							<span class="labeling">Find Company</span>
 							<div class="row">
-
-								<!-- <div class="col-xss-12 col-xs-6 col-sm-6 col-md-5">
-									<div class="form-group form-lg">
-										<select class="form-control" name="category" required />
-										<option value="">-Select Category-</option>
-										<?php
-										require 'constants/db_config.php';
-										try {
-											$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-											$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
-											$stmt = $conn->prepare("SELECT * FROM tbl_categories ORDER BY category");
-											$stmt->execute();
-											$result = $stmt->fetchAll();
-
-											foreach ($result as $row) {
-												$cat = $row['category'];
-												?>
-												<option <?php if ($slc_category == "$cat") {
-													print ' selected ';
-												} ?> value="<?php echo $row['category']; ?>"><?php echo $row['category']; ?>
-												</option>
-												<?php
-											}
-											$stmt->execute();
-										} catch (PDOException $e) {
-										}
-
-										?>
-
-										</select>
-									</div>
-								</div> -->
-
-
-
-
 								<!-- database config  -->
 								<?php
 								$servername = "localhost";
 								$username = "root";
-								$password = "";
+								$password = "HandyHunt2023";
 								$dbname = "job_portal";
 
 								// Create connection
@@ -280,25 +242,13 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 								}
 								?>
 								<form method="GET" action="">
-									<div class="col-xss-12 col-xs-6 col-sm-6 col-md-10">
-											<input type="text" name="query" class="form-control	">
-										
+									<div class="col-xss-12 col-xs-6 col-sm-6 col-md-10" style="margin-top: 4px ">
+											<input type="text" name="query" class="form-control	">	
 									</div>
 									<div class="col-xss-12 col-xs-6 col-sm-4 col-md-2">
 										<button name="search" value="✓" type="submit"
 											class="btn btn-block">Search</button>
 									</div>
-									<!-- <div class="col-xss-12 col-xs-6 col-sm-6 col-md-5">
-											<input type="text" name="query" class="form-control	">
-										
-									</div>
-									<div class="col-xss-12 col-xs-6 col-sm-4 col-md-2">
-										<button name="search" value="✓" type="submit"
-											class="btn btn-block">Search</button>
-									</div> -->
-
-									<!-- <input type="submit" value="search" name="search"> -->
-
 								</form>
 								<?php
 								// Check if the search form has been submitted
@@ -306,8 +256,8 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 									// Get the search query from the form
 									$search = mysqli_real_escape_string($conn, $_GET['query']);
 
-									// Prepare a SQL query to search for matching results
-									$sql = "SELECT * FROM tbl_city WHERE city_name LIKE '%$search%'";
+									
+									$sql = "SELECT * FROM tbl_users WHERE first_name LIKE '%$search%' OR email LIKE '%$search%' OR country LIKE '%$search%' OR phone LIKE '%$search%' OR website LIKE '%$search%'";
 
 									// Execute the SQL query
 									$result = mysqli_query($conn, $sql);
@@ -317,7 +267,7 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 										// Display the results
 										while ($row = mysqli_fetch_assoc($result)) {
 											// Display each row of data
-											$city_name = $row['city_name'];
+											$city_name = $row['first_name'];
 
 											// echo $row['city_name'];
 										}
@@ -326,58 +276,7 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 										echo "No results found.";
 									}
 								}
-								?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-								<!-- <div class="col-xss-12 col-xs-6 col-sm-6 col-md-5">
-										<div class="form-group form-lg">
-											<select class="form-control" name="country" required />
-											<option value="">-Select City-</option>
-											<!-- <?php
-											require 'constants/db_config.php';
-											try {
-												$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-												$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
-												$stmt = $conn->prepare("SELECT * FROM tbl_city ORDER BY city_name");
-												$stmt->execute();
-												$result = $stmt->fetchAll();
-
-												foreach ($result as $row) {
-													$cnt = $row['city_name'];
-													?>
-
-													<option <?php if ($slc_country == "$cnt") {
-														print ' selected ';
-													} ?> value="<?php echo $row['city_name']; ?>"><?php echo $row['city_name']; ?></option>
-											<?php
-												}
-												$stmt->execute();
-											} catch (PDOException $e) {
-											}
-
-											?> 
-								</select>
-							</div>
-						</div> -->
-
-						<!-- <div class="col-xss-12 col-xs-6 col-sm-4 col-md-2">
-									<button name="search" value="✓" type="submit" class="btn btn-block">Search</button>
-								</div> -->
+								?>			
 
 				</div>
 			</div>
@@ -390,16 +289,6 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 	</div>
 
 	<div class="breadcrumb-wrapper">
-
-		<!-- <div class="container">
-
-					<ol class="breadcrumb-list booking-step">
-						<li><a href="./">Home</a></li>
-						<li><span><?php echo "$title"; ?></span></li>
-					</ol>
-
-				</div> -->
-
 	</div>
 
 
@@ -429,7 +318,7 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 							$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 							$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-							$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employer' AND country = '$city_name' ORDER BY first_name LIMIT $page1,16");
+							$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employer' AND first_name = '$city_name' ORDER BY first_name LIMIT $page1,16");
 							$stmt->execute();
 							$result = $stmt->fetchAll();
 
@@ -590,7 +479,7 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 						$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-						$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employer' ORDER BY first_name");
+						$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employer' AND isAccept = '1' ORDER BY first_name");
 						$stmt->execute();
 						$result = $stmt->fetchAll();
 

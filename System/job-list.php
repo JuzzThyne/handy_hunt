@@ -314,6 +314,7 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 
 						<div class="sorting-header">
 							<h3 class="sorting-title"><?php echo "$title"; ?></h3>
+							<?php require 'constants/check_reply.php'; ?>
 						</div>
 
 
