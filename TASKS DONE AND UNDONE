@@ -14,3 +14,8 @@ Email for the score
 View password - DONE (note: aayusin nalang css)
 Login no register button - DONE
 Register button to be place in login - DONE
+
+
+ADD ROW IN TBL_USERS
+verification_code	varchar(255)	
+email_verified_at varchar(255)	->NULLABLE()
