@@ -208,7 +208,7 @@ if (isset($_GET['page'])) {
 					<form action="employees.php" method="GET" autocomplete="off">
 
 						<div class="second-search-result-inner">
-							<span class="labeling">Find Applicant</span>
+							<!-- <span class="labeling">Find Applicant</span> -->
 							<div class="row">
 								<!-- <div class="col-xss-12 col-xs-6 col-sm-6 col-md-5">
 									<div class="form-group form-lg">
@@ -262,8 +262,8 @@ if (isset($_GET['page'])) {
 									die("Connection failed: " . mysqli_connect_error());
 								}
 								?>
-								<form method="GET" action="">
-									<div class="col-xss-12 col-xs-6 col-sm-6 col-md-10 style="margin-top: 4px "">
+								<!-- <form method="GET" action="">
+									<div class="col-xss-12 col-xs-6 col-sm-6 col-md-10" style="margin-top: 4px ">
 										<input type="text" name="query" class="form-control	">
 
 									</div>
@@ -271,37 +271,23 @@ if (isset($_GET['page'])) {
 										<button name="search" value="✓" type="submit"
 											class="btn btn-block">Search</button>
 									</div>
-									<!-- <div class="col-xss-12 col-xs-6 col-sm-6 col-md-5">
-											<input type="text" name="query" class="form-control	">
-										
-									</div>
-									<div class="col-xss-12 col-xs-6 col-sm-4 col-md-2">
-										<button name="search" value="✓" type="submit"
-											class="btn btn-block">Search</button>
-									</div> -->
 
-									<!-- <input type="submit" value="search" name="search"> -->
-
-								</form>
+								</form> -->
 								<?php
 								// Check if the search form has been submitted
 								if (isset($_GET['query'])) {
 									// Get the search query from the form
 									$search = mysqli_real_escape_string($conn, $_GET['query']);
-
 									// Prepare a SQL query to search for matching results
-									$sql = "SELECT * FROM tbl_users WHERE title LIKE '%$search%'";
-
+									$sql = "SELECT * FROM tbl_users WHERE first_name LIKE '%$search%' OR email LIKE '%$search%' OR country LIKE '%$search%' OR phone LIKE '%$search%' OR website LIKE '%$search%'";
 									// Execute the SQL query
 									$result = mysqli_query($conn, $sql);
-
 									// Check if any results were found
 									if (mysqli_num_rows($result) > 0) {
 										// Display the results
 										while ($row = mysqli_fetch_assoc($result)) {
 											// Display each row of data
-											$title = $row['title'];
-
+											$title = $row['first_name'];
 											// echo $row['city_name'];
 										}
 									} else {
@@ -310,54 +296,6 @@ if (isset($_GET['page'])) {
 									}
 								}
 								?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-								<!-- <div class="col-xss-12 col-xs-6 col-sm-6 col-md-5">
-										<div class="form-group form-lg">
-											<select class="form-control" name="country" required />
-											<option value="">-Select City-</option>
-											<!-- <?php
-											require 'constants/db_config.php';
-											try {
-												$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-												$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
-												$stmt = $conn->prepare("SELECT * FROM tbl_users ORDER BY title");
-												$stmt->execute();
-												$result = $stmt->fetchAll();
-
-												foreach ($result as $row) {
-													$ttl = $row['title'];
-													?>
-
-													<option <?php if ($slc_title == "$ttl") {
-														print ' selected ';
-													} ?> value="<?php echo $row['title']; ?>"><?php echo $row['title']; ?></option>
-											<?php
-												}
-												$stmt->execute();
-											} catch (PDOException $e) {
-											}
-
-											?> 
-								</select>
-							</div>
-						</div> -->
-
 								<!-- <div class="col-xss-12 col-xs-6 col-sm-4 col-md-2">
 									<button name="search" value="✓" type="submit" class="btn btn-block">Search</button>
 								</div> -->
@@ -371,85 +309,224 @@ if (isset($_GET['page'])) {
 
 			</div>
 
-			<div class="section sm">
+			
+					<!-- <div class="section sm">
 
-				<div class="container">
+						<div class="container">
 
-					<div class="sorting-wrappper">
+							<div class="sorting-wrappper">
 
-						<div class="sorting-header">
-							<h3 class="sorting-title">Applicant</h3>
-						</div>
+								<div class="sorting-header">
+									<h3 class="sorting-title">Applicants</h3>
+								</div>
 
-					</div>
 
-					<div class="company-grid-wrapper top-company-2-wrapper">
+							</div>
 
-						<div class="GridLex-gap-30">
+							<div class="employee-grid-wrapper">
 
-							<div class="GridLex-grid-noGutter-equalHeight">
-								<?php
-								require 'constants/db_config.php';
-								try {
-									$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-									$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+								<div class="GridLex-gap-30">
 
-									$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employee' AND title = '$title' ORDER BY first_name LIMIT $page1,16");
-									$stmt->execute();
-									$result = $stmt->fetchAll();
+									<div class="GridLex-grid-noGutter-equalHeight">
+										<?php
+										require 'constants/db_config.php';
+										try {
+											$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+											$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+											$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employee' AND first_name = '$title' AND isAccept = '1' ORDER BY first_name LIMIT $page1,16");
+											$stmt->execute();
+											$result = $stmt->fetchAll();
 
-									foreach ($result as $row) {
-										$complogo = $row['avatar'];
-										?>
-										<div class="GridLex-col-3_sm-4_xs-6_xss-12">
+											foreach ($result as $row) {
+												$complogo = $row['avatar'];
+												?>
+												<div class="GridLex-col-3_sm-4_xs-6_xss-12">
 
-											<div class="top-company-2">
-												<a href="company.php?ref=<?php echo $row['member_no']; ?>">
-
-													<div class="image">
-														<?php
-														if ($complogo == null) {
-															print '<center><img class="autofit2" alt="image"  src="images/blank.png"/></center>';
-														} else {
-															echo '<center><img class="autofit2" alt="image"  src="data:image/jpeg;base64,' . base64_encode($complogo) . '"/></center>';
-														}
-														?>
-
-													</div>
-
-													<div class="content">
-														<h5 class="heading text-primary font700">
-															<?php echo $row['first_name']; ?>
-														</h5>
-														<p class="texting font600">
-															<?php echo $row['title']; ?>
-															<!-- <p class=""><?php echo $title; ?> -->
-														<p>
-															<!-- <p class="mata-p clearfix"><span class="text-primary font700">25</span> <span class="font13">Active job post(s)</span> <span class="pull-right icon"><i class="fa fa-long-arrow-right"></i></span></p> -->
-													</div>
-
-												</a>
-
+												<div class="employee-grid-item">
+									
+									<div class="action">
+											
+										<div class="row gap-10">
+										
+											<div class="col-xs-6 col-sm-6">
+												<div class="text-left">
+													<button class="btn"><i class="icon-heart"></i></button> 
+												</div>
 											</div>
+											
+											<div class="col-xs-6 col-sm-6">
+												<div class="text-right">
+													<a class="btn text-right" href="employee-detail.html"><i class="icon-action-redo"></i></a> 
+												</div>
+											</div>
+											
+										</div>
+										
+									</div>
+									
+									<a target="_blank" href="employee-detail.php?empid=<?php echo $row['member_no']; ?>" class="clearfix">
+										
+										<div class="image clearfix">
+										<?php 
+										if ($empavatar == null) {
+										print '<center><img class="img-circle autofit2" src="images/default.jpg" alt="image"  /></center>';
+										}else{
+										echo '<center><img class="img-circle autofit2" alt="image" src="data:image/jpeg;base64,'.base64_encode($empavatar).'"/></center>';	
+										}
+										?>
+										
+						
 
 										</div>
-										<?php
+										
+										<div class="content">
+										
+											<h4><?php echo $row['first_name'] ?> <?php echo $row['last_name'] ?></h4>
+											<p class="location"><i class="fa fa-map-marker"></i> <?php echo $row['country'] ?></p>
+											
+											<h6 class="text-primary">Education : <?php echo $row['education'] ?></h6>
+											
+											<h6 class="text-primary"><?php echo $row['title'] ?></h6>
+											
+										</div>
+									
+									</a>
+									
+								</div>
 
-									}
-								} catch (PDOException $e) {
-								} ?>
+												</div>
+												<?php
+
+											}
+										} catch (PDOException $e) {
+										} ?>
 
 
 
 
 
+
+									</div>
+
+								</div>
 
 							</div>
 
 						</div>
 
+					
+					</div> -->
+					<div class="section sm">
+
+						<div class="container">
+
+							<div class="sorting-wrappper">
+
+								<div class="sorting-header">
+									<h3 class="sorting-title">Applicants</h3>
+								</div>
+
+
+							</div>
+
+							<div class="employee-grid-wrapper">
+
+								<div class="GridLex-gap-30">
+
+									<div class="GridLex-grid-noGutter-equalHeight">
+										<?php
+										require 'constants/db_config.php';
+										try {
+											$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+											$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+											$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employee' AND isAccept = '1' ORDER BY first_name LIMIT $page1,16");
+											$stmt->execute();
+											$result = $stmt->fetchAll();
+
+											foreach ($result as $row) {
+												$complogo = $row['avatar'];
+												?>
+												<div class="GridLex-col-3_sm-4_xs-6_xss-12">
+
+												<div class="employee-grid-item">
+									
+									<div class="action">
+											
+										<div class="row gap-10">
+										
+											<div class="col-xs-6 col-sm-6">
+												<div class="text-left">
+													<button class="btn"><i class="icon-heart"></i></button> 
+												</div>
+											</div>
+											
+											<div class="col-xs-6 col-sm-6">
+												<div class="text-right">
+													<a class="btn text-right" href="employee-detail.html"><i class="icon-action-redo"></i></a> 
+												</div>
+											</div>
+											
+										</div>
+										
+									</div>
+									
+									<a target="_blank" href="employee-detail.php?empid=<?php echo $row['member_no']; ?>" class="clearfix">
+										
+										<div class="image clearfix">
+										<?php 
+										if ($empavatar == null) {
+										print '<center><img class="img-circle autofit2" src="images/default.jpg" alt="image"  /></center>';
+										}else{
+										echo '<center><img class="img-circle autofit2" alt="image" src="data:image/jpeg;base64,'.base64_encode($empavatar).'"/></center>';	
+										}
+										?>
+										
+						
+
+										</div>
+										
+										<div class="content">
+										
+											<h4><?php echo $row['first_name'] ?> <?php echo $row['last_name'] ?></h4>
+											<p class="location"><i class="fa fa-map-marker"></i> <?php echo $row['country'] ?></p>
+											
+											<h6 class="text-primary">Education : <?php echo $row['education'] ?></h6>
+											
+											<h6 class="text-primary"><?php echo $row['title'] ?></h6>
+											
+										</div>
+									
+									</a>
+									
+								</div>
+
+												</div>
+												<?php
+
+											}
+										} catch (PDOException $e) {
+										} ?>
+
+
+
+
+
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					
 					</div>
 
+					
+
+			
+		
 					<div class="pager-wrapper">
 
 						<ul class="pager-list">
@@ -459,7 +536,7 @@ if (isset($_GET['page'])) {
 							try {
 								$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 								$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-								$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employee' ORDER BY first_name");
+								$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employee' AND isAccept = '1'ORDER BY first_name");
 								$stmt->execute();
 								$result = $stmt->fetchAll();
 

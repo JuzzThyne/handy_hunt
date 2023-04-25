@@ -358,7 +358,7 @@ if ($user_online == "true") {
 
 												<div class="form-group">
 													<label>Phone Number</label>
-													<input type="text" name="phone" required class="form-control" value="<?php echo "$myphone"; ?>" placeholder="Enter your phone">
+													<input type="text" name="phone" required class="form-control" value="<?php echo "$myphone"; ?>" placeholder="Enter your phone" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if (this.value.length > 11) this.value = this.value.slice(0, 11);">
 												</div>
 
 											</div>
@@ -367,7 +367,7 @@ if ($user_online == "true") {
 
 												<div class="form-group">
 													<label>Email Address</label>
-													<input type="email" name="email" required class="form-control" value="<?php echo "$mymail"; ?>" placeholder="Enter your email">
+													<input type="email" name="email" required class="form-control" value="<?php echo "$mymail"; ?>" placeholder="Enter your email" readonly>
 												</div>
 
 											</div>

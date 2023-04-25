@@ -16,8 +16,9 @@
 
                     <div class="form-group">
                         <label>First Name</label>
-                        <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter your first name" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')" required>
+                        <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter your first name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"  required>
                         <!-- <span id="fname-error" class="error" name="fname-error"></span> -->
+
                     </div>
                 </div>
 
@@ -25,7 +26,7 @@
 
                     <div class="form-group">
                         <label>Middle Name</label>
-                        <input type="text" class="form-control" id="mname" name="mname" placeholder="Enter your middle name" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
+                        <input type="text" class="form-control" id="mname" name="mname" placeholder="Enter your middle name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
                     </div>
 
                 </div>
@@ -34,7 +35,7 @@
 
                     <div class="form-group">
                         <label>Last Name</label>
-                        <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter your last name" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')" required>
+                        <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter your last name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" required>
                     </div>
 
                 </div>
@@ -89,6 +90,8 @@
 </ul>
 </div>									
 </div>
+</form>
+
 <script>
 var btnTogglePassword = document.getElementById("btn-toggle-password");
 var inputPassword = document.getElementsByName("password")[0];
