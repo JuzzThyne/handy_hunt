@@ -251,7 +251,7 @@ if (isset($_GET['page'])) {
 								<?php
 								$servername = "localhost";
 								$username = "root";
-								$password = "HandyHunt2023";
+								$password = "";
 								$dbname = "job_portal";
 
 								// Create connection
