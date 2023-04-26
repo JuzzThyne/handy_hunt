@@ -3,18 +3,6 @@ CHANGES - 04/19/23
 Employee - applicant (papalitan) - DONE
 Employer - company (papalitan) - DONE
 Applicant - sorting (kapag company naka login nakalabas tong button nato, tapos pwede mag search ng applicant)
-Company - sorting(vice versa ng sa taas)
-Applicant active - view company and sort (SAME LANG NG NUMBER 5)
-Company active - view applicant and sort (SAME LANG NG NUMBER 6)
-Fixed login in server 
-Fixed no data in server - DONE
-Email verification for accept account
-Evaluation exam 
-Email for the score
-View password - DONE (note: aayusin nalang css)
-Login no register button - DONE
-Register button to be place in login - DONE
-
 
 ADD ROW IN TBL_USERS
 verification_code	varchar(255)	
