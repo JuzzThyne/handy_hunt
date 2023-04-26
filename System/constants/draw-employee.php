@@ -2,7 +2,7 @@
     <div class="login-box-wrapper">
 
         <div class="modal-header">
-            <h4 class="modal-title text-center">Create your account for free</h4>
+            <h4 class="modal-title text-center">Create your account</h4>
         </div>
 
         <div class="modal-body">
@@ -16,16 +16,17 @@
 
                     <div class="form-group">
                         <label>First Name</label>
-                        <input class="form-control" placeholder="Enter your first name" name="fname" required type="text">
-                    </div>
+                        <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter your first name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"  required>
+                        <!-- <span id="fname-error" class="error" name="fname-error"></span> -->
 
+                    </div>
                 </div>
 
                 <div class="col-sm-12 col-md-12">
 
                     <div class="form-group">
                         <label>Middle Name</label>
-                        <input class="form-control" placeholder="Enter your middle name" name="mname" required type="text">
+                        <input type="text" class="form-control" id="mname" name="mname" placeholder="Enter your middle name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
                     </div>
 
                 </div>
@@ -34,7 +35,7 @@
 
                     <div class="form-group">
                         <label>Last Name</label>
-                        <input class="form-control" placeholder="Enter your last name" name="lname" required type="text">
+                        <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter your last name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" required>
                     </div>
 
                 </div>
@@ -43,7 +44,7 @@
 
                     <div class="form-group">
                         <label>Email Address</label>
-                        <input class="form-control"  pattern=".+@gmail\.com" placeholder="Enter your email address" name="email" required type="email">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" pattern="^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com)$" required>
                     </div>
 
                 </div>
@@ -84,11 +85,12 @@
 <ul>
   <li class="list"><button  onclick="return val();" type="submit" name="reg_mode" class="btn btn-primary">Register</button></li>
   <!-- <li class="list"><button class="btn btn-min" ><a href="register.php?p=Employer" class="btn-min-min btn-min">Signup as employer</a></button></li> -->
-  <p>Register as Employer? <span>Register <a href="register.php?p=Employer">Here</a></span></p>
+  <p>Register as Company? <span>Register <a href="register.php?p=Employer">Here</a></span></p>
   <!-- <li class="list" > <a href="register.php?p=Employer" class="list1">SIGNUP AS EMPLOYER</a> </li> -->
 </ul>
 </div>									
 </div>
+</form>
 
 <script>
 var btnTogglePassword = document.getElementById("btn-toggle-password");
@@ -118,6 +120,8 @@ btnTogglePassword1.innerHTML = "<i class='fa fa-eye'></i>";
 }
 });
 </script>
+
+
 
 
 

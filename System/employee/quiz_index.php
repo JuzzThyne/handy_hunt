@@ -83,7 +83,7 @@ if ($user_online == "true") {
 <body>
     <?php
     // Connect to the database
-    $conn = mysqli_connect('localhost', 'root', '', 'job_portal');
+    $conn = mysqli_connect('localhost', 'root', 'HandyHunt2023', 'job_portal');
 
     // Check connection
     if (!$conn) {

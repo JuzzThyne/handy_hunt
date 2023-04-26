@@ -428,7 +428,7 @@ if ($user_online == "true") {
 
 												<div class="form-group">
 													<label>Education Level</label>
-													<input value="<?php echo "$myedu"; ?>" name="education" type="text" required class="form-control" placeholder="Eg: Diploma, Degree...etc">
+													<input value="<?php echo "$myedu"; ?>" name="education" type="text" required class="form-control" placeholder="Eg: Diploma, Degree...etc" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
 												</div>
 
 											</div>
@@ -437,7 +437,7 @@ if ($user_online == "true") {
 
 												<div class="form-group">
 													<label>Title</label>
-													<input value="<?php echo "$mytitle"; ?>" name="title" required type="text" class="form-control mb-15" placeholder="Eg: Computer Science, IT...etc">
+													<input value="<?php echo "$mytitle"; ?>" name="title" required type="text" class="form-control mb-15" placeholder="Eg: Computer Science, IT...etc" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
 												</div>
 
 											</div>
@@ -467,7 +467,7 @@ if ($user_online == "true") {
 
 												<div class="form-group">
 													<label>Brgy</label>
-													<input name="city" required type="text" class="form-control" value="<?php echo "$mycity"; ?>">
+													<input name="city" required type="text" class="form-control" value="<?php echo "$mycity"; ?>" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')">
 												</div>
 
 											</div>
@@ -639,8 +639,8 @@ if ($user_online == "true") {
 												if ($myavatar == null) {
 												} else {
 												?><a onclick="return confirm('Are you sure you want to delete your avatar ?')" class="btn btn-primary btn-inverse" href="app/drop-dp.php">Delete</a> <?php
-																																																	}
-																																																		?>
+													}
+													?>
 											</div>
 										</div>
 									</form>

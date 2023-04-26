@@ -284,8 +284,36 @@ include 'constants/check-login.php';
 
 
 	</div>
+	<!-- <script>
+    function validateFirstName() {
+    const fname = document.getElementsByName("fname")[0].value.trim();
+    const fnameError = document.getElementById("fname-error");
+    const lettersRegex = /^[a-zA-Z]+$/;
+
+    if (fname === "") {
+        fnameError.textContent = "First name is required";
+    } else if (!lettersRegex.test(fname)) {
+        fnameError.textContent = "First name can only contain letters";
+    } else {
+        fnameError.textContent = "";
+    }
+    }
+</script> -->
+
 	<script type="text/javascript">
 		function val() {
+			if (frm.fname.value == "")
+			{
+				alert("Enter the first name.");
+				frm.fname.focus();
+				return false;
+			}
+			if (frm.lname.value == "")
+			{
+				alert("Enter the last name.");
+				frm.fname.focus();
+				return false;
+			}
 			if (frm.password.value == "") {
 				alert("Enter the Password.");
 				frm.password.focus();

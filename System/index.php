@@ -3,6 +3,7 @@
 <?php
 include 'constants/settings.php';
 include 'constants/check-login.php';
+error_reporting(0);
 ?>
 
 <head>
@@ -42,10 +43,13 @@ include 'constants/check-login.php';
 	<link rel="stylesheet" href="css/flaticon-streamline-outline/flaticon-streamline-outline.css">
 	<link rel="stylesheet" href="css/flaticon-thick-icons/flaticon-thick.css">
 	<link rel="stylesheet" href="css/flaticon-ventures/flaticon-ventures.css">
-
+ 
+   
+    <!-- justine css -->
+	<link rel="stylesheet" href="css/justine.css">
 	<link href="css/style.css" rel="stylesheet">
-
-
+ 
+    
 </head>
 
 <style>
@@ -65,7 +69,7 @@ include 'constants/check-login.php';
 <body class="home">
 
 
-	<div id="introLoader" class="introLoading"></div>
+	<!--<div id="introLoader" class="introLoading"></div>-->
 
 	<div class="container-wrapper">
 
@@ -143,6 +147,30 @@ include 'constants/check-login.php';
 
 						</ul>
 					</div>
+ 				<div class="random">
+						<button class="hamburger-button">
+							<span class="hamburger-icon"></span>
+							</button>
+							<nav class="menu">
+							<ul>
+								<li><a href="index.php">Home</a></li>
+								<li><a href="job-list.php">Job List</a></li>
+								<li><a href="employers.php">Company</a></li>
+								<li><a href="contact.php">Contact Us</a></li>
+							</ul>
+							</nav>
+
+							<script>
+								const hamburgerButton = document.querySelector('.hamburger-button');
+								const hamburgerIcon = document.querySelector('.hamburger-icon');
+								const menu = document.querySelector('.menu');
+
+								hamburgerButton.addEventListener('click', function() {
+								hamburgerIcon.classList.toggle('open');
+								menu.classList.toggle('open');
+								});
+							</script>
+					</div>
 
 				</div>
 
@@ -189,7 +217,7 @@ include 'constants/check-login.php';
 				<div class="container">
 
 					<h1>Good Life Begins With A Good Company</h1>
-					<p>Finding your next job or career on us</p>
+					<p>Finding your next job or career on Us</p>
 
 					<div class="main-search-form-wrapper">
 

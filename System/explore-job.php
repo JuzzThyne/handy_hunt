@@ -170,7 +170,6 @@ if ($today_date > $closingdate) {
 
 	<script type="text/javascript">
 		function update(val) {
-// var custom = val;
 			var txt;
 			var r = confirm("Are you sure you want to apply this job , you can not UNDO");
 			if (r == true) {
@@ -187,9 +186,7 @@ if ($today_date > $closingdate) {
 					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 						document.getElementById("data").innerHTML = xmlhttp.responseText;
 					}
-				}
-
-				
+				}		
 				// window.location.href = "employee/quiz_index.php?jobid="  + val;
 				window.location.href = "employee/quiz_index.php?id=" + encodeURIComponent(val);
 				
@@ -275,7 +272,7 @@ if ($today_date > $closingdate) {
 							} else {
 								print '
 							<li><a href="login.php">Login</a></li>
-							<li><a  href="register.php?p=Employee">Register</a></li>';
+							';
 							}
 
 							?>
@@ -448,7 +445,7 @@ if ($today_date > $closingdate) {
 											}
 										}
 									} else {
-										print '<button class="btn btn-primary disabled btn-hidden btn-lg collapsed"><i class="flaticon-line-icon-set-padlock"></i> Login to apply this job</button>';
+										print '<button class="btn btn-primary btn-hidden btn-lg collapsed"><a href="login.php" style="color: white;">  Login to apply this job   </a></button>';
 									}
 									?>
 									<p id="data"></p>
