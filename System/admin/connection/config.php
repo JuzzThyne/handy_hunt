@@ -2,7 +2,7 @@
 
 $server = "localhost";
 $user = "root";
-$pass = "HandyHunt2023";
+$pass = "";
 $database = "job_portal";
 
 $conn = mysqli_connect($server, $user, $pass, $database);
