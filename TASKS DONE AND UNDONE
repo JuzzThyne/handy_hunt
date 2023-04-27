@@ -19,3 +19,10 @@ Register button to be place in login - DONE
 ADD ROW IN TBL_USERS
 verification_code	varchar(255)	
 email_verified_at varchar(255)	->NULLABLE()
+
+
+add new css in register.php - validation.css
+add new js in register.php - validate.js
+edit draw-employer
+edit draw-employee
+edit in register.php
