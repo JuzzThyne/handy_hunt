@@ -1,4 +1,4 @@
-<form name="frm" action="app/create-account.php" method="POST" autocomplete="off">
+<form name="frm" action="app/create-account.php" method="POST" autocomplete="off" onsubmit="return val();">
 <div class="login-box-wrapper">
 							
 <div class="modal-header">
@@ -17,7 +17,7 @@
 
 <div class="form-group"> 
 <label>Company Name</label>
-<input class="form-control" placeholder="Enter your company name" name="company" required type="text"> 
+<input class="form-control" placeholder="Enter your company name" name="company"  type="text" required> 
 </div>
 												
 </div>
@@ -26,7 +26,7 @@
 
 <div class="form-group"> 
 <label>Company Type</label>
-<input class="form-control" placeholder="Eg: partnership, corporation, etc" name="type" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')" required type="text"> 
+<input class="form-control" placeholder="Eg: partnership, corporation, etc" name="type" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"  type="text" required> 
 </div>
 												
 </div>
@@ -36,7 +36,7 @@
 <div class="form-group"> 
 <label>Email Address</label>
 <!-- <input class="form-control"  pattern=".+@gmail\.com" placeholder="Enter your gmail/yahoo address" name="email" required type="text">  -->
-<input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" pattern="^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com)$" required>
+<input class="form-control"  pattern=".+@gmail\.com" placeholder="Enter your email address" name="email"  type="text" required> 
 </div>
 												
 </div>
@@ -45,10 +45,16 @@
 												
 <div class="form-group"> 
 <label>Password</label>
-<input class="form-control" placeholder="Min 8 and Max 20 characters" name="password" required type="password"> 
+<input class="form-control" placeholder="Min 8 and Max 20 characters" id="password" name="password" type="password" required > 
 <!--<button class="btn btn-outline-secondary" type="button" id="btn-toggle-password">
 						<i class="fa fa-eye"></i>
 						</button>-->
+            <div id="message">
+            <p id="letter" class="invalid">A lowercase letter</p>
+            <p id="capital" class="invalid">A capital (uppercase) letter</p>
+            <p id="number" class="invalid">A number</p>
+            <p id="length" class="invalid">Minimum 8 characters</p>
+            </div>
 </div>
 												
 </div>
@@ -57,10 +63,11 @@
 												
 <div class="form-group"> 
 <label>Password Confirmation</label>
-<input class="form-control" placeholder="Re-type password again" name="confirmpassword" required type="password">
+<input class="form-control" placeholder="Re-type password again" id="confirmPassword" name="confirmpassword"  type="password" required>
 <!--<button class="form-control-append btn btn-outline-secondary" type="button" id="btn-toggle-password-one">
 						<i class="fa fa-eye"></i>
 						</button> -->
+            <p id="passwordMatchMessage" style="font-size: 13px;"></p>
 </div>
 												
 </div>
@@ -84,6 +91,9 @@
 										
 </div>
 </form>
+
+
+
 
 <script>
 var btnTogglePassword = document.getElementById("btn-toggle-password");
