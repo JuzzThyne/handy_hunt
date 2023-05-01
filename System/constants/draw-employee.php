@@ -1,4 +1,5 @@
-<form name="frm" action="app/create-account.php" method="POST" autocomplete="off">
+
+<form name="frm" action="app/create-account.php" method="POST" autocomplete="off" onsubmit="return val();">
     <div class="login-box-wrapper">
 
         <div class="modal-header">
@@ -9,16 +10,11 @@
 
             <div class="row gap-20">
 
-
-
-
                 <div class="col-sm-12 col-md-12">
 
                     <div class="form-group">
                         <label>First Name</label>
-                        <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter your first name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"  required>
-                        <!-- <span id="fname-error" class="error" name="fname-error"></span> -->
-
+                        <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter your first name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" required>
                     </div>
                 </div>
 
@@ -53,22 +49,30 @@
 
                     <div class="form-group">
                         <label>Password</label>
-                        <input class="form-control" placeholder="Min 8 and Max 20 characters" name="password" required type="password">
+                        <input class="form-control" placeholder="Min 8 and Max 20 characters" id="password" name="password" required type="password">
                         <!--<button class="btn btn-outline-secondary" type="button" id="btn-toggle-password">
 						<i class="fa fa-eye"></i>
 						</button>-->
+                        <div id="message">
+                        <p id="letter" class="invalid">A lowercase letter</p>
+                        <p id="capital" class="invalid">A capital (uppercase) letter</p>
+                        <p id="number" class="invalid">A number</p>
+                        <p id="length" class="invalid">Minimum 8 characters</p>
+                        </div>
                     </div>
-
                 </div>
 
                 <div class="col-sm-12 col-md-12">
 
                     <div class="form-group">
                         <label>Password Confirmation</label>
-                        <input class="form-control" placeholder="Re-type password again" name="confirmpassword" required type="password">
+                        <input class="form-control" placeholder="Re-type password again" id="confirmPassword" name="confirmpassword" required type="password">
                         <!--<button class="form-control-append btn btn-outline-secondary" type="button" id="btn-toggle-password-one">
 						<i class="fa fa-eye"></i>
 						</button>-->
+                        <p id="passwordMatchMessage" style="font-size: 13px;"></p>
+
+
                     </div>
 
                 </div>
@@ -88,9 +92,10 @@
   <p>Register as Company? <span>Register <a href="register.php?p=Employer">Here</a></span></p>
   <!-- <li class="list" > <a href="register.php?p=Employer" class="list1">SIGNUP AS EMPLOYER</a> </li> -->
 </ul>
-</div>									
+</div>
 </div>
 </form>
+
 
 <script>
 var btnTogglePassword = document.getElementById("btn-toggle-password");
@@ -120,6 +125,7 @@ btnTogglePassword1.innerHTML = "<i class='fa fa-eye'></i>";
 }
 });
 </script>
+
 
 
 

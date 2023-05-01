@@ -42,6 +42,8 @@ include 'constants/check-login.php';
 	<link rel="stylesheet" href="css/flaticon-thick-icons/flaticon-thick.css">
 	<link rel="stylesheet" href="css/flaticon-ventures/flaticon-ventures.css">
 
+	
+	<link href="css/validation.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
 
 </head>
@@ -284,46 +286,30 @@ include 'constants/check-login.php';
 
 
 	</div>
-	<!-- <script>
-    function validateFirstName() {
-    const fname = document.getElementsByName("fname")[0].value.trim();
-    const fnameError = document.getElementById("fname-error");
-    const lettersRegex = /^[a-zA-Z]+$/;
-
-    if (fname === "") {
-        fnameError.textContent = "First name is required";
-    } else if (!lettersRegex.test(fname)) {
-        fnameError.textContent = "First name can only contain letters";
-    } else {
-        fnameError.textContent = "";
-    }
-    }
-</script> -->
-
 	<script type="text/javascript">
 		function val() {
-			if (frm.fname.value == "")
-			{
-				alert("Enter the first name.");
-				frm.fname.focus();
-				return false;
-			}
-			if (frm.lname.value == "")
-			{
-				alert("Enter the last name.");
-				frm.fname.focus();
-				return false;
-			}
-			if (frm.password.value == "") {
-				alert("Enter the Password.");
-				frm.password.focus();
-				return false;
-			}
-			if ((frm.password.value).length < 8) {
-				alert("Password should be minimum 8 characters.");
-				frm.password.focus();
-				return false;
-			}
+			// if (frm.fname.value == "")
+			// {
+			// 	alert("Enter the first name.");
+			// 	frm.fname.focus();
+			// 	return false;
+			// }
+			// if (frm.lname.value == "")
+			// {
+			// 	alert("Enter the last name.");
+			// 	frm.fname.focus();
+			// 	return false;
+			// }
+			// if (frm.password.value == "") {
+			// 	alert("Enter the Password.");
+			// 	frm.password.focus();
+			// 	return false;
+			// }
+			// if ((frm.password.value).length < 8) {
+			// 	alert("Password should be minimum 8 characters.");
+			// 	frm.password.focus();
+			// 	return false;
+			// }
 			if (!frm.password.value.match(/[a-z]/)) {
 				alert("Password should contains lowercase letters.");
 				frm.password.focus();
@@ -362,6 +348,11 @@ include 'constants/check-login.php';
 	<div id="back-to-top">
 		<a href="#"><i class="ion-ios-arrow-up"></i></a>
 	</div>
+
+
+	<!-- Justine's Javascript -->
+	<script type="text/javascript" src="js/validate.js"></script>
+
 
 	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
