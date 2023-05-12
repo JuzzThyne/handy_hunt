@@ -242,13 +242,14 @@ $job_title = $row['title'];
 										// echo "<td>".$row['score']."</td>";
 										$score = $row['score'];
 										// echo "</tr>";	
-										$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE member_no = '$name'");
+										$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE member_no = '$name' AND status = 'unemployed'");
 										$stmt->execute();
 										$result = $stmt->fetchAll();
 										foreach($result as $row)
 											{
 												echo "<tr>";
-												echo "<td>".$row['first_name'] . " " . $row['middle_name'] . "</td>";
+												//echo "<td>".$row['first_name'] . " " . $row['middle_name'] . "</td>";
+ 											    echo "<td>".$row['first_name'] . " " . $row['middle_name'] . " " . $row['last_name'] ."</td>";
 												echo "<td>".$score."</td>" ;										
 												echo "</tr>";											
 											}
@@ -296,7 +297,8 @@ $job_title = $row['title'];
                             $post_year = date_format(date_create_from_format('m/d/Y', $row['application_date']), 'Y');
                             $emp_id = $row['member_no'];
 							
-							$stmtb = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employee' AND member_no = '$emp_id'");
+							$stmtb = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employee' AND member_no = '$emp_id' AND status = 'unemployed'");
+ 						    //$stmtb = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employee' AND member_no = '$emp_id'");
                             $stmtb->execute();
                             $resultb = $stmtb->fetchAll();
 							
@@ -356,28 +358,12 @@ $job_title = $row['title'];
                                                 <h6 class="text-primary"><?php echo $rowb['title'] ?></h6>
 												<?php echo "$post_month"; ?> <?php echo "$post_date"; ?>, <?php echo "$post_year"; ?><br>
 											</div>
-											<?php 
-										if (isset($_POST['submit1']))
-										{
-											//$stat = "accepted";
-											
-											$stmtb = $conn->prepare("UPDATE tbl_users SET status = 'hired' WHERE role = 'employee' AND member_no = '$emp_id'");
-                            				$stmtb->execute();
-											
-										}
-										else if(isset($_POST['submit2']))
-										{
-											//$stat = "rejected";
-											$stmtb = $conn->prepare("DELETE FROM tbl_job_applications WHERE job_id = '$job_id' AND member_no = '$emp_id'");
-                            				$stmtb->execute();
-										}
-										else
-										{
-											//$stat = "not selected";							
-										}	
+										<?php 
+										
 										?>
-										<form action="" method="POST">
-										<!-- <h6> Status: <?php echo $stat ?></h6> -->
+										<form action="app/Accept.php" method="POST">
+										<h6> Status: <?php echo $rowb['status'] ?></h6>
+  									    <input type="hidden" name="user_id" value="<?= $rowb['member_no']; ?>">
 										<button type="submit" name="submit1"> Accept </button>
 										<button type="submit" name="submit2"> Reject </button>
 										</form>

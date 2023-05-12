@@ -230,7 +230,7 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 								<?php
 								$servername = "localhost";
 								$username = "root";
-								$password = "";
+								$password = "HandyHunt2023";
 								$dbname = "job_portal";
 
 								// Create connection
@@ -268,7 +268,8 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 										while ($row = mysqli_fetch_assoc($result)) {
 											// Display each row of data
 											$city_name = $row['first_name'];
-
+                                            $categ = $row['title'];
+											$country = $row['country'];
 											// echo $row['city_name'];
 										}
 									} else {
@@ -318,7 +319,7 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 							$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 							$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-							$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employer' AND first_name = '$city_name' ORDER BY first_name LIMIT $page1,16");
+							$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employer' AND first_name = '$city_name' LIMIT $page1,16");
 							$stmt->execute();
 							$result = $stmt->fetchAll();
 
@@ -418,6 +419,7 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 							$result = $stmt->fetchAll();
 
 							foreach ($result as $row) {
+ 						        
 								$complogo = $row['avatar'];
 								?>
 								<div class="GridLex-col-3_sm-4_xs-6_xss-12">
@@ -430,7 +432,10 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 												if ($complogo == null) {
 													print '<center><img class="autofit2" alt="image"  src="images/blank.png"/></center>';
 												} else {
-													echo '<center><img class="autofit2" alt="image"  src="data:image/jpeg;base64,' . base64_encode($complogo) . '"/></center>';
+													//echo '<center><img class="autofit2" alt="image"  src="data:image/jpeg;base64,' . base64_encode($complogo) . '"/></center>';
+ 												      echo '<center><img class="autofit2" alt="image" style="width: 400px; height: 100px;" src="data:image/jpeg;base64,' . base64_encode($complogo) . '"/></center>';
+
+
 												}
 												?>
 
@@ -568,7 +573,7 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 									<li><a href="./">Home</a></li>
 									<li><a href="job-list.php">Job List</a></li>
 									<li><a href="employers.php">Company</a></li>
-									<li><a href="employees.php">Applicant</a></li>
+									<!--<li><a href="employees.php">Applicant</a></li>-->
 									<li><a href="contact.php">Contact Us</a></li>
 									<li><a href="#">Go to top</a></li>
 

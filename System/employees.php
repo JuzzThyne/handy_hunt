@@ -251,7 +251,7 @@ if (isset($_GET['page'])) {
 								<?php
 								$servername = "localhost";
 								$username = "root";
-								$password = "";
+								$password = "HandyHunt2023";
 								$dbname = "job_portal";
 
 								// Create connection
@@ -338,7 +338,7 @@ if (isset($_GET['page'])) {
 											$result = $stmt->fetchAll();
 
 											foreach ($result as $row) {
-												$complogo = $row['avatar'];
+												$empavatar = $row['avatar'];
 												?>
 												<div class="GridLex-col-3_sm-4_xs-6_xss-12">
 
@@ -356,7 +356,7 @@ if (isset($_GET['page'])) {
 											
 											<div class="col-xs-6 col-sm-6">
 												<div class="text-right">
-													<a class="btn text-right" href="employee-detail.html"><i class="icon-action-redo"></i></a> 
+													<a class="btn text-right" href="employee-detail.php"><i class="icon-action-redo"></i></a> 
 												</div>
 											</div>
 											
@@ -369,8 +369,10 @@ if (isset($_GET['page'])) {
 										<div class="image clearfix">
 										<?php 
 										if ($empavatar == null) {
+ 									    print '<center><img class="img-circle autofit2" alt="image" src="data:image/jpeg;base64,'.base64_encode($empavatar).'"/></center>';
 										print '<center><img class="img-circle autofit2" src="images/default.jpg" alt="image"  /></center>';
 										}else{
+ 									    echo '$empavatar';
 										echo '<center><img class="img-circle autofit2" alt="image" src="data:image/jpeg;base64,'.base64_encode($empavatar).'"/></center>';	
 										}
 										?>
@@ -444,7 +446,7 @@ if (isset($_GET['page'])) {
 											$result = $stmt->fetchAll();
 
 											foreach ($result as $row) {
-												$complogo = $row['avatar'];
+												$empavatar = $row['avatar'];
 												?>
 												<div class="GridLex-col-3_sm-4_xs-6_xss-12">
 
@@ -475,6 +477,7 @@ if (isset($_GET['page'])) {
 										<div class="image clearfix">
 										<?php 
 										if ($empavatar == null) {
+ 									    
 										print '<center><img class="img-circle autofit2" src="images/default.jpg" alt="image"  /></center>';
 										}else{
 										echo '<center><img class="img-circle autofit2" alt="image" src="data:image/jpeg;base64,'.base64_encode($empavatar).'"/></center>';	

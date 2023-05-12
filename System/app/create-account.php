@@ -1,10 +1,4 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-
-//Load Composer's autoloader
-require 'vendor/autoload.php';
 date_default_timezone_set('Asia/Manila');
 
 if (isset($_POST['reg_mode'])) {
@@ -97,7 +91,6 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $stmt = $conn->prepare("INSERT INTO tbl_users (first_name,middle_name, last_name, email, last_login, login, role, member_no, status, isAccept) 
 	VALUES (:fname,:mname, :lname, :email, :lastlogin, :login, :role, :memberno, '$stat', '0')");
-
     $stmt->bindParam(':fname', $fname);
     $stmt->bindParam(':mname', $mname);
     $stmt->bindParam(':lname', $lname);
@@ -134,7 +127,6 @@ function register_as_employer() {
         $stmt = $conn->prepare("INSERT INTO tbl_users (first_name, title, email, last_login, login, role, member_no, isAccept) 
             VALUES (:fname, :title, :email, :lastlogin, :login, :role, :memberno, '0')");
         
-        
         $stmt->bindParam(':fname', $cname);
         $stmt->bindParam(':title', $ctype);
         $stmt->bindParam(':email', $email);
@@ -143,73 +135,6 @@ function register_as_employer() {
         $stmt->bindParam(':role', $role);
         $stmt->bindParam(':memberno', $comp_no);
         $stmt->execute();
-        $mail = new PHPMailer(true);
-    try {
-        
-    
-        //Enable verbose debug output
-        $mail->SMTPDebug = 0; //SMTP::DEBUG_SERVER;
-
-        //Send using SMTP
-        $mail->isSMTP();
-
-        //Set the SMTP server to send through
-        $mail->Host = 'smtp.gmail.com';
-
-        //Enable SMTP authentication
-        $mail->SMTPAuth = true;
-
-        //SMTP username
-        $mail->Username = 'ucc.ams1971@gmail.com';
-
-        //SMTP password
-        $mail->Password = 'yalotkexnyitlwir';
-
-        //Enable TLS encryption;
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-
-        //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
-        $mail->Port = 587;
-
-        //Recipients
-        $mail->setFrom('ucc.ams1971@gmail.com', 'Handy Hunt Support');
-
-        //Add a recipient
-        $mail->addAddress($email, $cname);
-
-        //Set email format to HTML
-        $mail->isHTML(true);
-
-        $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
-
-        $mail->Subject = 'Email verification';
-        $mail->Body    = '<p>Your verification code is: <b style="font-size: 30px;">' . $verification_code . '</b></p>';
-
-        $mail->send();
-        // echo 'Message has been sent';
-
-        $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
-
-        // connect with database
-        // $conn = mysqli_connect("localhost", "root", "", "job_portal");
-
-
-        // insert in users table
-        // $sql = "INSERT INTO tbl_users (first_name, title, email, last_login, login, role, member_no, isAccept, verification_code, email_verified_at) 
-        // VALUES (:fname, :title, :email, :lastlogin, :login, :role, :memberno, '0', '$verification_code', NULL)";
-        // mysqli_query($conn, $sql);
-
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $stmt = $conn->prepare("INSERT INTO tbl_users (first_name, title, email, last_login, login, role, member_no, isAccept, verification_code, email_verified_at) VALUES (:fname, :title, :email, :lastlogin, :login, :role, :memberno, '0', '$verification_code', NULL)");
-
-        header("Location: email-verification.php?email=" . $email);
-        // header("Location: ../register.php?email=" . $email);
-        exit();
-    } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-    }
         
         header("Location:../register.php?p=Employer&r=1123");
         exit;

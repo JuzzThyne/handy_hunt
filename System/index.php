@@ -70,7 +70,7 @@ error_reporting(0);
 
 
 	<!--<div id="introLoader" class="introLoading"></div>-->
-
+    <div id="introLoader" class="introLoading"></div>
 	<div class="container-wrapper">
 
 		<header id="header">
@@ -403,7 +403,7 @@ error_reporting(0);
 						?>
 								<div class="col-xss-12 col-xs-6 col-sm-4 col-md-3">
 
-									<div class="top-company">
+									<div class="top-company" style="height: 220px;">
 										<div class="image">
 											<?php
 											if ($complogo == null) {
@@ -529,7 +529,7 @@ error_reporting(0);
 												</div>
 												<div class="GridLex-col-2_xs-4_xss-12">
 													<?php echo "$sta"; ?>
-													<span class="font12 block spacing1 font400 text-center">Due - <?php echo "$post_month"; ?> <?php echo "$post_date"; ?>, <?php echo "$post_year"; ?></span>
+													<span class="font12 block spacing1 font400 text-center">End - <?php echo "$post_month"; ?> <?php echo "$post_date"; ?>, <?php echo "$post_year"; ?></span>
 												</div>
 											</div>
 										</a>
@@ -586,7 +586,7 @@ error_reporting(0);
 											<li><a href="./">Home</a></li>
 											<li><a href="job-list.php">Job List</a></li>
 											<li><a href="employers.php">Company</a></li>
-											<li><a href="employees.php">Applicant</a></li>
+											<!--<li><a href="employees.php">Applicant</a></li>-->
 											<li><a href="contact.php">Contact Us</a></li>
 											<li><a href="#">Go to top</a></li>
 

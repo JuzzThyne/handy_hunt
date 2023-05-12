@@ -276,6 +276,10 @@ if (isset($_GET['empid'])) {
 											<h4 class="heading">Email: </h4>
 											<?php echo "$mymail"; ?>
 										</li>
+ 									    <li>
+											<h4 class="heading">Status: </h4>
+											<?php echo "$status"; ?>
+										</li>
 										<li>
 											<div class="container">
 												<?php
@@ -299,32 +303,6 @@ if (isset($_GET['empid'])) {
 
 												?>
 											</div>
-
-											<h4 class="heading">Status </h4>
-											<div class="progress">
-												<div class="<?php echo $stat_color ?>" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-													<?php echo $work_stat ?>
-												</div>
-											</div>
-											<?php
-											if ($isLooking == '1') {
-											?>
-												<span class="badge bg-progress-bar progress-bar-striped bg-success">
-													Looking for a Job
-												</span>
-
-											<?php
-											} else {
-											?>
-												<span class="badge bg-progress-bar progress-bar-striped bg-danger">
-													Not Looking for a Job
-												</span>
-
-											<?php
-											}
-
-
-											?>
 										</li>
 									</ul>
 

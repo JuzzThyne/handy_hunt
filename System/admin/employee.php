@@ -26,22 +26,87 @@
 
 
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/autoload.php';
+
 require 'connection/config.php';
 session_start();
 
+$mail = new PHPMailer(true);
 if (isset($_POST['updateActive'])) {
     $updated_id = $_POST['update_id'];
+    $update_email = $_POST['update_email'];
+    
 
-    $query = "UPDATE tbl_users SET isAccept='0' WHERE id='$updated_id'";
-    $query_run = mysqli_query($conn, $query);
-    echo "<script>alert('success')</script>";
+    try {
+        // Server settings
+        $mail->isSMTP();                                            
+        $mail->Host       = 'smtp.gmail.com';                     
+        $mail->SMTPAuth   = true;                                   
+        $mail->Username   = 'handyhunt123@gmail.com';                    
+        $mail->Password   = 'ztzcxwqbanwddqhq';                               
+        $mail->SMTPSecure = 'tls';                                   
+        $mail->Port       = 587;                                    
+    
+        // Recipients
+        $mail->setFrom('handyhunt123@gmail.com', 'Handy Hunt Support');
+        $mail->addAddress($update_email);               
+    
+        // Content
+        $mail->isHTML(true);      
+        //    SET AS INACTIVE
+        $mail->Subject = 'De-Activation Notification Email';
+        $mail->Body    = '<p>Dear User, We are pleased to inform you that your account ' . $update_email . ' has been successfully de-activated. </p>';
+    
+        $mail->send();
+        echo "<script>alert('Notification email sent successfully!')</script>";
+        $query = "UPDATE tbl_users SET isAccept='0' WHERE id='$updated_id'";
+        $query_run = mysqli_query($conn, $query);
+    } catch (Exception $e) {
+        echo "Mailer Error: {$mail->ErrorInfo}";
+    }
+
+    
 }
+
 if (isset($_POST['updateInactive'])) {
     $updated_id = $_POST['update_id'];
+    $update_email = $_POST['update_email'];
 
-    $query = "UPDATE tbl_users SET isAccept='1' WHERE id='$updated_id'";
-    $query_run = mysqli_query($conn, $query);
-    echo "<script>alert('success')</script>";
+
+
+    try {
+        // Server settings
+        $mail->isSMTP();                                            
+        $mail->Host       = 'smtp.gmail.com';                     
+        $mail->SMTPAuth   = true;                                   
+        $mail->Username   = 'handyhunt123@gmail.com';                    
+        $mail->Password   = 'ztzcxwqbanwddqhq';                              
+        $mail->SMTPSecure = 'tls';                                   
+        $mail->Port       = 587;                                    
+    
+        // Recipients
+        $mail->setFrom('handyhunt123@gmail.com', 'Handy Hunt Support');
+        $mail->addAddress($update_email);               
+    
+        // Content
+        $mail->isHTML(true);
+        // SET AS ACTIVE                                 
+        $mail->Subject = 'Activation Notification Email';
+        //$mail->Body    = '<p>This is a notification email  .</p>';
+        $mail->Body    = '<p>Dear User, We are pleased to inform you that your account ' . $update_email . ' has been successfully activated. </p>';
+    
+        $mail->send();
+        echo "<script>alert('Notification email sent successfully!')</script>";
+        $query = "UPDATE tbl_users SET isAccept='1' WHERE id='$updated_id'";
+        $query_run = mysqli_query($conn, $query);
+    } catch (Exception $e) {
+        echo "Mailer Error: {$mail->ErrorInfo}";
+    }
+    
 }
 
 if (!isset($_SESSION['username'])) {
@@ -160,7 +225,7 @@ $i = 1;
             <div class="container-fluid px-4">
 
                 <div class="row my-5">
-                    <h3 class="fs-4 mb-3">Employee</h3>
+                    <h3 class="fs-4 mb-3">Applicant</h3>
 
                     <div class="table-responsive">
                         <hr>
@@ -232,6 +297,7 @@ $i = 1;
                                                     <form method="post">
                                                         <button class="btn btn-danger btn-sm" type="submit" name="updateActive">Reject</button>
                                                         <input type="hidden" name="update_id" value="<?= $row['id']; ?>">
+                                                        <input type="hidden" name="update_email" value="<?= $row['email']; ?>">
                                                     </form>
 
                                                 <?php
@@ -240,6 +306,7 @@ $i = 1;
                                                     <form method="post">
                                                         <button class="btn btn-primary btn-sm" type="submit" name="updateInactive">Accept</button>
                                                         <input type="hidden" name="update_id" value="<?= $row['id']; ?>">
+                                                        <input type="hidden" name="update_email" value="<?= $row['email']; ?>">
                                                     </form>
 
                                                 <?php

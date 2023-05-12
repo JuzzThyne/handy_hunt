@@ -123,16 +123,16 @@ if ($today_date > $closingdate) {
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/component.css" rel="stylesheet">
 
-	<link rel="stylesheet" href="icons/linearicons/style.css">
-	<link rel="stylesheet" href="icons/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="icons/simple-line-icons/css/simple-line-icons.css">
-	<link rel="stylesheet" href="icons/ionicons/css/ionicons.css">
-	<link rel="stylesheet" href="icons/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
-	<link rel="stylesheet" href="icons/rivolicons/style.css">
-	<link rel="stylesheet" href="icons/flaticon-line-icon-set/flaticon-line-icon-set.css">
-	<link rel="stylesheet" href="icons/flaticon-streamline-outline/flaticon-streamline-outline.css">
-	<link rel="stylesheet" href="icons/flaticon-thick-icons/flaticon-thick.css">
-	<link rel="stylesheet" href="icons/flaticon-ventures/flaticon-ventures.css">
+	<link rel="stylesheet" href="css/linearicons/style.css">
+	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css">
+	<link rel="stylesheet" href="css/ionicons/css/ionicons.css">
+	<link rel="stylesheet" href="css/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+	<link rel="stylesheet" href="css/rivolicons/style.css">
+	<link rel="stylesheet" href="css/flaticon-line-icon-set/flaticon-line-icon-set.css">
+	<link rel="stylesheet" href="css/flaticon-streamline-outline/flaticon-streamline-outline.css">
+	<link rel="stylesheet" href="css/flaticon-thick-icons/flaticon-thick.css">
+	<link rel="stylesheet" href="css/flaticon-ventures/flaticon-ventures.css">
 
 	<link href="css/style.css" rel="stylesheet">
 
@@ -170,6 +170,7 @@ if ($today_date > $closingdate) {
 
 	<script type="text/javascript">
 		function update(val) {
+// var custom = val;
 			var txt;
 			var r = confirm("Are you sure you want to apply this job , you can not UNDO");
 			if (r == true) {
@@ -186,7 +187,9 @@ if ($today_date > $closingdate) {
 					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 						document.getElementById("data").innerHTML = xmlhttp.responseText;
 					}
-				}		
+				}
+
+				
 				// window.location.href = "employee/quiz_index.php?jobid="  + val;
 				window.location.href = "employee/quiz_index.php?id=" + encodeURIComponent(val);
 				

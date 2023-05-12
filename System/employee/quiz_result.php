@@ -70,7 +70,7 @@ echo '</ol>';*/
 $sql = "INSERT INTO quiz_scores (user_id, score, job_id, status) VALUES ('$user_id', '$score', '$job_no', '1')";
 if (mysqli_query($conn, $sql)) {
     echo '<p>Your score has been saved.</p>';
-    // header("location:../job-list.php");
+    header("location:../job-list.php?r=202022");
     // echo $jobid;
 } else {
     echo 'Error: ' . $sql . '<br>' . mysqli_error($conn);
@@ -79,7 +79,7 @@ if (mysqli_query($conn, $sql)) {
 $sqli = "INSERT INTO tbl_job_applications (member_no, job_id, application_date) VALUES ('$user_id', '$job_no', '$apply_date')";
 if (mysqli_query($conn, $sqli)) {
     echo '<p>Your tbl has been saved.</p>';
-    // header("location:../job-list.php");
+    header("location:../job-list.php?r=202022");
     // echo $jobid;
 } else {
     echo 'Error: ' . $sql . '<br>' . mysqli_error($conn);
@@ -90,4 +90,4 @@ mysqli_close($conn);
 
 ?>
 
-<button > <a href="../"</a> Back to Home </button>
+

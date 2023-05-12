@@ -1,6 +1,8 @@
 <?php
 session_start();
-if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
+$_SESSION['last_activity'] = time();
+if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) 
+{
 $user_online = true;	
 $myrole = $_SESSION['role'];
 }else{

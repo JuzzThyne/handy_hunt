@@ -80,6 +80,18 @@ if ($user_online == "true") {
         crossorigin="anonymous"></script>
     <meta name=”viewport” content=”width=device-width, initial-scale=1.0″>
 </head>
+<style>
+    #timer {
+  position: fixed;
+  top: 10px; /* Change this value to adjust the vertical position */
+  right: 10px; /* Change this value to adjust the horizontal position */
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 24px; /* adjust this value to change the text size */
+  
+}
+</style>
 <body>
     <?php
     // Connect to the database
@@ -119,24 +131,25 @@ if ($user_online == "true") {
         ?>
 
         <div class="align">
-        <form class="Qform rounded" method="post" action="quiz_result.php" id="quiz-form">
+        <form class="Qform rounded" method="post" action="quiz_result.php" id="quiz-form" target="_self">
             <h3 class="title"><img class="logo" src="handyman-logo.png"></h3>
             <h4>
-                <?php echo "$account_no"; ?>
-                <br>
                 <?php echo "$myfname"; ?>
                 <?php echo "$mylname"; ?>
-
             </h4>
+            <div id="timer">
+                <span id="minutes">TIMER : 00</span>:<span id="seconds">00</span>
+            </div>
+            <br>
             <input type="hidden" name="job_no" value="<?php echo $job_no; ?>">
             <input type="hidden" name="user_id" value="<?php echo $account_no; ?>">
             <?php
             while ($row = mysqli_fetch_assoc($result)) {
                 echo '<p class="Question"><strong>Question ' . $counter . ': ' . $row['question'] . '</strong></p>';
-                echo '<input type="radio" name="answer' . $counter . '" value="A" onclick="disableReload()"> ' . $row['option_a'] . '<br>';
-                echo '<input type="radio" name="answer' . $counter . '" value="B" onclick="disableReload()"> ' . $row['option_b'] . '<br>';
-                echo '<input type="radio" name="answer' . $counter . '" value="C" onclick="disableReload()"> ' . $row['option_c'] . '<br>';
-                echo '<input type="radio" name="answer' . $counter . '" value="D" onclick="disableReload()"> ' . $row['option_d'] . '<br><br>';
+                echo '<input type="radio" name="answer' . $counter . '" value="A" onclick="disableReload()" > ' . $row['option_a'] . '<br>';
+                echo '<input type="radio" name="answer' . $counter . '" value="B" onclick="disableReload()" > ' . $row['option_b'] . '<br>';
+                echo '<input type="radio" name="answer' . $counter . '" value="C" onclick="disableReload()" > ' . $row['option_c'] . '<br>';
+                echo '<input type="radio" name="answer' . $counter . '" value="D" onclick="disableReload()" > ' . $row['option_d'] . '<br><br>';
                 echo '<hr>';
                 $counter++;
             }
@@ -144,8 +157,23 @@ if ($user_online == "true") {
             <div class="Submit">
                 <input id="btn" class="btn btn-primary" type="submit" name="submit" value="Submit">
             </div>
-        </form> 
+        </form>
         </div>
+        <script>
+            var totalSeconds = 300; // 2 minutes = 120 seconds
+            var timer = setInterval(function() {
+                if (totalSeconds <= 0) {
+                    clearInterval(timer);
+                    document.getElementById("btn").click(); // trigger a click event on the submit button to submit the form and redirect to quiz_result.php when time is up
+                } else {
+                    totalSeconds--;
+                    var minutes = Math.floor(totalSeconds / 60);
+                    var seconds = totalSeconds - (minutes * 60);
+                    document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+                    document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+                }
+            }, 1000);
+        </script>
 
         <script>
             function disableReload() {
@@ -187,6 +215,22 @@ if ($user_online == "true") {
 
     
     ?>
+
+<script>
+function validateForm() {
+  var radios = document.getElementsByTagName('input');
+  var valueSelected = false;
+  for (var i = 0; i < radios.length; i++) {
+      if (radios[i].type === 'radio' && radios[i].checked) {
+          valueSelected = true;
+      }
+  }
+  if (!valueSelected) {
+    alert('Please select an answer.');
+    return false;
+  }
+}
+</script>
 
 
 </body>

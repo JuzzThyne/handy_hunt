@@ -1,3 +1,8 @@
+.random{
+  margin-left: 30px;
+  float: left;
+}
+
 .menu {
   position: fixed;
   top: 0;
@@ -44,7 +49,7 @@
 }
 
 .menu a:hover {
-  color: #ff5a5f;
+  color: #33B6CB;
 }
 
 @media (min-width: 768px) {
@@ -82,7 +87,7 @@
   }
 
   .menu a:hover {
-    color: #ff5a5f;
+    color: #33B6CB;
   }
 }
 @media (min-width: 768px) {

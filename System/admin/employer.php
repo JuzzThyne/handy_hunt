@@ -45,20 +45,21 @@ if (isset($_POST['updateActive'])) {
         $mail->isSMTP();                                            
         $mail->Host       = 'smtp.gmail.com';                     
         $mail->SMTPAuth   = true;                                   
-        $mail->Username   = 'ucc.ams1971@gmail.com';                    
-        $mail->Password   = 'yalotkexnyitlwir';                              
+        $mail->Username   = 'handyhunt123@gmail.com';                    
+        $mail->Password   = 'ztzcxwqbanwddqhq';                                
         $mail->SMTPSecure = 'tls';                                   
         $mail->Port       = 587;                                    
     
         // Recipients
-        $mail->setFrom('ucc.ams1971@gmail.com', 'Handy Hunt Support');
+        $mail->setFrom('handyhunt123@gmail.com', 'Handy Hunt Support');
         $mail->addAddress($update_email);               
     
         // Content
         $mail->isHTML(true);      
         //    SET AS INACTIVE
-        $mail->Subject = 'Notification Email';
-        $mail->Body    = '<p>This is a notification email.</p>';
+        $mail->Subject = 'Inactive Notification Email';
+        $mail->Subject = 'De-Activation Notification Email';
+        $mail->Body    = '<p>Dear User, We are pleased to inform you that your account ' . $update_email . ' has been successfully de-activated. </p>';
     
         $mail->send();
         echo "<script>alert('Notification email sent successfully!')</script>";
@@ -82,20 +83,21 @@ if (isset($_POST['updateInactive'])) {
         $mail->isSMTP();                                            
         $mail->Host       = 'smtp.gmail.com';                     
         $mail->SMTPAuth   = true;                                   
-        $mail->Username   = 'ucc.ams1971@gmail.com';                    
-        $mail->Password   = 'yalotkexnyitlwir';                              
+        $mail->Username   = 'handyhunt123@gmail.com';                    
+        $mail->Password   = 'ztzcxwqbanwddqhq';                               
         $mail->SMTPSecure = 'tls';                                   
         $mail->Port       = 587;                                    
     
         // Recipients
-        $mail->setFrom('ucc.ams1971@gmail.com', 'Handy Hunt Support');
+        $mail->setFrom('handyhunt123@gmail.com', 'Handy Hunt Support');
         $mail->addAddress($update_email);               
     
         // Content
         $mail->isHTML(true);
         // SET AS ACTIVE                                 
-        $mail->Subject = 'Notification Email';
-        $mail->Body    = '<p>This is a notification email.</p>';
+        $mail->Subject = 'Activation Notification Email';
+        $mail->Body    = '<p>Dear User, We are pleased to inform you that your account ' . $update_email . ' has been successfully de-activated. </p>';
+        
     
         $mail->send();
         echo "<script>alert('Notification email sent successfully!')</script>";
@@ -234,7 +236,7 @@ $i = 1;
             <div class="container-fluid px-4">
 
                 <div class="row my-5">
-                    <h3 class="fs-4 mb-3">Employer</h3>
+                    <h3 class="fs-4 mb-3">Company</h3>
 
                     <div class="table-responsive">
                         <hr>

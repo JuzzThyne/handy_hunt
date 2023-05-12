@@ -49,7 +49,7 @@ if ($user_online == "true") {
 	<link rel="stylesheet" href="../css/flaticon-line-icon-set/flaticon-line-icon-set.css">
 	<link rel="stylesheet" href="../css/flaticon-streamline-outline/flaticon-streamline-outline.css">
 	<link rel="stylesheet" href="../css/flaticon-thick-icons/flaticon-thick.css">
-	<link rel="stylesheet" href="..//flaticon-ventures/flaticon-ventures.css">
+	<link rel="stylesheet" href="../css/flaticon-ventures/flaticon-ventures.css">
 
 	<link href="../css/style.css" rel="stylesheet">
 
@@ -233,7 +233,7 @@ if ($user_online == "true") {
 
 												<div class="form-group">
 													<label>Company Name</label>
-													<input name="company" placeholder="Enter company name" type="text" class="form-control" value="<?php echo "$compname"; ?>" required>
+													<input name="company" placeholder="Enter company name" type="text" class="form-control" value="<?php echo "$compname"; ?>" maxlength="30" required>
 												</div>
 
 											</div>
@@ -562,7 +562,9 @@ if ($user_online == "true") {
 		<a href="#"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 
-
+    <!-- Auto logout pag 5 mins inactive ang mouse at keyboard -->
+	<script type="text/javascript" src="../js/user-timeout.js"></script>
+    <!-- End -->
 	<script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="../js/jquery-migrate-1.2.1.min.js"></script>
 	<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
