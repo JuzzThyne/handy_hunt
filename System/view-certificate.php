@@ -37,7 +37,6 @@ foreach($result as $row)
 <?php
 }
 
-					  
 }catch(PDOException $e)
 {
 

@@ -1,6 +1,6 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "HandyHunt2023";
 $dbname = "job_portal";
 ?>
