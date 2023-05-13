@@ -365,7 +365,9 @@ header("location:../");
 <div id="back-to-top">
    <a href="#"><i class="ion-ios-arrow-up"></i></a>
 </div>
-
+<!-- Auto logout pag 5 mins inactive ang mouse at keyboard -->
+<script type="text/javascript" src="../js/user-timeout.js"></script>
+	<!-- End -->
 
 <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="../js/jquery-migrate-1.2.1.min.js"></script>
