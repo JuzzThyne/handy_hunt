@@ -6,8 +6,7 @@ require 'constants/check-login.php';
 error_reporting(0);
 $fromsearch = false;
 
-if (isset($_GET['search']) && $_GET['search'] == "search") {
-
+if (isset($_GET['search']) && $_GET['search'] == "✓") {
 } else {
 }
 
@@ -23,22 +22,23 @@ if (isset($_GET['page'])) {
 	$page1 = 0;
 	$page = 1;
 }
-if (isset($_GET['country']) && ($_GET['category'])) {
-	$cate = $_GET['category'];
-	// $country = $_GET['country'];
-	$query1 = "SELECT * FROM tbl_jobs WHERE category = :cate AND country = :country ORDER BY enc_id DESC LIMIT $page1,12";
-	// $query2 = "SELECT * FROM tbl_jobs WHERE category = :cate AND country = :country ORDER BY enc_id DESC";
+
+if (isset($_GET['country']) && ($_GET['title'])) {
+	$cate = $_GET['title'];
+	$country = $_GET['country'];
+	$query1 = "SELECT * FROM tbl_users WHERE title = :cate AND country = :country ORDER BY title ASC LIMIT $page1,12";
+	$query2 = "SELECT * FROM tbl_jobs WHERE city = :cate AND country = :country ORDER BY title ASC";
 	$fromsearch = true;
 
 	$slc_country = "$country";
 	$slc_category = "$cate";
-	$title = "$slc_category jobs in $slc_country";
-} else {
-	$query1 = "SELECT * FROM tbl_jobs ORDER BY enc_id DESC LIMIT $page1,12";
-	// $query2 = "SELECT * FROM tbl_jobs ORDER BY enc_id DESC";
+	$title = " Company in $slc_country";
+} else {	
+	$query1 = "SELECT * FROM tbl_users WHERE role='employer' AND isAccept='1' ORDER BY country DESC LIMIT $page1,12";
+	$query2 = "SELECT * FROM tbl_users WHERE role='employer' AND isAccept='1' ORDER BY country DESC";
 	$slc_country = "NULL";
 	$slc_category = "NULL";
-	$title = "Company";
+	$title = "Job List";
 }
 ?>
 
@@ -213,88 +213,89 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 			</div>
 
 		</header>
-
-
 		<div class="main-wrapper">
 
 			<div class="second-search-result-wrapper">
 
 				<div class="container">
 
-					<form action="employers.php" method="GET" autocomplete="off">
+				<form action="employers.php" method="GET" autocomplete="off">
 
-						<div class="second-search-result-inner">
-							<span class="labeling">Find Company</span>
-							<div class="row">
-								<!-- database config  -->
-								<?php
-								$servername = "localhost";
-								$username = "root";
-								$password = "HandyHunt2023";
-								$dbname = "job_portal";
+					<div class="second-search-result-inner">
+						<span class="labeling">Find Company</span>
+						<div class="row">
 
-								// Create connection
-								$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-								// Check connection
-								if (!$conn) {
-									die("Connection failed: " . mysqli_connect_error());
-								}
-								?>
-								<form method="GET" action="">
-									<div class="col-xss-12 col-xs-6 col-sm-6 col-md-10" style="margin-top: 4px ">
-											<input type="text" name="query" class="form-control	">	
-									</div>
-									<div class="col-xss-12 col-xs-6 col-sm-4 col-md-2">
-										<button name="search" value="✓" type="submit"
-											class="btn btn-block">Search</button>
-									</div>
-								</form>
-								<?php
-								// Check if the search form has been submitted
-								if (isset($_GET['query'])) {
-									// Get the search query from the form
-									$search = mysqli_real_escape_string($conn, $_GET['query']);
-
-									
-									$sql = "SELECT * FROM tbl_users WHERE first_name LIKE '%$search%' OR email LIKE '%$search%' OR country LIKE '%$search%' OR phone LIKE '%$search%' OR website LIKE '%$search%'";
-
-									// Execute the SQL query
-									$result = mysqli_query($conn, $sql);
-
-									// Check if any results were found
-									if (mysqli_num_rows($result) > 0) {
-										// Display the results
-										while ($row = mysqli_fetch_assoc($result)) {
-											// Display each row of data
-											$city_name = $row['first_name'];
-                                            $categ = $row['title'];
-											$country = $row['country'];
-											// echo $row['city_name'];
+							<div class="col-xss-12 col-xs-6 col-sm-6 col-md-5">
+								<div class="form-group form-lg">
+									<select class="form-control" name="title" required />
+									<option value="">-Select Category-</option>
+									<?php
+									require 'constants/db_config.php';
+									try {
+										$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+										$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+										$stmt = $conn->prepare("SELECT DISTINCT title FROM tbl_users WHERE role='employer' AND isAccept='1' ORDER BY title");
+										$stmt->execute();
+										$result = $stmt->fetchAll();
+										foreach ($result as $row) {
+											$cat = $row['title'];
+									?>
+											<option <?php if ($slc_category == "$cat") {
+														print ' selected ';
+													} ?> value="<?php echo $row['title']; ?>"><?php echo $row['title']; ?></option>
+									<?php
 										}
-									} else {
-										// No results found
-										echo "No results found.";
+										$stmt->execute();
+									} catch (PDOException $e) {
 									}
-								}
-								?>			
 
+									?>
+
+									</select>
+								</div>
+							</div>
+
+							<div class="col-xss-12 col-xs-6 col-sm-6 col-md-5">
+								<div class="form-group form-lg">
+									<select class="form-control" name="country" required />
+									<option value="">-Select City-</option>
+									<?php
+									require 'constants/db_config.php';
+									try {
+										$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+										$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+										$stmt = $conn->prepare("SELECT DISTINCT country FROM tbl_users WHERE role='employer' AND isAccept='1' ORDER BY country");
+										$stmt->execute();
+										$result = $stmt->fetchAll();
+										foreach ($result as $row) {
+											$cnt = $row['country'];
+									?>
+											<option <?php if ($slc_country == "$cnt") {
+														print ' selected ';
+													} ?> value="<?php echo $row['country']; ?>"><?php echo $row['country']; ?></option>
+									<?php
+										}
+										$stmt->execute();	
+									} catch (PDOException $e) {
+									}
+
+									?>
+									</select>
+								</div>
+							</div>
+
+							<div class="col-xss-12 col-xs-6 col-sm-4 col-md-2">
+								<button name="search" value="✓" type="submit" class="btn btn-block">Search</button>
+							</div>
+						</div>
+					</div>
+
+				</form>
 				</div>
 			</div>
-
-			</form>
-
-
 		</div>
-
 	</div>
-
-	<div class="breadcrumb-wrapper">
-	</div>
-
-
 	<div class="section sm">
-
 		<div class="container">
 
 			<div class="sorting-wrappper">
@@ -304,8 +305,6 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 						<?php echo "$title"; ?>
 					</h3>
 				</div>
-
-
 			</div>
 
 			<div class="company-grid-wrapper top-company-2-wrapper">
@@ -318,11 +317,13 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 						try {
 							$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 							$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-							$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employer' AND first_name = '$city_name' LIMIT $page1,16");
+							$stmt = $conn->prepare($query1);
+							if ($fromsearch == true) {
+								$stmt->bindParam(':cate', $slc_category);
+								$stmt->bindParam(':country', $slc_country);
+							}
 							$stmt->execute();
 							$result = $stmt->fetchAll();
-
 							foreach ($result as $row) {
 								$complogo = $row['avatar'];
 								?>
@@ -334,9 +335,9 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 											<div class="image">
 												<?php
 												if ($complogo == null) {
-													print '<center><img class="autofit2" alt="image"  src="images/blank.png"/></center>';
+													print '<center><img class="autofit2" alt="image" style="width: 400px; height: 100px;"  src="images/blank.png"/></center>';
 												} else {
-													echo '<center><img class="autofit2" alt="image"  src="data:image/jpeg;base64,' . base64_encode($complogo) . '"/></center>';
+													echo '<center><img class="autofit2" alt="image" style="width: 400px; height: 100px;"  src="data:image/jpeg;base64,' . base64_encode($complogo) . '"/></center>';
 												}
 												?>
 
@@ -363,12 +364,6 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 							}
 						} catch (PDOException $e) {
 						} ?>
-
-
-
-
-
-
 					</div>
 
 				</div>
@@ -376,103 +371,7 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 			</div>
 
 		</div>
-
-	
 	</div>
-
-
-	<div class="section sm">
-
-		<div class="container">
-
-			<div class="sorting-wrappper alt">
-
-				<div class="GridLex-grid-middle">
-
-					<div class="GridLex-col-3_sm-12_xs-12">
-
-						<div class="sorting-header">
-							<h3 class="sorting-title">Other Companies</h3>
-						</div>
-
-					</div>
-
-
-				</div>
-
-			</div>
-
-			<div class="company-grid-wrapper top-company-2-wrapper">
-
-				<div class="GridLex-gap-30">
-
-					<div class="GridLex-grid-noGutter-equalHeight">
-						<?php
-						require 'constants/db_config.php';
-						try {
-							$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-							$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
-							$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employer' AND isAccept = '1' ORDER BY RAND() LIMIT $page1,16");
-							$stmt->execute();
-							$result = $stmt->fetchAll();
-
-							foreach ($result as $row) {
- 						        
-								$complogo = $row['avatar'];
-								?>
-								<div class="GridLex-col-3_sm-4_xs-6_xss-12">
-
-									<div class="top-company-2">
-										<a href="company.php?ref=<?php echo $row['member_no']; ?>">
-
-											<div class="image">
-												<?php
-												if ($complogo == null) {
-													print '<center><img class="autofit2" alt="image"  src="images/blank.png"/></center>';
-												} else {
-													//echo '<center><img class="autofit2" alt="image"  src="data:image/jpeg;base64,' . base64_encode($complogo) . '"/></center>';
- 												      echo '<center><img class="autofit2" alt="image" style="width: 400px; height: 100px;" src="data:image/jpeg;base64,' . base64_encode($complogo) . '"/></center>';
-
-
-												}
-												?>
-
-											</div>
-
-											<div class="content">
-												<h5 class="heading text-primary font700">
-													<?php echo $row['first_name']; ?>
-												</h5>
-												<p class="texting font600">
-													<?php echo $row['title']; ?>
-												<p>
-													<!-- <p class="mata-p clearfix"><span class="text-primary font700">25</span> <span class="font13">Active job post(s)</span> <span class="pull-right icon"><i class="fa fa-long-arrow-right"></i></span></p> -->
-											</div>
-
-										</a>
-
-									</div>
-
-								</div>
-								<?php
-
-							}
-						} catch (PDOException $e) {
-						} ?>
-
-
-
-
-
-
-					</div>
-
-				</div>
-
-			</div>
-
 			<div class="pager-wrapper">
 
 				<ul class="pager-list">
@@ -543,6 +442,7 @@ if (isset($_GET['country']) && ($_GET['category'])) {
 		</div>
 
 	</div>
+	<br><br><br>
 
 	<footer class="footer-wrapper">
 

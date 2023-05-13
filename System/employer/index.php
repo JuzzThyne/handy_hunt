@@ -86,35 +86,27 @@ if ($user_online == "true") {
 								<a href="../job-list.php">Job List</a>
 
 							</li>
-							<!-- <li>
-								<a href="looking.php">Looking for Job</a>
-							</li> -->
-
 							<li>
 								<a href="../employers.php">Company</a>
 							</li>
 
 							<?php
-									if ($user_online == true) {
-												if ($myrole == "employer") {
-													print '<li> 
-													<a href="../employees.php"> 
-													Applicant
-													</a>
-													</li>';
-												}	
+							if ($user_online == true) {
+								if ($myrole == "employer") {
+									print '<li> 
+									<a href="../employees.php"> 
+									Applicant
+									</a>
+									</li>';
+								}	
 							} else {
 							
 							}
 							?>
-
-
 							<li>
 								<a href="../contact.php">Contact Us</a>
 							</li>
-
 						</ul>
-
 					</div>
 
 					<div class="nav-mini-wrapper">
@@ -219,7 +211,6 @@ if ($user_online == "true") {
 									<div class="admin-section-title">
 
 										<h2>Profile</h2>
-										<!-- <p>Your last loged-in: <span class="text-primary"><?php echo "$mylogin"; ?></span></p> -->
 
 									</div>
 
@@ -338,15 +329,15 @@ if ($user_online == "true") {
 															$result = $stmt->fetchAll();
 
 															foreach ($result as $row) {
-														?> <option <?php if ($country == $row['city_name']) {
-																		print ' selected ';
-																	} ?> value="<?php echo $row['city_name']; ?>"><?php echo $row['city_name']; ?></option> <?php
-
-																																						}
-																																					} catch (PDOException $e) {
-																																					}
-
-																																							?>
+															?>
+															<option <?php if ($country == $row['city_name']) {
+															print ' selected ';} ?> 
+															value="<?php echo $row['city_name']; ?>"><?php echo $row['city_name']; ?></option> 
+															<?php
+															}
+															} catch (PDOException $e) {
+															}
+															?>
 													</select>
 												</div>
 
@@ -469,9 +460,10 @@ if ($user_online == "true") {
 												<?php
 												if ($logo == null) {
 												} else {
-												?><a onclick="return confirm('Are you sure you want to delete your logo ?')" class="btn btn-primary btn-inverse" href="app/drop-dp.php">Delete</a> <?php
-																																																}
-																																																	?>
+												?><a onclick="return confirm('Are you sure you want to delete your logo ?')" class="btn btn-primary btn-inverse" href="app/drop-dp.php">Delete</a> 
+												<?php
+												}
+												?>
 											</div>
 										</div>
 									</form>

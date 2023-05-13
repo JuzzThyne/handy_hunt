@@ -131,12 +131,6 @@ include 'constants/check-login.php';
 							
 							}
 							?>
-							
-
-							<!-- <li>
-								<a href="employees.php">Employees</a>
-							</li> -->
-
 							<li>
 								<a href="contact.php">Contact Us</a>
 							</li>
@@ -146,7 +140,6 @@ include 'constants/check-login.php';
 					<div class="nav-mini-wrapper">
 						<ul class="nav-mini sign-in">
 							<li><a href="login.php">Login</a></li>
-							<!-- <li><a data-toggle="modal" href="register.php?p=Employee">Register</a></li> -->
 						</ul>
 					</div>
 
@@ -194,16 +187,6 @@ include 'constants/check-login.php';
 
 
 			<div class="breadcrumb-wrapper">
-
-				<!-- <div class="container">
-
-					<ol class="breadcrumb-list">
-						<li><a href="./">Home</a></li>
-						<li><span>Access your account</span></li>
-					</ol>
-
-				</div> -->
-
 			</div>
 
 
@@ -229,6 +212,7 @@ include 'constants/check-login.php';
 											</div>
 
 											<div class="modal-body">
+												
 
 												<div class="row gap-20">
 
@@ -247,9 +231,6 @@ include 'constants/check-login.php';
 														<div class="form-group">
 															<label>Password</label>
 															<input class="form-control" placeholder="Enter your password" name="password" required type="password">
-															<!--<button class="btn btn-outline-secondary" type="button" id="btn-toggle-password">
-															<i class="fa fa-eye"></i>
-															</button>-->
 														</div>
 													</div>
 													<script>

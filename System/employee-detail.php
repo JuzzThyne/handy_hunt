@@ -530,7 +530,7 @@ if (isset($_GET['empid'])) {
 									</ul>
 
 
-									<h3>Referees</h3>
+									<h3>Reference</h3>
 									<ul class="list-icon">
 										<?php
 										require 'constants/db_config.php';
