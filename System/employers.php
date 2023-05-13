@@ -32,13 +32,13 @@ if (isset($_GET['country']) && ($_GET['title'])) {
 
 	$slc_country = "$country";
 	$slc_category = "$cate";
-	$title = " Company in $slc_country";
+	$title = " $slc_category in $slc_country";
 } else {	
 	$query1 = "SELECT * FROM tbl_users WHERE role='employer' AND isAccept='1' ORDER BY country DESC LIMIT $page1,12";
 	$query2 = "SELECT * FROM tbl_users WHERE role='employer' AND isAccept='1' ORDER BY country DESC";
 	$slc_country = "NULL";
 	$slc_category = "NULL";
-	$title = "Job List";
+	$title = "Company List";
 }
 ?>
 
@@ -138,10 +138,10 @@ if (isset($_GET['country']) && ($_GET['title'])) {
 							if ($user_online == true) {
 								if ($myrole == "employer") {
 									print '<li> 
-													<a href="employees.php"> 
-													Applicant
-													</a>
-													</li>';
+									<a href="employees.php"> 
+									Applicant
+									</a>
+									</li>';
 								}
 							} else {
 
@@ -240,15 +240,12 @@ if (isset($_GET['country']) && ($_GET['title'])) {
 										foreach ($result as $row) {
 											$cat = $row['title'];
 									?>
-											<option <?php if ($slc_category == "$cat") {
-														print ' selected ';
-													} ?> value="<?php echo $row['title']; ?>"><?php echo $row['title']; ?></option>
+											<option <?php if ($slc_category == "$cat") { print ' selected '; } ?> value="<?php echo $row['title']; ?>"><?php echo $row['title']; ?></option>
 									<?php
 										}
 										$stmt->execute();
 									} catch (PDOException $e) {
 									}
-
 									?>
 
 									</select>
@@ -340,9 +337,7 @@ if (isset($_GET['country']) && ($_GET['title'])) {
 													echo '<center><img class="autofit2" alt="image" style="width: 400px; height: 100px;"  src="data:image/jpeg;base64,' . base64_encode($complogo) . '"/></center>';
 												}
 												?>
-
 											</div>
-
 											<div class="content">
 												<h5 class="heading text-primary font700">
 													<?php echo $row['first_name']; ?>
@@ -351,29 +346,21 @@ if (isset($_GET['country']) && ($_GET['title'])) {
 													<?php echo $row['title']; ?>
 													<!-- <p class=""><?php echo $city_name; ?> -->
 												<p>
-													<!-- <p class="mata-p clearfix"><span class="text-primary font700">25</span> <span class="font13">Active job post(s)</span> <span class="pull-right icon"><i class="fa fa-long-arrow-right"></i></span></p> -->
 											</div>
-
 										</a>
-
 									</div>
-
 								</div>
 								<?php
-
 							}
-						} catch (PDOException $e) {
-						} ?>
+							} 
+							catch (PDOException $e) {
+							} ?>
 					</div>
-
 				</div>
-
 			</div>
-
 		</div>
 	</div>
 			<div class="pager-wrapper">
-
 				<ul class="pager-list">
 					<?php
 					require 'constants/db_config.php';
@@ -381,18 +368,14 @@ if (isset($_GET['country']) && ($_GET['title'])) {
 					try {
 						$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 						$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
 						$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE role = 'employer' AND isAccept = '1' ORDER BY first_name");
 						$stmt->execute();
 						$result = $stmt->fetchAll();
-
 						foreach ($result as $row) {
 							$total_records++;
 						}
 					} catch (PDOException $e) {
 					} ?>
-
 					<?php
 					$records = $total_records / 16;
 					$records = ceil($records);
@@ -431,42 +414,26 @@ if (isset($_GET['country']) && ($_GET['title'])) {
 						}
 						print '><i class="fa fa-chevron-right"></i></a></li>';
 					}
-
-
 					?>
-
 				</ul>
-
 			</div>
-
 		</div>
-
 	</div>
 	<br><br><br>
 
 	<footer class="footer-wrapper">
-
 		<div class="main-footer">
-
 			<div class="container">
-
 				<div class="row">
-
 					<div class="col-sm-12 col-md-9">
-
 						<div class="row">
-
 							<div class="col-sm-6 col-md-4">
-
 								<div class="footer-about-us">
 									<h5 class="footer-title">About Handy Hunt</h5>
 									<p>Handy Hunt is a job portal, online job management system developed by
 										handyhunt group for capstone in 2022.</p>
-
 								</div>
-
 							</div>
-
 							<div class="col-sm-6 col-md-5 mt-30-xs">
 								<h5 class="footer-title">Quick Links</h5>
 								<ul class="footer-menu clearfix">
@@ -476,42 +443,26 @@ if (isset($_GET['country']) && ($_GET['title'])) {
 									<!--<li><a href="employees.php">Applicant</a></li>-->
 									<li><a href="contact.php">Contact Us</a></li>
 									<li><a href="#">Go to top</a></li>
-
 								</ul>
-
 							</div>
-
 						</div>
-
 					</div>
 
 					<div class="col-sm-12 col-md-3 mt-30-sm">
-
 						<h5 class="footer-title">Handy Hunt Contact</h5>
-
 						<p>Address : University of Caloocan City, Congressional Campus</p>
 						<p>Email : <a href="mailto:nightingale.nath2@gmail.com">handyhunt@gmail.com</a></p>
 						<p>Phone : <a href="tel:+09101493778">09101493778</a></p>
-
-
 					</div>
-
-
 				</div>
-
 			</div>
-
 		</div>
 
 		<div class="bottom-footer">
-
 		</div>
-
 	</footer>
 
 	</div>
-
-
 	</div>
 
 	<div id="back-to-top">

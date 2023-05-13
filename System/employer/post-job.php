@@ -60,63 +60,44 @@ header("location:../");
 
 
 <body class="not-transparent-header">
-
 	<div class="container-wrapper">
-
 		<header id="header">
 			<nav class="navbar navbar-default navbar-fixed-top navbar-sticky-function">
-
-				<div class="container">
-					
+				<div class="container">					
 					<div class="logo-wrapper">
 						<div class="logo">
 							<a href="../"><img src="../images/handyman.png" alt="Logo" /></a>
 						</div>
-					</div>
-					
-					<div id="navbar" class="navbar-nav-wrapper navbar-arrow">
-					
-						<ul class="nav navbar-nav" id="responsive-menu">
-						
+					</div>				
+					<div id="navbar" class="navbar-nav-wrapper navbar-arrow">				
+						<ul class="nav navbar-nav" id="responsive-menu">					
 							<li>
-
 								<a href="./">Home</a>
-
 							</li>
-
 							<li>
 								<a href="../job-list.php">Job List</a>
-
 							</li>
-							<!-- <li>
-								<a href="looking.php">Looking for Job</a>
-							</li> -->
-
 							<li>
 								<a href="../employers.php">Company</a>
 							</li>
-
 							<?php
-									if ($user_online == true) {
-												if ($myrole == "employer") {
-													print '<li> 
-													<a href="../employees.php"> 
-													Applicant
-													</a>
-													</li>';
-												}	
-							} else {
+							if ($user_online == true) {
+								if ($myrole == "employer") {
+									print '<li> 
+									<a href="../employees.php"> 
+									Applicant
+									</a>
+									</li>';
+									}	
+							} 
+							else {
 							
 							}
 							?>
-
-
 							<li>
 								<a href="../contact.php">Contact Us</a>
 							</li>
-
 						</ul>
-				
 					</div>
 
 					<div class="nav-mini-wrapper">
@@ -125,57 +106,40 @@ header("location:../");
 							<li><a href="./">Profile</a></li>
 						</ul>
 					</div>
-				
 				</div>
-				
 				<div id="slicknav-mobile"></div>
-				
 			</nav>
-
-			
 		</header>
 
-		<div class="main-wrapper">
-		
-			<div class="breadcrumb-wrapper">
-			
-				<div class="container">
-				
+		<div class="main-wrapper">		
+			<div class="breadcrumb-wrapper">		
+				<div class="container">		
 					<ol class="breadcrumb-list booking-step">
-						<li><a href="../">Home</a></li>
+						<!-- <li><a href="../">Home</a></li>
 						<li><a ><?php echo "$compname"; ?></a></li>
-						<li><span>Post a Job</span></li>
+						<li><span>Post a Job</span></li> -->
 					</ol>
 					
-				</div>
-				
+				</div>			
 			</div>
 
-			
-			<div class="section sm">
-			
-				<div class="container">
-				
-					<div class="row">
-						
-							<div class="col-sm-5 col-md-4">
-							
-								<div class="company-detail-sidebar">
-									
+			<div class="section sm">			
+				<div class="container">				
+					<div class="row">						
+							<div class="col-sm-5 col-md-4">							
+								<div class="company-detail-sidebar">				
 									<div class="image">
 										<?php 
 										if ($logo == null) {
 										print '<center>Company Logo Here</center>';
-										}else{
+										}
+										else{
 										echo '<center><img alt="image" title="'.$compname.'" width="180" height="100" src="data:image/jpeg;base64,'.base64_encode($logo).'"/></center>';	
 										}
 										?>
-									</div>
-									
-									<h2 class="heading mb-15"><h4><?php echo "$compname"; ?></h4>
-								
-									<p class="location"><i class="fa fa-map-marker"></i> <?php echo "$zip"; ?> <?php echo "$city"; ?>. <?php echo "$street"; ?>, <?php echo "$country"; ?> <span class="block"> <i class="fa fa-phone"></i> <?php echo "$myphone"; ?></span></p>
-									
+									</div>								
+									<h2 class="heading mb-15"><h4><?php echo "$compname"; ?></h4>							
+									<p class="location"><i class="fa fa-map-marker"></i> <?php echo "$zip"; ?> <?php echo "$city"; ?>. <?php echo "$street"; ?>, <?php echo "$country"; ?> <span class="block"> <i class="fa fa-phone"></i> <?php echo "$myphone"; ?></span></p>									
 									<ul class="meta-list clearfix">
 										<li>
 											<h4 class="heading">Established In:</h4>
@@ -197,12 +161,8 @@ header("location:../");
 											<h4 class="heading">Email: </h4>
 											<?php echo "$mymail"; ?>
 										</li>
-
-									</ul>
-									
-									
-									<a href="./" class="btn btn-primary mt-5"><i class="fa fa-pencil-square-o mr-5"></i>Edit</a>
-									
+									</ul>									
+									<a href="./" class="btn btn-primary mt-5"><i class="fa fa-pencil-square-o mr-5"></i>Edit</a>	
 								</div>
 					
 					
@@ -249,86 +209,58 @@ header("location:../");
 														<label>City</label>
 														<select name="country" required class="selectpicker show-tick form-control" data-live-search="true">
 															<option  value="">Select City</option>
-						                                   <?php
-														   require '../constants/db_config.php';
-														   try {
-                                                           $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                                                           $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-	
-                                                           $stmt = $conn->prepare("SELECT * FROM tbl_city ORDER BY city_name");
-                                                           $stmt->execute();
-                                                           $result = $stmt->fetchAll();
-  
-                                                           foreach($result as $row)
-                                                           {
-		                                                    ?> <option <?php if ($country == $row['city_name']) { print ' selected '; } ?> value="<?php echo $row['city_name']; ?>"><?php echo $row['city_name']; ?></option> <?php
-	 
-	                                                        }
-
-					  
-	                                                       }catch(PDOException $e)
-                                                           {
-
-                                                           }
-	
-														   ?>
+																	<?php
+																		require '../constants/db_config.php';
+																		try {
+																		$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+																		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+																		$stmt = $conn->prepare("SELECT * FROM tbl_city ORDER BY city_name");
+																		$stmt->execute();
+																		$result = $stmt->fetchAll();
+																		foreach($result as $row)
+																		{
+																		?> <option <?php if ($country == $row['city_name']) { print ' selected '; } ?> value="<?php echo $row['city_name']; ?>"><?php echo $row['city_name']; ?></option> <?php
+																		}
+																		}catch(PDOException $e)
+																		{
+																		}
+																	?>
 														</select>
 													</div>
-													
 												</div>
-												
 												<div class="clear"></div>
-												
 												<div class="col-sm-4 col-md-4">
-												
 													<div class="form-group">
 														<label>Job Category</label>
-															<select name="category" required class="selectpicker show-tick form-control" data-live-search="true">
-															<option value="">Select Category</option>
-						                                   <?php
-														   require '../constants/db_config.php';
-														   try {
-                                                           $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                                                           $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-	
-                                                           $stmt = $conn->prepare("SELECT * FROM tbl_categories ORDER BY category");
-                                                           $stmt->execute();
-                                                           $result = $stmt->fetchAll();
-  
-                                                           foreach($result as $row)
-                                                           {
-		                                                    ?> <option value="<?php echo $row['category']; ?>"><?php echo $row['category']; ?></option> <?php
-	 
-	                                                        }
-
-					  
-	                                                       }catch(PDOException $e)
-                                                           {
-
-                                                           }
-	
-														   ?>
+														<select name="category" required class="selectpicker show-tick form-control" data-live-search="true">
+																<option value="">Select Category</option>
+																<?php
+																require '../constants/db_config.php';
+																try {
+																$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+																$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+																$stmt = $conn->prepare("SELECT * FROM tbl_categories ORDER BY category");
+																$stmt->execute();
+																$result = $stmt->fetchAll();
+																foreach($result as $row)
+																{
+																?> <option value="<?php echo $row['category']; ?>"><?php echo $row['category']; ?></option> <?php
+																}
+																}catch(PDOException $e)
+																{
+																}
+																?>
 														</select>
-											
-														
 													</div>
-													
 												</div>
-											    <div class="col-sm-4 col-md-4">
-												
-													<div class="form-group">
-														<label>Closing Date</label>
-														<input name="deadline" required type="text" class="form-control" placeholder="Eg: 30/12/2018">
-													</div>
-													
+											<div class="col-sm-4 col-md-4">
+												<div class="form-group">
+													<label>Closing Date</label>
+													<input name="deadline" required type="text" class="form-control" placeholder="Eg: 30/12/2018">
 												</div>
-												
+												</div>
 												<div class="clear"></div>
-												
 												<div class="col-xss-12 col-xs-6 col-sm-6 col-md-4">
-												
 													<div class="form-group mb-20">
 														<label>Job Type:</label>
 														<select name="jobtype" required class="selectpicker show-tick form-control" data-live-search="false" data-selected-text-format="count > 3" data-done-button="true" data-done-button-text="OK" data-none-selected-text="All">
@@ -338,11 +270,8 @@ header("location:../");
 															<option value="Freelance" data-content="<span class='label label-success'>Freelance</span>">Freelance</option>
 														</select>
 													</div>
-													
 												</div>
-												
 												<div class="col-xss-12 col-xs-6 col-sm-6 col-md-4">
-												
 													<div class="form-group mb-20">
 														<label>Experience:</label>
 														<select name="experience" required class="selectpicker show-tick form-control" data-live-search="false" data-selected-text-format="count > 3" data-done-button="true" data-done-button-text="OK" data-none-selected-text="All">
@@ -354,106 +283,58 @@ header("location:../");
 															<option value="5 Years">5 Years</option>
 														</select>
 													</div>
-													
-													
 												</div>
-
 												<div class="clear"></div>
-												
 												<div class="col-sm-12 col-md-12">
-												
 													<div class="form-group bootstrap3-wysihtml5-wrapper">
 														<label>Job Description</label>
 														<textarea class="form-control bootstrap3-wysihtml5" name="description" required placeholder="Enter description ..." style="height: 200px;"></textarea>
 													</div>
-													
 												</div>
-												
 												<div class="clear"></div>
-												
 												<div class="col-sm-12 col-md-12">
-												
 													<div class="form-group bootstrap3-wysihtml5-wrapper">
 														<label>Job Responsibilies</label>
 														<textarea name="responsiblities" required class="form-control bootstrap3-wysihtml5" placeholder="Enter responsiblities..." style="height: 200px;"></textarea>
 													</div>
-													
 												</div>
-												
 												<div class="clear"></div>
-												
 												<div class="col-sm-12 col-md-12">
-												
 													<div class="form-group bootstrap3-wysihtml5-wrapper">
 														<label>Requirements</label>
 														<textarea name="requirements" required class="form-control bootstrap3-wysihtml5" placeholder="Enter requirements..." style="height: 200px;"></textarea>
 													</div>
-													
 												</div>
-												
 												<div class="clear"></div>
-												
-
-												
 												<div class="clear"></div>
-												
-
-												
 												<div class="clear mb-10"></div>
-
-												
 												<div class="clear mb-15"></div>
-
-												
 												<div class="clear"></div>
-												
 												<div class="col-sm-6 mt-30">
 													<button type="submit"  onclick = "validate(this)" class="btn btn-primary btn-lg">Post Your Job</button>
 												</div>
-
 											</div>
-											
 										</form>
-										
 									</div>
-									
-							
-
-
 								</div>
-
 							</div>
-						
 						</div>
-						
 					</div>
-				
 				</div>
-			
 			</div>
 
 			<footer class="footer-wrapper">
-			
 				<div class="main-footer">
-				
 					<div class="container">
-					
 						<div class="row">
-						
 							<div class="col-sm-12 col-md-9">
-							
 								<div class="row">
-								
 									<div class="col-sm-6 col-md-4">
-									
 										<div class="footer-about-us">
 											<h5 class="footer-title">About Handy Hunt</h5>
 											<p>Handy Hunt is a job portal, online job management system developed by handyhunt group for capstone in 2022.</p>
-										
 										</div>
-
 									</div>
-									
 									<div class="col-sm-6 col-md-5 mt-30-xs">
 										<h5 class="footer-title">Quick Links</h5>
 										<ul class="footer-menu clearfix">
@@ -463,39 +344,22 @@ header("location:../");
 											<li><a href="employees.php">Applicant</a></li>
 											<li><a href="contact.php">Contact Us</a></li>
 											<li><a href="#">Go to top</a></li>
-
 										</ul>
-									
 									</div>
-
 								</div>
-
+								</div>
+									<div class="col-sm-12 col-md-3 mt-30-sm">
+										<h5 class="footer-title">Handy Hunt Contact</h5>
+										<p>Address : University of Caloocan City, Congressional Campus</p>
+										<p>Email : <a href="mailto:nightingale.nath2@gmail.com">handyhunt@gmail.com</a></p>
+										<p>Phone : <a href="tel:+233546607474">09101493778</a></p>
+									</div>
+								</div>
 							</div>
-							
-							<div class="col-sm-12 col-md-3 mt-30-sm">
-							
-								<h5 class="footer-title">Handy Hunt Contact</h5>
-								
-								<p>Address : University of Caloocan City, Congressional Campus</p>
-								<p>Email : <a href="mailto:nightingale.nath2@gmail.com">handyhunt@gmail.com</a></p>
-								<p>Phone : <a href="tel:+233546607474">09101493778</a></p>
-								
-
-							</div>
-
-							
 						</div>
-						
-					</div>
-					
+					<div class="bottom-footer">
 				</div>
-				
-				<div class="bottom-footer">
-					
-				</div>
-			
 			</footer>
-		
 	</div>
 
 <div id="back-to-top">
