@@ -6,28 +6,19 @@ require 'constants/check-login.php';
 require 'constants/db_config.php';
 
 if (isset($_GET['ref'])) {
-
 	$company_id = $_GET['ref'];
-
-
-
 	try {
 		$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
 		$stmt = $conn->prepare("SELECT * FROM tbl_users WHERE member_no = :memberno AND role = 'employer'");
 		$stmt->bindParam(':memberno', $company_id);
 		$stmt->execute();
 		$result = $stmt->fetchAll();
 		$rec = count($result);
-
 		if ($rec == "0") {
 			header("location:./");
 		} else {
-
 			foreach ($result as $row) {
-
 				$compname = $row['first_name'];
 				$compesta = $row['byear'];
 				$compmail  = $row['email'];
@@ -50,7 +41,6 @@ if (isset($_GET['ref'])) {
 } else {
 	header("location:./");
 }
-
 if (isset($_GET['page'])) {
 	$page = $_GET['page'];
 	if ($page == "" || $page == "1") {
@@ -64,13 +54,10 @@ if (isset($_GET['page'])) {
 	$page = 1;
 }
 ?>
-
 <head>
-
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
 	<title>Handy Hunt - <?php echo "$compname"; ?></title>
 	<meta name="description" content="Online Job Management / Job Portal" />
 	<meta name="keywords" content="job, work, resume, applicants, application, employee, employer, hire, hiring, human resource management, hr, online job management, company, worker, career, recruiting, recruitment" />
@@ -83,14 +70,11 @@ if (isset($_GET['page'])) {
 	<meta property="og:image:height" content="300" />
 	<meta property="og:image:alt" content="Nightingale Jobs" />
 	<meta property="og:description" content="Online Job Management / Job Portal" />
-
 	<link rel="shortcut icon" href="images/ico/favicon.png">
-
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" media="screen">
 	<link href="css/animate.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/component.css" rel="stylesheet">
-
 	<link rel="stylesheet" href="css/linearicons/style.css">
 	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/simple-line-icons/css/simple-line-icons.css">
@@ -101,131 +85,75 @@ if (isset($_GET['page'])) {
 	<link rel="stylesheet" href="css/flaticon-streamline-outline/flaticon-streamline-outline.css">
 	<link rel="stylesheet" href="css/flaticon-thick-icons/flaticon-thick.css">
 	<link rel="stylesheet" href="css/flaticon-ventures/flaticon-ventures.css">
-
 	<link href="css/style.css" rel="stylesheet">
-
-
 </head>
-
-
 <body class="not-transparent-header">
-
 	<div class="container-wrapper">
-
-
 		<header id="header">
-
-
-
 			<nav class="navbar navbar-default navbar-fixed-top navbar-sticky-function">
-
 				<div class="container">
-
 					<div class="logo-wrapper">
 						<div class="logo">
 							<a href="./"><img src="images/handyman.png" alt="Logo" /></a>
 						</div>
 					</div>
-
 					<div id="navbar" class="navbar-nav-wrapper navbar-arrow">
-
 						<ul class="nav navbar-nav" id="responsive-menu">
-
 							<li>
-
 								<a href="./">Home</a>
-
 							</li>
-
 							<li>
 								<a href="job-list.php">Job List</a>
-
 							</li>
-
-							<!-- <li>
-								<a href="looking.php">Looking for Job</a>
-							</li> -->
+							<li>
+								<a href="employers.php">Company</a>
+							</li>
 							<?php
-									if ($user_online == true) {
-											if ($myrole == "employee") {
-												print '<li> 
-												<a href="employers.php"> 
-												Companies
-												</a>
-												</li>';
-												}
-												
+								if ($user_online == true) {
+									if ($myrole == "employer") {
+										print '<li> 
+										<a href="employees.php"> 
+										Applicant
+										</a>
+										</li>';
+										}
 							} else {
 							
 							}
 							?>
 							<li>
-								<a href="employers.php">Company</a>
-							</li>
-
-							<li>
 								<a href="contact.php">Contact Us</a>
 							</li>
-
 						</ul>
-
 					</div>
-
 					<div class="nav-mini-wrapper">
 						<ul class="nav-mini sign-in">
 							<?php
 							if ($user_online == true) {
 								print '
-						    <li><a href="logout.php">Logout</a></li>
-							<li><a href="' . $myrole . '">Profile</a></li>';
-							} else {
-								print '
-							<li><a href="login.php">Login</a></li>
-							';
-							}
-
+								<li><a href="logout.php">Logout</a></li>
+								<li><a href="' . $myrole . '">Profile</a></li>';
+								} else {
+									print '
+								<li><a href="login.php">Login</a></li>
+								';
+								}
 							?>
-
 						</ul>
 					</div>
-
 				</div>
-
 				<div id="slicknav-mobile"></div>
-
 			</nav>
-
-
 		</header>
-
 		<div class="main-wrapper">
-
 			<div class="breadcrumb-wrapper">
-
-				<!-- <div class="container">
-
-					<ol class="breadcrumb-list booking-step">
-						<li><a href="employers.php">Company</a></li>
-						<li><span><?php echo "$compname"; ?></span></li>
-					</ol>
-
-				</div> -->
-
 			</div>
-
-
 			<div class="section sm">
-
 				<div class="container">
-
 					<div class="row">
-
 						<div class="col-md-10 col-md-offset-1">
-
 							<div class="company-detail-wrapper">
-
 								<div class="company-detail-header text-center">
-
 									<div class="image">
 										<?php
 										if ($complogo == null) {
@@ -235,20 +163,16 @@ if (isset($_GET['page'])) {
 										}
 										?>
 									</div>
-
 									<h2 class="heading mb-15"><?php echo "$compname"; ?></h2>
-
 									<p class="location">
 										<a target="_blank" href="https://maps.google.com/maps?q=<?php echo "$compzip"; ?> <?php echo "$compcity"; ?>. <?php echo "$compstreet"; ?>, <?php echo "$compcountry"; ?>">
 											<i class="fa fa-map-marker"></i> <?php echo "$compzip"; ?> <?php echo "$compcity"; ?>. <?php echo "$compstreet"; ?>, <?php echo "$compcountry"; ?>
 										</a>
-
 										<span class="mh-5">|</span>
 										<a href="tel:<?php echo "$compphone"; ?>">
 											<i class="fa fa-phone"></i> <?php echo "$compphone"; ?>
 										</a>
 									</p>
-
 									<ul class="meta-list clearfix">
 										<li>
 											<h4 class="heading">Established In:</h4>
@@ -267,53 +191,32 @@ if (isset($_GET['page'])) {
 											<a href="https://<?php echo "$compweb"; ?>"><?php echo "$compweb"; ?></a>
 										</li>
 									</ul>
-
 								</div>
-
 								<div class="company-detail-company-overview clearfix">
-
 									<h3>Company background</h3>
-
 									<p><?php echo "$compbout"; ?></p>
-
-
 									<h3>Services</h3>
-
 									<p><?php echo "$compserv"; ?></p>
-
 									<h3>Expertise</h3>
-
 									<p><?php echo "$compexp"; ?></p>
-
 								</div><br><br>
-
-
 								<div class="section-title mb-40">
-
 									<h4 class="text-left">jobs offered at <?php echo "$compname"; ?></h4>
-
 								</div>
-
 								<div class="result-list-wrapper">
 									<?php
 									require 'constants/db_config.php';
-
 									try {
 										$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 										$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
 										$stmt = $conn->prepare("SELECT * FROM tbl_jobs WHERE company = :compid ORDER BY enc_id DESC LIMIT 5");
 										$stmt->bindParam(':compid', $company_id);
 										$stmt->execute();
 										$result = $stmt->fetchAll();
-
 										foreach ($result as $row) {
 											$post_date = date_format(date_create(), 'd');
 											$post_month = date_format(date_create(), 'F');
 											$post_year = date_format(date_create(), 'Y');
-
-
 											$type = $row['type'];
 											if ($type == "Freelance") {
 												$sta = '<span class="job-label label label-success">Freelance</span>';
@@ -324,10 +227,8 @@ if (isset($_GET['page'])) {
 											if ($type == "Full-time") {
 												$sta = '<span class="job-label label label-warning">Full-time</span>';
 											}
-
 									?>
 											<div class="job-item-list">
-
 												<div class="image">
 													<?php
 													if ($complogo == null) {
@@ -337,23 +238,17 @@ if (isset($_GET['page'])) {
 													}
 													?>
 												</div>
-
 												<div class="content">
 													<div class="job-item-list-info">
-
 														<div class="row">
-
 															<div class="col-sm-7 col-md-8">
-
 																<h4 class="heading"><?php echo $row['title']; ?></h4>
 																<div class="meta-div clearfix mb-25">
 																	<span>at <a href="company.php?ref=<?php echo "$company_id"; ?>"><?php echo "$compname"; ?></a></span>
 																	<?php echo "$sta"; ?>
 																</div>
-
 																<p class="texing"><?php echo $row['description']; ?></p>
 															</div>
-
 															<div class="col-sm-5 col-md-4">
 																<ul class="meta-list">
 																	<li>
@@ -374,45 +269,29 @@ if (isset($_GET['page'])) {
 																	</li>
 																</ul>
 															</div>
-
 														</div>
-
 													</div>
-
 													<div class="job-item-list-bottom">
-
 														<div class="row">
-
 															<div class="col-sm-7 col-md-8">
 																<div class="sub-category">
 																	<a><?php echo $row['category']; ?></a>
-
 																</div>
 															</div>
-
 															<div class="col-sm-5 col-md-4">
 																<a href="explore-job.php?jobid=<?php echo $row['job_id']; ?>" class="btn btn-primary">View This Job</a>
 															</div>
-
 														</div>
-
 													</div>
-
-
 												</div>
-
 											</div>
 									<?php
-
-
 										}
 									} catch (PDOException $e) {
 									}
 									?>
-
 								</div>
 								<div class="pager-wrapper">
-
 									<ul class="pager-list">
 										<?php
 										$total_records = 0;
@@ -420,25 +299,20 @@ if (isset($_GET['page'])) {
 										try {
 											$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 											$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
 											$stmt = $conn->prepare("SELECT * FROM tbl_jobs WHERE company = :compid ORDER BY enc_id DESC");
 											$stmt->bindParam(':compid', $company_id);
 											$stmt->execute();
 											$result = $stmt->fetchAll();
-
 											foreach ($result as $row) {
 												$total_records++;
 											}
 										} catch (PDOException $e) {
 										}
-
 										$records = $total_records / 5;
 										$records = ceil($records);
 										if ($records > 1) {
 											$prevpage = $page - 1;
 											$nextpage = $page + 1;
-
 											print '<li class="paging-nav" ';
 											if ($page == "1") {
 												print 'class="disabled"';
@@ -451,112 +325,70 @@ if (isset($_GET['page'])) {
 											}
 											print '><i class="fa fa-chevron-left"></i></a></li>';
 											for ($b = 1; $b <= $records; $b++) {
-
-										?><li class="paging-nav"><a <?php if ($b == $page) {
+											?><li class="paging-nav"><a <?php if ($b == $page) {
 																		print ' style="background-color:#33B6CB; color:white" ';
-																	} ?> href="company.php?ref=<?php echo "$company_id"; ?>&page=<?php echo "$b"; ?>"><?php echo $b . " "; ?></a></li><?php
-																																													}
-																																													print '<li class="paging-nav"';
-																																													if ($page == $records) {
-																																														print 'class="disabled"';
-																																													}
-																																													print '><a ';
-																																													if ($page == $records) {
-																																														print '';
-																																													} else {
-																																														print 'href="company.php?ref=' . $company_id . '&page=' . $nextpage . '"';
-																																													}
-																																													print '><i class="fa fa-chevron-right"></i></a></li>';
-																																												}
-
-
-																																														?>
-
+																		} ?> href="company.php?ref=<?php echo "$company_id"; ?>&page=<?php echo "$b"; ?>"><?php echo $b . " "; ?></a></li><?php
+																		}
+																		print '<li class="paging-nav"';
+																		if ($page == $records) {
+																			print 'class="disabled"';
+																		}
+																		print '><a ';
+																		if ($page == $records) {
+																			print '';
+																		} else {
+																			print 'href="company.php?ref=' . $company_id . '&page=' . $nextpage . '"';
+																		}
+																		print '><i class="fa fa-chevron-right"></i></a></li>';
+																		}
+																		?>
 									</ul>
-
 								</div>
-
 							</div>
-
 						</div>
-
 					</div>
-
 				</div>
-
 			</div>
-
 			<footer class="footer-wrapper">
-
 				<div class="main-footer">
-
 					<div class="container">
-
 						<div class="row">
-
 							<div class="col-sm-12 col-md-9">
-
 								<div class="row">
-
 									<div class="col-sm-6 col-md-4">
-
 										<div class="footer-about-us">
 											<h5 class="footer-title">About Handy Hunt</h5>
 											<p>Handy Hunt is a job portal, online job management system developed by handyhunt group for capstone in 2022.</p>
-
 										</div>
-
 									</div>
-
 									<div class="col-sm-6 col-md-5 mt-30-xs">
 										<h5 class="footer-title">Quick Links</h5>
 										<ul class="footer-menu clearfix">
 											<li><a href="../">Home</a></li>
 											<li><a href="../job-list.php">Job List</a></li>
-											<li><a href="../employers.php">Employers</a></li>
-											<li><a href="../employees.php">Employees</a></li>
+											<li><a href="../employers.php">Company</a></li>
+											<li><a href="../employees.php">Applicant</a></li>
 											<li><a href="../contact.php">Contact Us</a></li>
 											<li><a href="#">Go to top</a></li>
-
 										</ul>
-
 									</div>
-
 								</div>
-
 							</div>
-
 							<div class="col-sm-12 col-md-3 mt-30-sm">
-
 								<h5 class="footer-title">Handy Hunt Contact</h5>
-
 								<p>Address : University of Caloocan City, Congressional Campus</p>
 								<p>Email : <a href="mailto:nightingale.nath2@gmail.com">handyhunt@gmail.com</a></p>
 								<p>Phone : <a href="tel:+233546607474">09101493778</a></p>
-
-
 							</div>
-
-
 						</div>
-
 					</div>
-
 				</div>
-
-
 			</footer>
-
 		</div>
-
-
 	</div>
-
-
 	<div id="back-to-top">
 		<a href="#"><i class="ion-ios-arrow-up"></i></a>
 	</div>
-
 	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
@@ -583,9 +415,5 @@ if (isset($_GET['page'])) {
 	<script type="text/javascript" src="js/jquery.introLoader.min.js"></script>
 	<script type="text/javascript" src="js/jquery.responsivegrid.js"></script>
 	<script type="text/javascript" src="js/customs.js"></script>
-
-
 </body>
-
-
 </html>
