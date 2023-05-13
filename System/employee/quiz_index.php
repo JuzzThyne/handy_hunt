@@ -13,7 +13,6 @@ if ($user_online == "true") {
 
     // Generate a custom ID based on the value of the "id" parameter
     $custom_id = $id;
-
         require '../constants/db_config.php';
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -95,7 +94,7 @@ if ($user_online == "true") {
 <body>
     <?php
     // Connect to the database
-    $conn = mysqli_connect('localhost', 'root', 'HandyHunt2023', 'job_portal');
+    $conn = mysqli_connect('localhost', 'root', '', 'job_portal');
 
     // Check connection
     if (!$conn) {
@@ -110,19 +109,18 @@ if ($user_online == "true") {
     // Print the custom ID
     // echo $custom_id;
 
-    $jobid = "SELECT * FROM tbl_jobs WHERE job_id = $custom_id ";
+    $jobid = "SELECT * FROM tbl_jobs WHERE job_id = $custom_id";
     $query = mysqli_query($conn, $jobid);
 
     if (mysqli_num_rows($query) > 0) {
         foreach ($query as $row) {
              $cist = $row['category'];
             // echo $row['category'];
+            $company = $row['company'];
             $job_no = $custom_id;
 
-
-
-             $sql = "SELECT * FROM quiz_questions WHERE category = '$cist' ORDER BY RAND() LIMIT 10 ";
-    $result = mysqli_query($conn, $sql);
+             $sql = "SELECT * FROM quiz_questions WHERE category = '$cist' AND comp_id = '$company' ORDER BY RAND() LIMIT 10 ";
+             $result = mysqli_query($conn, $sql);
 
     // Display the quiz questions
     if (mysqli_num_rows($result) > 0) {

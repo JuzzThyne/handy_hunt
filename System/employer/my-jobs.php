@@ -214,6 +214,9 @@ $page = 1;
 											<a href="my-employee.php"><i class="fa fa-bookmark"></i> Accepted Employees</a>
 										</li>
 										<li>
+											<a href="add_questions.php"><i class="fa fa-bookmark"></i> Add Questions</a>
+										</li>
+										<li>
 											<a href="../logout.php"><i class="fa fa-sign-out"></i> Logout</a>
 										</li>
 									</ul>

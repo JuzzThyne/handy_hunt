@@ -4,6 +4,8 @@
 include '../constants/settings.php';
 include 'constants/check-login.php';
 
+
+
 if ($user_online == "true") {
 	if ($myrole == "employer") {
 	} else {
@@ -12,7 +14,22 @@ if ($user_online == "true") {
 } else {
 	header("location:../");
 }
+
+if (isset($_GET['category'])) {
+	$country = $_GET['country'];
+	$query1 = "SELECT * FROM tbl_categories WHERE country = :country ORDER BY category ASC";
+	$fromsearch = true;
+	$slc_country = "$country";
+} else {	
+	$query1 = "SELECT * FROM tbl_categories ORDER BY category DESC";
+	$slc_country = "NULL";
+	$slc_category = "NULL";
+	$title = "Company List";
+}
+
 ?>
+
+
 
 <head>
 
@@ -20,7 +37,7 @@ if ($user_online == "true") {
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Handy Hunt - Change Password</title>
+	<title>Handy Hunt - Add Questions</title>
 	<meta name="description" content="Online Job Management / Job Portal" />
 	<meta name="keywords" content="job, work, resume, applicants, application, employee, employer, hire, hiring, human resource management, hr, online job management, company, worker, career, recruiting, recruitment" />
 	<meta name="author" content="BwireSoft">
@@ -171,11 +188,13 @@ if ($user_online == "true") {
 											} else {
 												echo '<center><img alt="image" title="' . $compname . '" width="180" height="100" src="data:image/jpeg;base64,' . base64_encode($logo) . '"/></center>';
 											}
+
 											?><br>
 										</div>
 
 										<h4><?php echo "$compname"; ?></h4>
 
+										
 									</div>
 
 									<div class="admin-user-action text-center">
@@ -201,9 +220,7 @@ if ($user_online == "true") {
 										<li>
 											<a href="my-employee.php"><i class="fa fa-bookmark"></i> Accepted Employees</a>
 										</li>
-										<li>
-											<a href="add_questions.php"><i class="fa fa-bookmark"></i> Add Questions</a>
-										</li>
+
 										<li>
 											<a href="../logout.php"><i class="fa fa-sign-out"></i> Logout</a>
 										</li>
@@ -219,54 +236,77 @@ if ($user_online == "true") {
 
 									<div class="admin-section-title">
 
-										<h2>Change Password</h2>
+										<h2>Add Question</h2>
 
 									</div>
 
-									<form name="frm" class="post-form-wrapper" action="app/new-pass.php" method="POST">
+									<form name="frm" class="post-form-wrapper" action="app/save_questions.php" method="POST">
 
 										<div class="row gap-20">
-											<?php include 'constants/check_reply.php'; ?>
-											<input type="hidden" class="form-control" name="checkoldpassword" value="<?php echo "$mypass" ?>" readonly>
-											<div class="col-sm-6 col-md-4">
+											<?php include 'constants/check_reply.php';?>
 
-
-												<div class="form-group">
-													<label>Old Password</label>
-													<input type="password" class="form-control" name="oldpassword" required placeholder="Enter your old password">
-												</div>
-
+											<select class="form-control" name="category" required />
+												<option value="">-Select Category-</option>
+												<?php
+												require '../constants/db_config.php';
+												try {
+													$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+													$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+													$stmt = $conn->prepare("SELECT * FROM tbl_categories");
+													$stmt->execute();
+													$result = $stmt->fetchAll();
+													foreach ($result as $row) {
+														$cat = $row['category'];
+														?>
+														<option <?php if ($slc_category == "$cat") { print ' selected '; } ?> value="<?php echo $row['category']; ?>"><?php echo $row['category']; ?></option>
+													<?php
+													}
+													$stmt->execute();
+												} catch (PDOException $e) {
+												}
+												?>
+											</select>
+											<br>
+											
+											
+											<div id="question-wrapper" style="display:none;">
+												<!-- This div will be displayed if a category is selected -->
+												<!-- <h4><?php echo $myid ?></h4> -->
+												<input type="hidden" name="id" id="id" value="<?php echo $myid ?>">
+												<label for="question" style="padding-top: 5px;">Question:</label>
+												<input type="text" class="form-control"  name="question" id="question" required />
+												<label for="question" style="padding-top: 5px;">A:</label>
+												<input type="text" class="form-control" name="choose_A" id="choose_A" required />
+												<label for="question" style="padding-top: 5px;">B:</label>
+												<input type="text" class="form-control" name="choose_B" id="choose_B" required />
+												<label for="question" style="padding-top: 5px;">C:</label>
+												<input type="text" class="form-control" name="choose_C" id="choose_C" required />
+												<label for="question" style="padding-top: 5px;">D:</label>
+												<input type="text" class="form-control" name="choose_D" id="choose_D" required />
+												<label for="question" style="padding-top: 5px;" >Answer:</label>
+												<input type="text" class="form-control" name="answer" id="answer" placeholder="Letter Only" required />
 											</div>
-											<div class="clear"></div>
-
-											<div class="col-sm-6 col-md-4">
-
-												<div class="form-group">
-													<label>New Password</label>
-													<input type="password" class="form-control" name="password" required placeholder="Enter your new password">
-												</div>
-
-											</div>
-
-											<div class="clear"></div>
-
-											<div class="col-sm-6 col-md-4">
-
-												<div class="form-group">
-													<label>Confirm Password</label>
-													<input type="password" class="form-control" name="confirmpassword" required placeholder="Confirm your new password">
-												</div>
-
-											</div>
+											
+											<div class="clear"><br></div>
 
 											<div class="col-sm-12 mt-10">
-												<button type="submit" onclick="return val();" class="btn btn-primary">Update</button>
-												<button type="reset" class="btn btn-primary btn-inverse">Cancel</a>
+												<button type="submit" name="UploadQuestion" class="btn btn-primary">Add Questions</button>
 											</div>
 
 										</div>
 
-									</form><br>
+										<script>
+										// Show the question-wrapper div when a category is selected
+										document.querySelector('select[name="category"]').addEventListener('change', function() {
+											if (this.value !== '') {
+												document.getElementById('question-wrapper').style.display = 'block';
+											} else {
+												document.getElementById('question-wrapper').style.display = 'none';
+											}
+										});
+										</script>
+									</form>
+									<br>
 
 
 								</div>
